@@ -16,6 +16,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.cpp**: C++ (compiles with GCC)
 - **numguess.pas**: Turbo Pascal 6.0
 - **numguess.prg**: dBase IV
+- **numguess.js**: Javascript
 
 ## Features:
 
@@ -29,6 +30,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.cpp**: guesses, limit, min10
 - **numguess.pas**: guesses, limit, min10
 - **numguess.prg**: guesses
+- **numguess.js**: guesses, restart, name, limit, min10
 
 Feature descriptions:
 
