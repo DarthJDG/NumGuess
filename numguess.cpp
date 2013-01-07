@@ -1,13 +1,14 @@
 #include <stdlib.h>
-#include <conio.h>
-#include <iostream.h>
+#include <time.h>
+#include <iostream>
+
+using namespace std;
 
 main()
 {
    int num = 0,guess = 0,guesses = 1,limit = 0;
 
-   randomize();
-   clrscr();
+   srand(time(NULL));
    cout<<"Welcome to NumGuess for C++!\n";
    cout<<"If you like it, buy the Pascal and ASM version too! :)\n";
    cout<<"\nUpper limit: ";
@@ -17,9 +18,8 @@ main()
       cout<<"\nAT LEAST 10!\nUpper limit: ";
       cin>>limit;
    }
-   clrscr();
-   num = random(limit);
-   cout<<"Guess my number between 0 and "<<limit<<"!\n";
+   num = rand() % limit;
+   cout<<"Guess my number between 0 and "<<limit-1<<"!\n";
    cout<<"\nGuess: ";
    for ( cin>>guess ; num != guess ; guesses++ )
    {
@@ -28,7 +28,7 @@ main()
       cout<<"\nGuess: ";
       cin>>guess;
    }
-   cout<<"\n\nWell done! It took "<<guesses<<" guesses!";
+   cout<<"\nWell done! It took "<<guesses<<" guesses!\n";
 
    return 0;
 }

@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
+#include <time.h>
 
 main()
 {
    int num = 0,guess = 0,guesses = 1,limit = 0;
 
-   randomize();
-   clrscr();
+   srand(time(NULL));
    printf("Welcome to NumGuess for C!\n");
    printf("If you like it, buy the Pascal and ASM version too!\n");
    printf("\nUpper limit: ");
@@ -17,8 +16,7 @@ main()
       fflush(stdin);
    }
    fflush(stdin);
-   clrscr();
-   num = random(limit);
+   num = rand() % limit;
    printf("Guess my number between 0 and %d!\n",limit-1);
    printf("\nGuess: ");
    for ( scanf("%d",&guess) ; num != guess ; guesses++ )
@@ -29,7 +27,7 @@ main()
       scanf("%d",&guess);
       fflush(stdin);
    }
-   printf("\n\nWell done! It took %d guesses!",guesses);
+   printf("\nWell done! It took %d guesses!\n",guesses);
 
    return 0;
 }

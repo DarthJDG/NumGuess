@@ -6,25 +6,29 @@ These programs have been written a long time ago, and mostly in just a few minut
 
 ## Programming languages and compilers:
 
-- **NUMGUESS.ASM**: DOS x86 Assembly (compiles with TASM 3.1)
-- **NUM_C64.BAS**: C64 Basic
-- **NUMGUESS.BAS**: QBasic 1.0
-- **NUMGUESS.C**: Borland C (compiles with 3.1 under DOS)
-- **NUMGUESS.CPP**: Borland C++ (compiles with 3.1 under DOS)
-- **NUM_OOP.PAS**: Turbo Pascal 6.0 OOP
-- **NUMGUESS.PAS**: Turbo Pascal 6.0
-- **NUMGUESS.PRG**: dBase IV
+- **num_c64.bas**: C64 Basic
+- **num_dos.c**: Borland C (compiles with 3.1 under DOS)
+- **num_dos.cpp**: Borland C++ (compiles with 3.1 under DOS)
+- **num_oop.pas**: Turbo Pascal 6.0 OOP
+- **numguess.asm**: DOS x86 Assembly (compiles with TASM 3.1)
+- **numguess.bas**: QBasic 1.0
+- **numguess.c**: C (compiles with GCC)
+- **numguess.cpp**: C++ (compiles with GCC)
+- **numguess.pas**: Turbo Pascal 6.0
+- **numguess.prg**: dBase IV
 
 ## Features:
 
-- **NUMGUESS.ASM**: restart, name, guesses, message
-- **NUM_C64.BAS**: restart, guesses, limit, min10
-- **NUMGUESS.BAS**: restart, guesses, limit
-- **NUMGUESS.C**: guesses, limit, min10
-- **NUMGUESS.CPP**: guesses, limit, min10
-- **NUM_OOP.PAS**: guesses, limit, min10
-- **NUMGUESS.PAS**: guesses, limit, min10
-- **NUMGUESS.PRG**: guesses
+- **num_c64.bas**: restart, guesses, limit, min10
+- **num_dos.c**: guesses, limit, min10
+- **num_dos.cpp**: guesses, limit, min10
+- **num_oop.pas**: guesses, limit, min10
+- **numguess.asm**: restart, name, guesses, message
+- **numguess.bas**: restart, guesses, limit
+- **numguess.c**: guesses, limit, min10
+- **numguess.cpp**: guesses, limit, min10
+- **numguess.pas**: guesses, limit, min10
+- **numguess.prg**: guesses
 
 Feature descriptions:
 
