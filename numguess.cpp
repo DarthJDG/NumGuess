@@ -6,29 +6,28 @@ using namespace std;
 
 main()
 {
-   int num = 0,guess = 0,guesses = 1,limit = 0;
+	int num = 0, guess = 0, guesses = 1, limit = 0;
 
-   srand(time(NULL));
-   cout<<"Welcome to NumGuess for C++!\n";
-   cout<<"If you like it, buy the Pascal and ASM version too! :)\n";
-   cout<<"\nUpper limit: ";
-   cin>>limit;
-   while (limit < 10)
-   {
-      cout<<"\nAT LEAST 10!\nUpper limit: ";
-      cin>>limit;
-   }
-   num = rand() % limit;
-   cout<<"Guess my number between 0 and "<<limit-1<<"!\n";
-   cout<<"\nGuess: ";
-   for ( cin>>guess ; num != guess ; guesses++ )
-   {
-      if (num < guess) cout<<"Too high!";
-                  else cout<<"Too low!";
-      cout<<"\nGuess: ";
-      cin>>guess;
-   }
-   cout<<"\nWell done! It took "<<guesses<<" guesses!\n";
+	srand(time(NULL));
+	cout << "Welcome to NumGuess for C++!\n";
+	cout << "If you like it, buy the Pascal and ASM version too! :)\n";
+	cout << "\nUpper limit: ";
+	cin >> limit;
+	while(limit < 10)
+	{
+		cout << "\nAT LEAST 10!\nUpper limit: ";
+		cin >> limit;
+	}
+	num = rand() % limit;
+	cout << "Guess my number between 0 and " << limit - 1 << "!\n";
+	cout << "\nGuess: ";
+	for(cin >> guess; num != guess; guesses++)
+	{
+		if(num < guess) cout << "Too high!"; else cout << "Too low!";
+		cout << "\nGuess: ";
+		cin >> guess;
+	}
+	cout << "\nWell done! It took " << guesses << " guesses!\n";
 
-   return 0;
+	return 0;
 }
