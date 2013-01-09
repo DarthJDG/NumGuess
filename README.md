@@ -1,8 +1,8 @@
 # NumGuess collection
 
-I made this pack as a collection of little sample applications for multiple programming languages. While a small hello world application works, a simple number guessing game shows basic input, output and logic as well.
+This is a collection of little sample applications for multiple programming languages. While a small hello world application works, a simple number guessing game shows user input, basic output, generating a random number and simple logic as well.
 
-These programs have been written a long time ago, and mostly in just a few minutes. In no way should they be considered well written or good programming practices.
+These programs have been written a long time ago, and mostly in just a few minutes. In no way should they be considered well written or good programming practices. Published as part of the [short article at CodeBin](http://codebin.co.uk/blog/number-guessing-hello-world-games/).
 
 ## Programming languages and compilers:
 
