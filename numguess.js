@@ -16,6 +16,7 @@
 				this.show('Please start the game first.');
 			}
 			else {
+				this.tries += 1;
 				if (this.num > num) {
 					this.show('My number is bigger than ' + num + '!');
 				}
@@ -25,11 +26,13 @@
 				else {
 					this.show('Congratulations! My number is exactly ' + num + '!');
 					this.finish();
+					return true;
 				}
 			}
+			return false;
 		},
 		finish: function () {
-			this.show('You had ' + this.tries + 'tries!');
+			this.show('You had ' + this.tries + ' tries!');
 			this.tries = null;
 			this.num = null;
 		},
