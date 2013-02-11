@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <?php
 
 echo "\n-={ NumGuess PHP version }=-\n\n";
