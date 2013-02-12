@@ -17,6 +17,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.pas**: Turbo Pascal 6.0
 - **numguess.prg**: dBase IV
 - **numguess.js**: Javascript
+- **numguess.php**: PHP (CLI)
 
 ## Features:
 
@@ -31,6 +32,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.pas**: guesses, limit, min10
 - **numguess.prg**: guesses
 - **numguess.js**: guesses, restart, name, limit, min10
+- **numguess.php**: guesses, name, limit, min10
 
 Feature descriptions:
 
