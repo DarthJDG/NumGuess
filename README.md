@@ -15,6 +15,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.bat**: Windows shell batch file (Windows 2000 onwards)
 - **numguess.c**: C (compiles with GCC)
 - **numguess.cpp**: C++ (compiles with GCC)
+- **NumGuess.java**: Java (can be run from command line)
 - **numguess.js**: Javascript
 - **numguess.pas**: Turbo Pascal 6.0
 - **numguess.php**: PHP (CLI)
@@ -31,6 +32,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.bat**: restart, name, guesses, limit, min10
 - **numguess.c**: guesses, limit, min10
 - **numguess.cpp**: guesses, limit, min10
+- **NumGuess.java**: restart, name, guesses, limit, min10
 - **numguess.js**: restart, name, guesses, limit, min10
 - **numguess.pas**: guesses, limit, min10
 - **numguess.php**: guesses, name, limit, min10
