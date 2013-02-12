@@ -64,6 +64,7 @@ startgame:
    xor ax,ax
    mov al,dl
 
+   inc ax
    mov num,ax
 
    cmp ax,64h
@@ -288,7 +289,7 @@ WelcomeMessage  db  "Welcome to NumGuess for ASM!$"
 EnterName       db  0dh,0ah,0dh,0ah,"Enter your name (max 15 chars): $"
 Welcome         db  "Welcome $"
 Exclamation     db  "!",0dh,0ah,0dh,0ah,"$"
-LetsGuess       db  "Let's see how good you are!",0dh,0ah,"Guess my number between 0 and 100!",0dh,0ah,0dh,0ah,"$"
+LetsGuess       db  "Let's see how good you are!",0dh,0ah,"Guess my number between 1 and 100!",0dh,0ah,0dh,0ah,"$"
 GuessPrompt     db  "Guess: $"
 TooHigh         db  "Too high!",0dh,0ah,0dh,0ah,"$"
 TooLow          db  "Too low!",0dh,0ah,0dh,0ah,"$"

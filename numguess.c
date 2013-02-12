@@ -16,8 +16,8 @@ main()
 		fflush(stdin);
 	}
 	fflush(stdin);
-	num = rand() % limit;
-	printf("Guess my number between 0 and %d!\n", limit - 1);
+	num = rand() % limit + 1;
+	printf("Guess my number between 1 and %d!\n", limit);
 	printf("\nGuess: ");
 	for(scanf("%d", &guess); num != guess; guesses++)
 	{

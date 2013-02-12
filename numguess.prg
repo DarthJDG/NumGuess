@@ -7,9 +7,9 @@ clear
 @2,30 say  "(C) DarthJDG, 2000."
 @3,0 to 3,79
 @21,35 say "9999 = EXIT"
-@23,22 say "Guess my number between 0 and 1000!"
+@23,22 say "Guess my number between 1 and 1000!"
 @22,0 to 22,79
-num=int(rand()*1000)
+num=int(rand()*1000)+1
 guesses=0
 guess=0
 do while .t.

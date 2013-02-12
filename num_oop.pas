@@ -42,7 +42,7 @@ begin
 		LimitSet := False;
 		exit;
 	end;
-	num := Random(limit);
+	num := Random(limit) + 1;
 	LimitSet := True;
 end;
 

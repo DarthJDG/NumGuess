@@ -15,7 +15,7 @@ begin
 		Write('limit: ');
 		ReadLn(limit);
 	until limit >= 10;
-	num := Random(limit);
+	num := Random(limit) + 1;
 	WriteLn;
 	WriteLn('Try to guess it then!');
 	WriteLn;

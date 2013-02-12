@@ -7,7 +7,7 @@ PRINT "Welcome to DarthJDG's NumGuess for QBASIC!"
 PRINT
 INPUT "Upper limit: ", limit%
 PRINT
-num% = INT(RND * limit%)
+num% = INT(RND * limit%) + 1
 PRINT "Think you're good, huh? Guess it!"
 DO
    guesses% = guesses% + 1

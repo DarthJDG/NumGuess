@@ -18,8 +18,8 @@ main()
 		cout << "\nAT LEAST 10!\nUpper limit: ";
 		cin >> limit;
 	}
-	num = rand() % limit;
-	cout << "Guess my number between 0 and " << limit - 1 << "!\n";
+	num = rand() % limit + 1;
+	cout << "Guess my number between 1 and " << limit << "!\n";
 	cout << "\nGuess: ";
 	for(cin >> guess; num != guess; guesses++)
 	{
