@@ -14,10 +14,10 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.bas**: QBasic 1.0
 - **numguess.c**: C (compiles with GCC)
 - **numguess.cpp**: C++ (compiles with GCC)
-- **numguess.pas**: Turbo Pascal 6.0
-- **numguess.prg**: dBase IV
 - **numguess.js**: Javascript
+- **numguess.pas**: Turbo Pascal 6.0
 - **numguess.php**: PHP (CLI)
+- **numguess.prg**: dBase IV
 
 ## Features:
 
@@ -29,10 +29,10 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.bas**: restart, guesses, limit
 - **numguess.c**: guesses, limit, min10
 - **numguess.cpp**: guesses, limit, min10
-- **numguess.pas**: guesses, limit, min10
-- **numguess.prg**: guesses
 - **numguess.js**: guesses, restart, name, limit, min10
+- **numguess.pas**: guesses, limit, min10
 - **numguess.php**: guesses, name, limit, min10
+- **numguess.prg**: guesses
 
 Feature descriptions:
 
@@ -45,4 +45,4 @@ Feature descriptions:
 
 ## 4. License and copyright
 
-This program is available under GPL3, please see the LICENSE and COPYRIGHT files for details. Not that anyone would want to use them commercially...
+These programs are available under GPL3, please see the LICENSE, COPYRIGHT and AUTHORS files for details. Not that anyone would want to use them commercially...
