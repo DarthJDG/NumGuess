@@ -12,6 +12,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **num_oop.pas**: Turbo Pascal 6.0 OOP
 - **numguess.asm**: DOS x86 Assembly (compiles with TASM 3.1)
 - **numguess.bas**: QBasic 1.0
+- **numguess.bat**: Windows shell batch file (Windows 2000 onwards)
 - **numguess.c**: C (compiles with GCC)
 - **numguess.cpp**: C++ (compiles with GCC)
 - **numguess.js**: Javascript
@@ -27,9 +28,10 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **num_oop.pas**: guesses, limit, min10
 - **numguess.asm**: restart, name, guesses, message
 - **numguess.bas**: restart, guesses, limit
+- **numguess.bat**: restart, name, guesses, limit, min10
 - **numguess.c**: guesses, limit, min10
 - **numguess.cpp**: guesses, limit, min10
-- **numguess.js**: guesses, restart, name, limit, min10
+- **numguess.js**: restart, name, guesses, limit, min10
 - **numguess.pas**: guesses, limit, min10
 - **numguess.php**: guesses, name, limit, min10
 - **numguess.prg**: guesses
