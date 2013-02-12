@@ -31,7 +31,7 @@ goto game_loop
 :well_done
 
 echo.
-echo Well done, you guessed my number from %ng_tries% tries!
+echo Well done %ng_name%, you guessed my number from %ng_tries% tries!
 set /p ng_again="Play again [Y/N]? "
 
 if /i %ng_again% == y goto new_game
