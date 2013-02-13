@@ -20,6 +20,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.pas**: Turbo Pascal 6.0
 - **numguess.php**: PHP (CLI)
 - **numguess.prg**: dBase IV
+- **numguess.uvb**: UniVerse Basic (might work on other pick-likes)
 
 ## Features:
 
@@ -37,6 +38,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.pas**: guesses, limit, min10
 - **numguess.php**: guesses, name, limit, min10
 - **numguess.prg**: guesses
+- **numguess.uvb**: restart, name, guesses, limit, min10
 
 Feature descriptions:
 
