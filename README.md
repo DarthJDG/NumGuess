@@ -19,9 +19,9 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.js**: Javascript
 - **numguess.pas**: Turbo Pascal 6.0
 - **numguess.php**: PHP (CLI)
+- **numguess.pl**: Perl
 - **numguess.prg**: dBase IV
 - **numguess.uvb**: UniVerse Basic (might work on other pick-likes)
-- **numguess.pl**: Pearl
 
 ## Features:
 
@@ -38,9 +38,9 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.js**: restart, name, guesses, limit, min10
 - **numguess.pas**: guesses, limit, min10
 - **numguess.php**: guesses, name, limit, min10
+- **numguess.pl**: restart, name, guesses, limit, min10
 - **numguess.prg**: guesses
 - **numguess.uvb**: restart, name, guesses, limit, min10
-- **numguess.pl**: restart, name, guesses, limit, min10
 
 Feature descriptions:
 
