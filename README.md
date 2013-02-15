@@ -21,6 +21,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.php**: PHP (CLI)
 - **numguess.prg**: dBase IV
 - **numguess.uvb**: UniVerse Basic (might work on other pick-likes)
+- **numguess.pl**: Pearl
 
 ## Features:
 
@@ -39,6 +40,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.php**: guesses, name, limit, min10
 - **numguess.prg**: guesses
 - **numguess.uvb**: restart, name, guesses, limit, min10
+- **numguess.pl**: restart, name, guesses, limit, min10
 
 Feature descriptions:
 
