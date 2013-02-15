@@ -22,6 +22,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.prg**: dBase IV
 - **numguess.uvb**: UniVerse Basic (might work on other pick-likes)
 - **numguess.pl**: Pearl
+- **numguess.pl**: JVM bytecode (aka. "Java Assembly") for Jasmin
 
 ## Features:
 
@@ -41,6 +42,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.prg**: guesses
 - **numguess.uvb**: restart, name, guesses, limit, min10
 - **numguess.pl**: restart, name, guesses, limit, min10
+- **numguess.j**: restart, name, guesses, limit, min10
 
 Feature descriptions:
 
