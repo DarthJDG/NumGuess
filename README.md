@@ -16,6 +16,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.c**: C (compiles with GCC)
 - **numguess.cpp**: C++ (compiles with GCC)
 - **numguess.cs**: C# command line
+- **NumGuess.j**: JVM bytecode (aka. "Java Assembly") for Jasmin
 - **NumGuess.java**: Java (can be run from command line)
 - **numguess.js**: Javascript
 - **numguess.lua**: Lua terminal
@@ -38,6 +39,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.c**: guesses, limit, min10
 - **numguess.cpp**: guesses, limit, min10
 - **numguess.cs**: restart, name, guesses, limit, min10
+- **NumGuess.j**: restart, name, guesses, limit, min10
 - **NumGuess.java**: restart, name, guesses, limit, min10
 - **numguess.js**: restart, name, guesses, limit, min10
 - **numguess.lua**: restart, name, guesses, limit, min10
