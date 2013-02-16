@@ -177,7 +177,7 @@ CheckIfNot:
 ; ===============================================
 ; method to read an integer
 .method public static readInt()I
-.throws java/lang/IOException
+.throws java/io/IOException
 .limit stack 10
 .limit locals 5
 .catch java/lang/NumberFormatException from ReadIntTry to ReadIntCatch using ReadIntCatch
@@ -203,7 +203,7 @@ ReadIntDone:
 ; ===============================================
 ; method to read a string
 .method public static readString()Ljava/lang/String;
-.throws java/lang/IOException
+.throws java/io/IOException
 .limit stack 10
 .limit locals 5
 
@@ -217,7 +217,7 @@ ReadIntDone:
 ; ===============================================
 ; method to output a string
 .method public static printString(Ljava/lang/String;)V
-.throws java/lang/IOException
+.throws java/io/IOException
 .limit stack 10
 .limit locals 5
 
@@ -232,7 +232,7 @@ ReadIntDone:
 ; ===============================================
 ; method to output an integer
 .method public static printInt(I)V
-.throws java/lang/IOException
+.throws java/io/IOException
 .limit stack 10
 .limit locals 5
 
