@@ -20,19 +20,19 @@
 	invokespecial java/io/InputStreamReader/<init>(Ljava/io/InputStream;)V
 	
 	invokespecial java/io/BufferedReader/<init>(Ljava/io/Reader;)V
-    putstatic NumGuess/reader Ljava/io/BufferedReader;
+	putstatic NumGuess/reader Ljava/io/BufferedReader;
 
-    return
+	return
 
 .end method
 
 ; =======================
 .method public <init>()V
 
-    aload 0
-    invokenonvirtual java/lang/Object/<init>()V
+	aload 0
+	invokenonvirtual java/lang/Object/<init>()V
 
-    return
+	return
 
 .end method
 
@@ -46,16 +46,16 @@
 ; display greeting
 
 	ldc "Welcome to NumGuess written in Jasmin!\n\n"
-	jsr PrintString
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
 
 ; get the player's name
 ; stored in local variable 11
 
 	ldc "Please enter your name: "
-	jsr PrintString
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
-	jsr ReadString
+	invokestatic NumGuess/readString()Ljava/lang/String;
 	astore 11
 
 ; get the maximum value (repeat while less than 10)
@@ -63,9 +63,9 @@
 GetMaxLoop:
 
 	ldc "Limit (min 10): "
-	jsr PrintString
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
-	jsr ReadInt
+	invokestatic NumGuess/readInt()I
 	dup
 	istore 12
 
@@ -96,9 +96,9 @@ PlayLoop:
 GuessLoop:
 
 	ldc "Guess: "
-	jsr PrintString
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
-	jsr ReadInt
+	invokestatic NumGuess/readInt()I
 
 ; increase guess count
 	iinc 14 1
@@ -112,7 +112,7 @@ GuessLoop:
 	ifge NumberGE
 	pop
 	ldc "Too Low!\n"
-	jsr PrintString
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
 	goto GuessLoop
 
 ; greater or equal
@@ -120,7 +120,7 @@ NumberGE:
 
 	ifle Win
 	ldc "Too High!\n"
-	jsr PrintString
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
 	goto GuessLoop
 
 ; win - the numbers are matching
@@ -129,26 +129,27 @@ Win:
 ; display game summary
 
 	ldc "Congratulations, "
-	jsr PrintString
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
+	; player name
 	aload 11
-	jsr PrintString
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
 	ldc "! It took "
-	jsr PrintString
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
-	iload 14
-	jsr PrintInt
+	; guess count
+	iload 14 
+	invokestatic NumGuess/printInt(I)V
 
 	ldc " guesses.\n"
-	jsr PrintString
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
 
 ; play again?
-
 	ldc "Would you like to play again? (Y/n) "
-	jsr PrintString
-	jsr ReadString
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
+	invokestatic NumGuess/readString()Ljava/lang/String;
 
 ; check if input is an empty string
 	dup
@@ -167,67 +168,79 @@ CheckIfNot:
 	ldc "n"
 	invokevirtual java/lang/String/equals(Ljava/lang/Object;)Z
 	ifeq PlayLoop
-
 	
-    return
+	return
+
+.end method
 
 
+; ===============================================
+; method to read an integer
+.method public static readInt()I
+.throws java/io/IOException
+.limit stack 10
+.limit locals 5
+.catch java/lang/NumberFormatException from ReadIntTry to ReadIntCatch using ReadIntCatch
 
-; ----------
-; subroutine to read an integer - pushes result on stack
-
-ReadInt:
-
-    getstatic NumGuess/reader Ljava/io/BufferedReader;
+	getstatic NumGuess/reader Ljava/io/BufferedReader;
 	invokevirtual java/io/BufferedReader/readLine()Ljava/lang/String;
+
+ReadIntTry:
 	invokestatic java/lang/Integer/parseInt(Ljava/lang/String;)I
+	goto ReadIntDone
 
-	swap
-	astore 1
-	ret 1
+ReadIntCatch:
+	pop
+	iconst_0
+
+ReadIntDone:
+
+	ireturn
+
+.end method
 
 
-; ----------
-; subroutine to read a string - pushes result on stack
+; ===============================================
+; method to read a string
+.method public static readString()Ljava/lang/String;
+.throws java/io/IOException
+.limit stack 10
+.limit locals 5
 
-ReadString:
-
-    getstatic NumGuess/reader Ljava/io/BufferedReader;
+	getstatic NumGuess/reader Ljava/io/BufferedReader;
 	invokevirtual java/io/BufferedReader/readLine()Ljava/lang/String;
+	areturn
 
-	swap
-	astore 1
-	ret 1
+.end method
 
 
-;------------
-; subroutine to output a string - from the top of the stack
+; ===============================================
+; method to output a string
+.method public static printString(Ljava/lang/String;)V
+.throws java/io/IOException
+.limit stack 10
+.limit locals 5
 
-PrintString:
-
-	swap
-	
 	getstatic java/lang/System/out Ljava/io/PrintStream;
-	swap
+	aload_0
 	invokevirtual java/io/PrintStream/print(Ljava/lang/String;)V
+	return
 
-	astore 1
-	ret 1
+.end method
 
-;------------
-; subroutine to output an integer - from the top of the stack
 
-PrintInt:
+; ===============================================
+; method to output an integer
+.method public static printInt(I)V
+.throws java/io/IOException
+.limit stack 10
+.limit locals 5
 
-	swap
-	
+	iload_0
 	invokestatic java/lang/Integer/toString(I)Ljava/lang/String;
-
 	getstatic java/lang/System/out Ljava/io/PrintStream;
 	swap
 	invokevirtual java/io/PrintStream/print(Ljava/lang/String;)V
-
-	astore 1
-	ret 1
+	return
 
 .end method
