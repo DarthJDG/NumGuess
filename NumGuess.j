@@ -29,9 +29,8 @@
 ; =======================
 .method public <init>()V
 
-	aload 0
+	aload_0
 	invokenonvirtual java/lang/Object/<init>()V
-
 	return
 
 .end method
@@ -47,7 +46,6 @@
 
 	ldc "Welcome to NumGuess written in Jasmin!\n\n"
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
-
 
 ; get the player's name
 ; stored in local variable 11
@@ -194,7 +192,6 @@ ReadIntCatch:
 	iconst_0
 
 ReadIntDone:
-
 	ireturn
 
 .end method
