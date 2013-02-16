@@ -43,7 +43,7 @@ while True:
 			print "\nThat was not a number, but still a try!"
 
 	print "\nWell done " + name + ", you guessed my number from " + str(tries) + " tries!"
-	print "Play again [Y/N]? "
+	print "Play again [Y/N]?"
 
 	again = sys.stdin.readline().strip()
 
