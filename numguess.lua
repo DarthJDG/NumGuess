@@ -1,6 +1,8 @@
 theSeed = os.time()
 math.randomseed(theSeed)
 
+math.random(1, 10) -- Burn first random number, workaround for same number bug.
+
 print("Welcome to NumGuess Lua terminal version!\n\n")
 print("Enter your name: ")
 
