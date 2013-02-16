@@ -10,7 +10,7 @@ namespace numguess
 			int tries;
 			int guess;
 
-			Console.WriteLine ("Welcome to NumGuess for C++!");
+			Console.WriteLine ("Welcome to NumGuess for C#!");
 
 			Console.WriteLine ("Enter your name: ");
 
