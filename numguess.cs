@@ -10,9 +10,9 @@ namespace numguess
 			int tries;
 			int guess;
 
-			Console.WriteLine ("Welcome to NumGuess for C#!");
+			Console.WriteLine ("Welcome to NumGuess for C#!\n");
 
-			Console.WriteLine ("Enter your name: ");
+			Console.WriteLine ("Enter your name:");
 
 			string name = Console.ReadLine();
 
@@ -20,13 +20,15 @@ namespace numguess
 				name = "Player";
 			}
 
-			Console.WriteLine ("Welcome " + name + ", enter upper limit: ");
+			Console.WriteLine ("\nWelcome " + name + ", enter upper limit:");
 
 			string limit_str = Console.ReadLine();
 
 			try {
 				limit = Convert.ToInt32(limit_str);
-				limit = Math.Abs(limit);
+				if(limit < 10) {
+					limit = 10;
+				}
 			} catch {
 				limit = 10;
 			}
@@ -37,10 +39,10 @@ namespace numguess
 				Random random = new Random();
 				int number = random.Next(1, limit + 1);
 
-				Console.WriteLine("Guess my number between 1 and " + limit + "!");
+				Console.WriteLine("\nGuess my number between 1 and " + limit + "!");
 
 				while(true) {
-					Console.WriteLine("Guess:");
+					Console.WriteLine("\nGuess:");
 
 					string guess_str = Console.ReadLine();
 
@@ -50,21 +52,21 @@ namespace numguess
 						guess = Convert.ToInt32(guess_str);
 
 						if(guess < number) {
-							Console.WriteLine("Too low!");
+							Console.WriteLine("\nToo low!");
 						}
 						else if (guess > number) {
-							Console.WriteLine("Too high!");
+							Console.WriteLine("\nToo high!");
 						}
 						else {
 							break;
 						}
 					}
 					catch {
-						Console.WriteLine("That was not a number, but still a try!");
+						Console.WriteLine("\nThat was not a number, but still a try!");
 					}
 				}
 
-				Console.WriteLine("Well done " + name + ", you guessed my number from " + tries + (tries == 1 ? " try!" : " tries!"));
+				Console.WriteLine("\nWell done " + name + ", you guessed my number from " + tries + (tries == 1 ? " try!" : " tries!"));
 				Console.WriteLine("Play again [Y/N]?");
 
 				string again = Console.ReadLine();
@@ -74,7 +76,7 @@ namespace numguess
 				}
 			}
 
-			Console.WriteLine("Okay, bye.");
+			Console.WriteLine("\nOkay, bye.");
 		}
 	}
 }
