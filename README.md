@@ -13,6 +13,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.asm**: DOS x86 Assembly (compiles with TASM 3.1)
 - **numguess.bas**: QBasic 1.0
 - **numguess.bat**: Windows shell batch file (Windows 2000 onwards)
+- **numguess.bf**: Brainfuck
 - **numguess.c**: C (compiles with GCC)
 - **numguess.cpp**: C++ (compiles with GCC)
 - **numguess.cs**: C# command line
@@ -36,6 +37,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.asm**: restart, name, guesses, message
 - **numguess.bas**: restart, guesses, limit
 - **numguess.bat**: restart, name, guesses, limit, min10
+- **numguess.bf**: none
 - **numguess.c**: guesses, limit, min10
 - **numguess.cpp**: guesses, limit, min10
 - **numguess.cs**: restart, name, guesses, limit, min10
