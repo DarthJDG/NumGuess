@@ -1,10 +1,21 @@
 # NumGuess collection
+*Number guessing games in multiple programming languages*
+
+Contents:
+
+1. What is NumGuess?
+2. Programming languages and compilers
+3. Features
+4. Notes
+5. License and copyright
+
+## 1. What is NumGuess?
 
 This is a collection of little sample applications for multiple programming languages. While a small hello world application works, a simple number guessing game shows user input, basic output, generating a random number and simple logic as well.
 
 These programs have been written a long time ago, and mostly in just a few minutes. In no way should they be considered well written or good programming practices. Published as part of the [short article at CodeBin](http://codebin.co.uk/blog/number-guessing-hello-world-games/).
 
-## Programming languages and compilers:
+## 2. Programming languages and compilers
 
 - **num_c64.bas**: C64 Basic
 - **num_dos.c**: Borland C (compiles with 3.1 under DOS)
@@ -13,7 +24,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.asm**: DOS x86 Assembly (compiles with TASM 3.1)
 - **numguess.bas**: QBasic 1.0
 - **numguess.bat**: Windows shell batch file (Windows 2000 onwards)
-- **numguess.bf**: Brainfuck
+- **numguess.bf**: Brainfuck *(see notes)*
 - **numguess.c**: C (compiles with GCC)
 - **numguess.cpp**: C++ (compiles with GCC)
 - **numguess.cs**: C# command line
@@ -28,7 +39,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.py**: Python terminal
 - **numguess.uvb**: UniVerse Basic (might work on other pick-likes)
 
-## Features:
+## 3. Features
 
 - **num_c64.bas**: restart, guesses, limit, min10
 - **num_dos.c**: guesses, limit, min10
@@ -37,7 +48,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.asm**: restart, name, guesses, message
 - **numguess.bas**: restart, guesses, limit
 - **numguess.bat**: restart, name, guesses, limit, min10
-- **numguess.bf**: none
+- **numguess.bf**: none *(see notes)*
 - **numguess.c**: guesses, limit, min10
 - **numguess.cpp**: guesses, limit, min10
 - **numguess.cs**: restart, name, guesses, limit, min10
@@ -61,6 +72,14 @@ Feature descriptions:
 - *limit*: Asks for upper limit.
 - *min10*: Upper limit must be at least 10 when asked.
 
-## 4. License and copyright
+## 4. Notes
+
+### Brainfuck
+
+Due to the complexity of this version, it has no extra features at the moment. It is not yet optimised, I was just learning as I went along and refactoring is not the main strength of this language. It simply gives you a range of 1 to 100 to guess and exits when you have guessed correctly.
+
+An interesting issue is that due to the simplicity of its design, there is no way to generate a random number in Brainfuck without input from the user. The program starts with asking for a random seed, which can be any number of characters. The program then creates a 1-byte checksum of the seed, and takes modulo 100 to get a "random" number. Pressing about 10 random keys on the keyboard should give a good enough seed unless you can sum up ASCII codes in real time. A more sophisticated hashing function could be implemented as a future improvement.
+
+## 5. License and copyright
 
 These programs are available under GPL3, please see the LICENSE, COPYRIGHT and AUTHORS files for details. Not that anyone would want to use them commercially...
