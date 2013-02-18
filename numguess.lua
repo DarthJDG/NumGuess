@@ -25,6 +25,8 @@ else
 	limit = 10
 end
 
+max_tries = math.floor(math.log(limit, 2)) + 1
+
 while true do
 	tries = 0
 	number = math.random(1, limit)
@@ -52,7 +54,18 @@ while true do
 		end
 	end
 
-	print("\nWell done " .. name .. ", you guessed my number from " .. tries .. " tries!")
+	print("\nWell done " .. name .. ", you guessed my number from " .. tries .. " tries! " .. max_tries .. " guesses were needed.")
+
+	if tries == max_tries then
+		print "You are a machine!"
+	elseif tries > max_tries and tries <= max_tries * 1.1 then
+		print "Very good result!"
+	elseif tries > max_tries * 1.1 then
+		print "Try harder, you can do better!"
+	else
+		print "You are the master of this game!"
+	end
+	
 	print("Play again [Y/N]?")
 	again = io.read()
 
