@@ -120,7 +120,7 @@ at 0
 		<<<<15[-]+>>>>19[-]+<18----------[>19-<18[-]]>19[<<<16-<15->>>>19-]
 
 		<<<<15[
-			Take 48 off from char at 17
+			Subtract 48 from char at 17
 			>>>>19[-]<18[-]++++++++++[>19+++++<18-]>19--[<<17->>19-]
 
 			Multiply 20 by 10
@@ -154,12 +154,12 @@ at 0
 
 	>>25[-]+
 
-	See if the guess it correct
+	See if the guess is correct
 
 	Copy guess to 23
 	<<23[-]>24[-]<<<<20[>>>23+>24+<<<<20-]>>>>24[<<<<20+>>>>24-]
 
-	Subtract 23 off 22
+	Subtract 23 from 22
 	<23[<22->23-]
 
 	If 22 is 0 then the guess is correct and we can break the loop
@@ -167,7 +167,7 @@ at 0
 
 	>>25
 	[
-		Guess is incorrect so check if its greater or less
+		Guess is incorrect so check if it is greater or less
 		Number is in 21
 		Guess is in 20
 		22 is 1 if the guess is too low
