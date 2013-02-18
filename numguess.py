@@ -19,6 +19,8 @@ try:
 except:
 	limit = 10
 
+max_tries = math.floor(math.log(limit, 2)) + 1
+
 while True:
 	tries = 0
 	number = random.randint(1, limit)
@@ -42,7 +44,17 @@ while True:
 		except:
 			print "\nThat was not a number, but still a try!"
 
-	print "\nWell done " + name + ", you guessed my number from " + str(tries) + " tries!"
+	print "\nWell done " + name + ", you guessed my number from " + str(tries) + " tries! " + str(max_tries) + " guesses were needed."
+	
+	if tries == max_tries:
+		print "You are a machine!"
+	elif tries > max_tries and tries <= max_tries * 1.1:
+		print "Very good result!"
+	elif tries > max_tries * 1.1:
+		print "Try harder, you can do better!"
+	else:
+		print "You are the master of this game!"
+	
 	print "Play again [Y/N]?"
 
 	again = sys.stdin.readline().strip()

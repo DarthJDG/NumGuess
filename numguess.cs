@@ -32,6 +32,8 @@ namespace numguess
 			} catch {
 				limit = 10;
 			}
+			
+			int max_tries = Convert.ToInt32(Math.Floor(Math.Log(limit) / Math.Log(2)) + 1);
 
 			while(true) {
 				tries = 0;
@@ -66,7 +68,21 @@ namespace numguess
 					}
 				}
 
-				Console.WriteLine("\nWell done " + name + ", you guessed my number from " + tries + (tries == 1 ? " try!" : " tries!"));
+				Console.WriteLine("\nWell done " + name + ", you guessed my number from " + tries + (tries == 1 ? " try! " : " tries! ") + max_tries + " guesses were needed.");
+
+				if(tries == max_tries) {
+					Console.WriteLine("You are a machine!");
+				}
+				else if(tries > max_tries && tries <= max_tries * 1.1) {
+					Console.WriteLine("Very good result!");
+				}
+				else if(tries > max_tries * 1.1) {
+					Console.WriteLine("Try harder, you can do better!");
+				}
+				else {
+					Console.WriteLine("You are the master of this game!");
+				}
+				
 				Console.WriteLine("Play again [Y/N]?");
 
 				string again = Console.ReadLine();
