@@ -56,7 +56,7 @@ while true do
 
 	if tries == max_tries then
 		print "You are a machine!"
-	elseif tries > max_tries and tries <= max_tries then
+	elseif tries > max_tries and tries <= max_tries * 1.1 then
 		print "Very good result!"
 	elseif tries > max_tries * 1.1 then
 		print "Try harder, you can do better!"
