@@ -4,10 +4,11 @@
 Contents:
 
 1. What is NumGuess?
-2. Programming languages and compilers
-3. Features
-4. Notes
-5. License and copyright
+2. Guidelines
+3. Programming languages and compilers
+4. Features
+5. Notes
+6. License and copyright
 
 ## 1. What is NumGuess?
 
@@ -15,7 +16,13 @@ This is a collection of little sample applications for multiple programming lang
 
 These programs have been written a long time ago, and mostly in just a few minutes. In no way should they be considered well written or good programming practices. Published as part of the [short article at CodeBin](http://codebin.co.uk/blog/number-guessing-hello-world-games/).
 
-## 2. Programming languages and compilers
+## 2. Guidelines
+
+With the increasing number of contributions, it has become necessary to define clear-cut coding standards to make sure all programs work in a consistent manner and give the best possible user experience while keeping the game simple. Please see the GUIDELINES file for more details.
+
+If a program does not conform to the guidelines and doesn't qualify for an exception as a language limitation, it must be mentioned in the notes section in this file.
+
+## 3. Programming languages and compilers
 
 - **num_c64.bas**: C64 Basic
 - **num_dos.c**: Borland C (compiles with 3.1 under DOS)
@@ -39,7 +46,7 @@ These programs have been written a long time ago, and mostly in just a few minut
 - **numguess.py**: Python terminal
 - **numguess.uvb**: UniVerse Basic (might work on other pick-likes)
 
-## 3. Features
+## 4. Features
 
 - **num_c64.bas**: restart, guesses, limit, min10
 - **num_dos.c**: guesses, limit, min10
@@ -72,7 +79,7 @@ Feature descriptions:
 - *limit*: Asks for upper limit.
 - *min10*: Upper limit must be at least 10 when asked.
 
-## 4. Notes
+## 5. Notes
 
 ### Brainfuck
 
@@ -80,6 +87,6 @@ Due to the complexity of this version, it has no extra features at the moment. I
 
 An interesting issue is that due to the simplicity of its design, there is no way to generate a random number in Brainfuck without input from the user. The program starts with asking for a random seed, which can be any number of characters. The program then creates a 1-byte checksum of the seed, and takes modulo 100 to get a "random" number. Pressing about 10 random keys on the keyboard should give a good enough seed unless you can sum up ASCII codes in real time. A more sophisticated hashing function could be implemented as a future improvement.
 
-## 5. License and copyright
+## 6. License and copyright
 
 These programs are available under GPL3, please see the LICENSE, COPYRIGHT and AUTHORS files for details. Not that anyone would want to use them commercially...
