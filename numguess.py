@@ -19,7 +19,7 @@ try:
 except:
 	limit = 10
 
-max_tries = int(math.log(limit, 2)) + 1
+max_tries = math.floor(math.log(limit, 2)) + 1
 
 while True:
 	tries = 0
