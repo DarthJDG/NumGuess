@@ -48,7 +48,7 @@ while True:
 	
 	if tries == max_tries:
 		print "You are a machine!"
-	elif tries > max_tries and tries <= max_tries:
+	elif tries > max_tries and tries <= max_tries * 1.1:
 		print "Very good result!"
 	elif tries > max_tries * 1.1:
 		print "Try harder, you can do better!"
