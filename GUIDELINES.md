@@ -34,19 +34,21 @@ If invalid input is entered as a guess, the program should say *"That's just pla
 
 If the guess is correct, the message showing the number of tries should use the correct plural and singular forms, i.e. *"2 tries"* and *"1 try"*.
 
+Should the player choose to play again, a new random number must be generated within the same limits and gameplay starts with the first guess prompt after an empty line.
+
 ## Custom messages
 
 At the end of the game the program should display a message depending on the player's performance. The maximum number of tries that are mathematically justified is the base 2 logarithm of limit, rounded up. The messages depending on the number of guesses are the following:
 
-- 1 guess: *"You're one lucky bastard!"*
+- one guess: *"You're one lucky bastard!"*
 - less than maximum: *"You are the master of this game!"*
 - exactly the maximum: *"You are a machine!"*
-- over maximum by less than or exacly 10%: *"Very good result!"*
+- over maximum by less than or exactly 10%: *"Very good result!"*
 - over maximum by more than 10%: *"Try harder, you can do better!"*
 - more than the limit: *"I find your lack of skill disturbing!"*
 
 ## Language limitations
 
-It is quite possible that some languages have limitations which prevents them from conforming to the guidelines. Simple cases are fully acceptable, for example if a language only supports uppercase characters. If a language has a native way to ask for numeric input but has no proper exception handling, it is ok for the program to use the built-in error mechanism, there is no need to ask for string input and parse it manually.
+It is quite possible that some languages have limitations which prevents them from conforming to the guidelines. Simple cases are fully acceptable, for example if a language has a native way to ask for numeric input but has no proper exception handling, it is ok for the program to use the built-in error mechanism, there is no need to ask for string input and parse it manually.
 
-In case of other more exceptional limitations a note should be added to the README file explaining the situation.
+In case of other limitations which has an effect on output or general gameplay, a note should be added to the README file explaining the situation.
