@@ -38,7 +38,7 @@ Should the player choose to play again, a new random number must be generated wi
 
 ## Custom messages
 
-At the end of the game the program should display a message depending on the player's performance. The maximum number of tries that are mathematically justified is the base 2 logarithm of limit, rounded up. The messages depending on the number of guesses are the following:
+At the end of the game the program should display a message depending on the player's performance. The maximum number of tries that are mathematically justified is the base 2 logarithm of limit rounded down plus one. The messages depending on the number of guesses are the following:
 
 - one guess: *"You're one lucky bastard!"*
 - less than maximum: *"You are the master of this game!"*
