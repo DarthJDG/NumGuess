@@ -62,7 +62,7 @@ LOOP
          CRT "You are a machine!"
       CASE TRIES <= MAX.TRIES * 1.1
          CRT "Very good result!"
-      CASE TRIES < LIMIT
+      CASE TRIES <= LIMIT
          CRT "Try harder, you can do better!"
       CASE 1
          CRT "I find your lack of skill disturbing!"
