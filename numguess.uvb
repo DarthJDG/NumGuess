@@ -5,12 +5,13 @@ PROMPT ""
 
 CRT "Welcome to NumGuess UniVerse Basic version!"
 CRT
-CRT "Please enter your name: ":
+CRT "Enter your name: ":
 
 INPUT NAME
+IF NAME = "" THEN NAME = "Player"
 
 CRT
-CRT "Welcome ":NAME:", enter limit: ":
+CRT "Welcome ":NAME:", enter upper limit: ":
 
 INPUT LIMIT
 
@@ -31,7 +32,10 @@ LOOP
       TRIES += 1
       BEGIN CASE
          CASE NOT(NUM(GUESS))
-            CRT "This is completely wrong"
+            CRT "That's just plain wrong."
+            TRIES -= 1
+         CASE GUESS < 1 OR GUESS > LIMIT
+            CRT "Out of range."
             TRIES -= 1
          CASE GUESS < NUM
             CRT "Too low!"
@@ -41,9 +45,29 @@ LOOP
       
       UNTIL GUESS = NUM
    REPEAT
+
+   TRIES.WORD = "tries"
+   IF TRIES = 1 THEN TRIES.WORD = "try"
    
    CRT
-   CRT "Well done ":NAME:", you guessed my number from ":TRIES:" tries!"
+   CRT "Well done ":NAME:", you guessed my number from ":TRIES:" ":TRIES.WORD:"!"
+
+   MAX.TRIES = INT(LN(LIMIT) / LN(2)) + 1
+   BEGIN CASE
+      CASE TRIES = 1
+         CRT "You're one lucky bastard!"
+      CASE TRIES < MAX.TRIES
+         CRT "You are the master of this game!"
+      CASE TRIES = MAX.TRIES
+         CRT "You are a machine!"
+      CASE TRIES <= MAX.TRIES * 1.1
+         CRT "Very good result!"
+      CASE TRIES < LIMIT
+         CRT "Try harder, you can do better!"
+      CASE 1
+         CRT "I find your lack of skill disturbing!"
+   END CASE
+
    CRT "Play again [Y/N]? ":
    
    INPUT AGAIN, 1
