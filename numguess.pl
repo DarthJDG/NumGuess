@@ -12,7 +12,7 @@ sub play($$) {
     my $number = int(rand($limit)) + 1;
 
     # game header
-	print("Guess my number between 1 and $limit!\n\n");
+	print("\nGuess my number between 1 and $limit!\n\n");
 
     # number of tries so far
     my $tries = 0;
@@ -85,8 +85,6 @@ my $limit = 0;
 print("Welcome $name, enter upper limit: ");
 $limit = <STDIN>;
 chomp($limit);
-
-print("\n");
 
 # use default limit if input not suitable
 if ($limit < 10) {
