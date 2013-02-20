@@ -1,5 +1,6 @@
 #!/usr/bin/perl -w
 
+use POSIX;
 use strict;
 use warnings;
 
@@ -10,8 +11,11 @@ sub play($$) {
     # generate the random number
     my $number = int(rand($limit)) + 1;
 
-    # number of guesses so far
-    my $guessnum = 0;
+    # game header
+	print("Guess my number between 1 and $limit!\n\n");
+
+    # number of tries so far
+    my $tries = 0;
 
     # main cycle (while the guess is wrong)
     my $guess;
@@ -23,7 +27,7 @@ sub play($$) {
 		chomp($guess);
 
 		# count guess
-		$guessnum++;
+		$tries++;
 
 		# appropriate answer
 		if ($guess < $number) {
@@ -35,37 +39,69 @@ sub play($$) {
     } while ($guess != $number);
 
     # game summary
-	print("Congratulations, $name! It took $guessnum guesses to figure it out.\n\n");
+	print("\n");
+	print("Well done $name, you guessed my number from $tries tries!\n");
+
+	# maximum number of guesses
+	my $maximum = floor(log($limit) / log(2)) + 1;
+
+	# custom message
+	if ($tries == 1) {
+		print("You're one lucky bastard!\n");
+	} elsif ($tries < $maximum) {
+		print("You are the master of this game!\n");
+	} elsif ($tries == $maximum) {
+		print("You are a machine!\n");
+	} elsif ($tries <= ($maximum * 1.1)) {
+		print("Very good result!\n");
+	} elsif ($tries < $limit) {
+		print("Try harder, you can do better!\n");
+	} else {
+		print("I find your lack of skill disturbing!\n");
+	}
+
 }
 
 
 # welcome message
-print("Welcome to NumGuess for Perl\n");
+print("Welcome to NumGuess Perl version!\n\n");
 
 # input name
 my $name;
-print("Please enter your name: ");
+print("Enter your name: ");
 $name = <STDIN>;
 chomp($name);
 
+print("\n");
+
+# use default player name if none given
+if ($name eq "") {
+	$name = "Player";
+}
+	
+
 # input upper limit (until suitable)
 my $limit = 0;
-do {
-	print("Upper limit (min 10): ");
-	$limit = <STDIN>;
-	chomp($limit);
-} while ($limit < 10);
+print("Welcome $name, enter upper limit: ");
+$limit = <STDIN>;
+chomp($limit);
 
+print("\n");
+
+# use default limit if input not suitable
+if ($limit < 10) {
+	$limit = 10;
+}
 
 # play a game (while other than N is given as answer)
-my $play = "y";
+my $play;
 do {
 
 	# play the game
 	play($name, $limit);
 
 	# ask whether to play again
-	print("Play again? (Y/n): ");
+	print("Play again [Y/n]? ");
 	$play = <STDIN>;
 	chomp($play);
 
@@ -73,4 +109,5 @@ do {
 
 
 # say goodbye
-print("Bye!\n");
+print("\n");
+print("Okay, bye.\n");
