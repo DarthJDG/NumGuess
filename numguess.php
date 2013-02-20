@@ -1,46 +1,70 @@
 #!/usr/bin/php
 <?php
 
-echo "\n-={ NumGuess PHP version }=-\n\n";
+echo "Welcome to NumGuess PHP version!\n\n";
 
-if ($argc < 2 || $argv[1] === '--help') {
-	echo "Usage: php numguess.php YourName Limit\n";
-	echo "Limit is optional and must be at least 10.\n\n";
-	exit;
+echo "Enter your name: ";
+$name = readInput();
+if ($name === '') {
+	$name = 'Player';
 }
 
-$name = $argv[1];
-$defaultLimit = 10;
-$limit = isset($argv[2]) ? $argv[2] : $defaultLimit;
+echo "\nWelcome $name, enter upper limit: ";
+$limit = readInput();
 if (!is_numeric($limit) || $limit < 10) {
-	$limit = $defaultLimit;
+	$limit = 10;
 }
-echo "Hello, $name! Let's play!\n";
-
-
-echo "I have a number on my mind, between 1 and $limit. Guess it if you can!\n";
-$mynumber = rand(1, $limit);
-$success = false;
-$tries = 0;
 
 do {
-	echo "Your guess is: ";
-	$guess = trim(fgets(STDIN));
-	if (is_numeric($guess)) {
-		if ($guess < $mynumber) {
-			echo "My number is bigger than that.\n";
-		}
-		else if ($guess > $mynumber) {
-			echo "My number is smaller than that.\n";
+	$number = rand(1, $limit);
+	echo "\nGuess my number between 1 and $limit!\n\n";
+
+	$success = false;
+	$tries = 0;
+	do {
+		echo 'Guess: ';
+		$guess = readInput();
+		$filterOptions = array('options' => array('min_range' => 1));
+		if (filter_var($guess, FILTER_VALIDATE_INT, $filterOptions) === false) {
+			echo "That's just plain wrong.\n";
 		}
 		else {
-			$success = true;
+			if ($guess > $limit) {
+				echo "Out of range.\n";
+			}
+			else {
+				if ($guess != $number) {
+					$guessEval = $guess < $number ? 'low' : 'high';
+					echo "Too $guessEval.\n";
+				}
+				else {
+					$success = true;
+				}
+				$tries++;
+			}
 		}
-	}
-	else {
-		echo "This is simply wrong.\n";
-	}
-	$tries++;
-} while (!$success);
+	} while (!$success);
 
-echo "\nYou WON!!! It took $tries tries.\n\n";
+	$tryNoun = $tries > 1 ? 'tries' : 'try';
+	echo "\nWell done $name, you guessed my number from $tries $tryNoun!\n";
+	echo evaluate($tries, $limit) . "\n\n";
+	
+	echo 'Play again [Y/N]? ';
+} while (in_array(readInput(), array('Y', 'y')));
+
+echo "\nOkay, bye.\n";
+
+function readInput() {
+	return trim(fgets(STDIN));
+}
+
+function evaluate($tries, $limit) {
+	$maxJustified = floor(log($limit, 2)) + 1;
+	if ($tries == 1) { $s = "You're one lucky bastard!"; }
+	else if ($tries < $maxJustified) { $s = "You are the master of this game!"; }
+	else if ($tries == $maxJustified) { $s = "You are a machine!"; }
+	else if ($tries <= $maxJustified * 1.1) { $s = "Very good result!"; }
+	else if ($tries <= $limit) { $s = "Try harder, you can do better!"; }
+	else { $s = "I find your lack of skill disturbing!"; }
+	return $s;
+}
