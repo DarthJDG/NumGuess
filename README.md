@@ -64,7 +64,7 @@ If a program does not conform to the guidelines and doesn't qualify for an excep
 - **numguess.js**: restart, name, guesses, limit, min10
 - **numguess.lua**: restart, name, guesses, limit, min10
 - **numguess.pas**: guesses, limit, min10
-- **numguess.php**: guesses, name, limit, min10
+- **numguess.php**: guesses, name, limit, min10, message, restart
 - **numguess.pl**: restart, name, guesses, limit, min10
 - **numguess.prg**: guesses
 - **numguess.py**: restart, name, guesses, limit, min10
