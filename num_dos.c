@@ -6,20 +6,29 @@
 
 int main()
 {
-	int num = 0, guess = 0, tries = 0, limit = 0, max_tries = 0;
-	char name[100], again[100];
+	int i, num = 0, guess = 0, tries = 0, limit = 0, max_tries = 0;
+	char name[100], buffer[100];
 	randomize();
 	
 	printf("Welcome to NumGuess C version!\n\n");
 	printf("Enter your name: ");
-	scanf("%s", name);
-	fflush(stdin);
+	fgets(name, sizeof(name) - 1, stdin);
+	
+	// Make sure we have a nice zero terminated string
+	name[99] = '\0';
+	for(i = 0; i < sizeof(name); i++) {
+		if(name[i] == '\n') {
+			name[i] = '\0';
+			break;
+		}
+	}
+	
 	if(name[0] == '\0') strcpy(name, "Player");
 	
 	printf("\nWelcome %s, enter upper limit: ", name);
-	if(scanf("%d", &limit) == 0) limit = 10;
+	fgets(buffer, sizeof(buffer), stdin);
+	limit = atoi(buffer);
 	if(limit < 10) limit = 10;
-	fflush(stdin);
 	
 	max_tries = (int)floor(log2(limit)) + 1;
 	
@@ -32,21 +41,19 @@ int main()
 		while(num != guess) {
 			printf("\nGuess: ");
 
-			if(scanf("%d", &guess) == 1) {
-				if((num < 1) || (num > limit)) {
-					printf("Out of range.");
-				} else {
-					tries++;
-					if(num < guess) {
-						printf("Too high!");
-					} else if(num > guess) {
-						printf("Too low!");
-					}
-				}
+			fgets(buffer, sizeof(buffer), stdin);
+			guess = atoi(buffer);
+			
+			if((guess < 1) || (guess > limit)) {
+				printf("Out of range.");
 			} else {
-				printf("That's just plain wrong.");
+				tries++;
+				if(num < guess) {
+					printf("Too high!");
+				} else if(num > guess) {
+					printf("Too low!");
+				}
 			}
-			fflush(stdin);
 		}
 		printf("\nWell done %s, you guessed my number from %d %s!\n", name, tries, tries == 1 ? "try" : "tries");
 		
@@ -66,9 +73,8 @@ int main()
 		
 		printf("\nPlay again [Y/N]? ");
 		
-		scanf("%s", again);
-		fflush(stdin);
-		if((again[0] != 'y') && (again[0] != 'Y')) break;
+		fgets(buffer, sizeof(buffer), stdin);
+		if((buffer[0] != 'y') && (buffer[0] != 'Y')) break;
 	}
 	
 	printf("\nOkay, bye.\n");
