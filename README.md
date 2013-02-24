@@ -89,7 +89,7 @@ An interesting issue is that due to the simplicity of its design, there is no wa
 
 ### C
 
-Tested on CentOS. As the man page for *log2* states, needs to be compiled with ```-std=c99``` and linked with ```-lm``` when using GCC.
+Tested on CentOS. As the man page for ```log2``` states, needs to be compiled with ```-std=c99``` and linked with ```-lm``` when using GCC.
 
 ## 6. License and copyright
 
