@@ -87,6 +87,10 @@ Due to the complexity of this version, it has no extra features at the moment. I
 
 An interesting issue is that due to the simplicity of its design, there is no way to generate a random number in Brainfuck without input from the user. The program starts with asking for a random seed, which can be any number of characters. The program then creates a 1-byte checksum of the seed, and takes modulo 100 to get a "random" number. Pressing about 10 random keys on the keyboard should give a good enough seed unless you can sum up ASCII codes in real time. A more sophisticated hashing function could be implemented as a future improvement.
 
+### C
+
+Tested on CentOS. As the man page for *log2* states, needs to be compiled with ```-std=c99``` and linked with ```-lm``` when using GCC.
+
 ## 6. License and copyright
 
 These programs are available under GPL3, please see the LICENSE, COPYRIGHT and AUTHORS files for details. Not that anyone would want to use them commercially...
