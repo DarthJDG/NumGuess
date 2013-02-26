@@ -4,27 +4,22 @@
 Contents:
 
 1. What is NumGuess?
-2. Guidelines
-3. Programming languages and compilers
-4. Features
-5. Notes
-6. License and copyright
+2. Programming languages and compilers
+3. Guidelines
+4. Notes
+5. License and copyright
 
 ## 1. What is NumGuess?
 
-This is a collection of little sample applications for multiple programming languages. While a small hello world application works, a simple number guessing game shows user input, basic output, generating a random number and simple logic as well.
+This is a collection of small sample applications for multiple programming languages. While a simple hello world application works, a number guessing game demonstrates user input, basic output, generating a random number and simple logic as well.
 
-These programs have been written a long time ago, and mostly in just a few minutes. In no way should they be considered well written or good programming practices. Published as part of the [short article at CodeBin](http://codebin.co.uk/blog/number-guessing-hello-world-games/).
+The original programs have been written a long time ago in just a few minutes, and they should not be considered well written or good programming practices. Since then the project has received numerous contributions, both new programs and improvements. A development guideline has also been written to give you a consistent number guessing experience, regardless of which programming language you choose.
 
-## 2. Guidelines
+Originally published as part of a [short article at CodeBin](http://codebin.co.uk/blog/number-guessing-hello-world-games/).
 
-With the increasing number of contributions, it has become necessary to define clear-cut coding standards to make sure all programs work in a consistent manner and give the best possible user experience while keeping the game simple. Please see the GUIDELINES file for more details.
+## 2. Programming languages and compilers
 
-If a program does not conform to the guidelines and doesn't qualify for an exception as a language limitation, it must be mentioned in the notes section in this file.
-
-## 3. Programming languages and compilers
-
-- **num_c64.bas**: C64 Basic
+- **num_c64.bas**: Commodore Basic (C64)
 - **num_dos.c**: Borland C (compiles with 3.1 under DOS)
 - **num_dos.cpp**: Borland C++ (compiles with 3.1 under DOS)
 - **num_oop.pas**: Turbo Pascal 6.0 OOP
@@ -32,7 +27,7 @@ If a program does not conform to the guidelines and doesn't qualify for an excep
 - **numguess.bas**: QBasic 1.0
 - **numguess.bat**: Windows shell batch file (Windows 2000 onwards)
 - **numguess.bf**: Brainfuck *(see notes)*
-- **numguess.c**: C (compiles with GCC)
+- **numguess.c**: C (compiles with GCC, *see notes*)
 - **numguess.cpp**: C++ (compiles with GCC)
 - **numguess.cs**: C# command line
 - **NumGuess.j**: JVM bytecode (aka. "Java Assembly") for Jasmin
@@ -46,40 +41,30 @@ If a program does not conform to the guidelines and doesn't qualify for an excep
 - **numguess.py**: Python terminal
 - **numguess.uvb**: UniVerse Basic (might work on other pick-likes)
 
-## 4. Features
+## 3. Guidelines
 
-- **num_c64.bas**: restart, guesses, limit, min10
-- **num_dos.c**: guesses, limit, min10
-- **num_dos.cpp**: guesses, limit, min10
-- **num_oop.pas**: guesses, limit, min10
-- **numguess.asm**: restart, name, guesses, message
-- **numguess.bas**: restart, guesses, limit
-- **numguess.bat**: restart, name, guesses, limit, min10
-- **numguess.bf**: none *(see notes)*
-- **numguess.c**: guesses, limit, min10
-- **numguess.cpp**: guesses, limit, min10
-- **numguess.cs**: restart, name, guesses, limit, min10
-- **NumGuess.j**: restart, name, guesses, limit, min10
-- **NumGuess.java**: restart, name, guesses, limit, min10
-- **numguess.js**: restart, name, guesses, limit, min10
-- **numguess.lua**: restart, name, guesses, limit, min10
-- **numguess.pas**: guesses, limit, min10
-- **numguess.php**: restart, name, guesses, message, limit, min10
-- **numguess.pl**: restart, name, guesses, limit, min10
-- **numguess.prg**: guesses
-- **numguess.py**: restart, name, guesses, limit, min10
-- **numguess.uvb**: restart, name, guesses, limit, min10
+With the increasing number of contributions, it has become necessary to define clear-cut coding standards to make sure all programs work in a consistent manner and give the best possible user experience while keeping the game simple. Please see the GUIDELINES file for more details.
 
-Feature descriptions:
+If a program does not conform to the guidelines and doesn't qualify for an exception as a language limitation, it must be mentioned in the list below and explained in the notes section further down.
 
-- *restart*: Asks if you want to play again.
-- *name*: Asks for player name.
-- *guesses*: Shows number of guesses.
-- *message*: Show customised message depending on number of guesses.
-- *limit*: Asks for upper limit.
-- *min10*: Upper limit must be at least 10 when asked.
+Non-compliant programs and features:
 
-## 5. Notes
+- **num_c64.bas**: output formatting, variable names, ask for player name, default limit to 10 instead of looping, out of range message, custom messages
+- **num_oop.pas**: output formatting, variable names, ask for player name, default limit to 10 instead of looping, out of range message, custom messages, replay
+- **numguess.asm**: output formatting, variable names, default player name, custom limit, custom messages
+- **numguess.bas**: output formatting, variable names, ask for player name, check if limit is at least 10, out of range message, custom messages
+- **numguess.bf**: almost everything *(see notes)*
+- **numguess.cs**: output formatting, out of range message
+- **NumGuess.j**: output formatting, default player name, default limit to 10 instead of looping, out of range message, custom messages
+- **numguess.js**: output formatting, out of range message, custom messages
+- **numguess.lua**: output formatting, out of range message
+- **numguess.pas**: output formatting, variable names, ask for player name, default limit to 10 instead of looping, out of range message, custom messages, replay
+- **numguess.prg**: output formatting, variable names, ask for player name, custom limit, out of range message, custom messages, replay
+- **numguess.py**: output formatting, out of range message
+
+## 4. Notes
+
+*While existing programs are being re-written according to the guidelines, this section may not be up to date.*
 
 ### Brainfuck
 
@@ -91,6 +76,6 @@ An interesting issue is that due to the simplicity of its design, there is no wa
 
 Tested on CentOS. As the man page for ```log2``` states, needs to be compiled with ```-std=c99``` and linked with ```-lm``` when using GCC.
 
-## 6. License and copyright
+## 5. License and copyright
 
 These programs are available under GPL3, please see the LICENSE, COPYRIGHT and AUTHORS files for details. Not that anyone would want to use them commercially...
