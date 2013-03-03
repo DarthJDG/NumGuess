@@ -22,7 +22,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **num_c64.bas**: Commodore Basic (C64)
 - **num_dos.c**: Borland C (compiles with 3.1 under DOS)
 - **num_dos.cpp**: Borland C++ (compiles with 3.1 under DOS)
-- **num_oop.pas**: Turbo Pascal 6.0 OOP
+- **num_oop.pas**: Turbo Pascal 6.0, FreePascal (OOP)
 - **numguess.asm**: DOS x86 Assembly (compiles with TASM 3.1)
 - **numguess.bas**: QBasic 1.0
 - **numguess.bat**: Windows shell batch file (Windows 2000 onwards)
@@ -34,7 +34,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **NumGuess.java**: Java (can be run from command line)
 - **numguess.js**: Javascript
 - **numguess.lua**: Lua terminal
-- **numguess.pas**: Turbo Pascal 6.0
+- **numguess.pas**: Turbo Pascal 6.0, FreePascal
 - **numguess.php**: PHP (CLI)
 - **numguess.pl**: Perl
 - **numguess.prg**: dBase IV
@@ -50,7 +50,6 @@ If a program does not conform to the guidelines and doesn't qualify for an excep
 Non-compliant programs and features:
 
 - **num_c64.bas**: output formatting, variable names, ask for player name, default limit to 10 instead of looping, out of range message, custom messages
-- **num_oop.pas**: output formatting, variable names, ask for player name, default limit to 10 instead of looping, out of range message, custom messages, replay
 - **numguess.asm**: output formatting, variable names, default player name, custom limit, custom messages
 - **numguess.bas**: output formatting, variable names, ask for player name, check if limit is at least 10, out of range message, custom messages
 - **numguess.bf**: almost everything *(see notes)*
@@ -58,7 +57,6 @@ Non-compliant programs and features:
 - **NumGuess.j**: output formatting, default player name, default limit to 10 instead of looping, out of range message, custom messages
 - **numguess.js**: output formatting, out of range message, custom messages
 - **numguess.lua**: output formatting, out of range message
-- **numguess.pas**: output formatting, variable names, ask for player name, default limit to 10 instead of looping, out of range message, custom messages, replay
 - **numguess.prg**: output formatting, variable names, ask for player name, custom limit, out of range message, custom messages, replay
 - **numguess.py**: output formatting, out of range message
 
