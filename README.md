@@ -51,7 +51,6 @@ Non-compliant programs and features:
 
 - **num_c64.bas**: output formatting, variable names, ask for player name, default limit to 10 instead of looping, out of range message, custom messages
 - **numguess.asm**: output formatting, variable names, default player name, custom limit, custom messages
-- **numguess.bas**: output formatting, variable names, ask for player name, check if limit is at least 10, out of range message, custom messages
 - **numguess.bf**: almost everything *(see notes)*
 - **numguess.cs**: output formatting, out of range message
 - **NumGuess.j**: output formatting, default player name, default limit to 10 instead of looping, out of range message, custom messages
