@@ -49,7 +49,6 @@ If a program does not conform to the guidelines and doesn't qualify for an excep
 
 Non-compliant programs and features:
 
-- **num_c64.bas**: output formatting, variable names, ask for player name, default limit to 10 instead of looping, out of range message, custom messages
 - **numguess.asm**: output formatting, variable names, default player name, custom limit, custom messages
 - **numguess.bf**: almost everything *(see notes)*
 - **numguess.cs**: output formatting, out of range message
@@ -71,6 +70,10 @@ An interesting issue is that due to the simplicity of its design, there is no wa
 ### C
 
 Tested on CentOS. As the man page for ```log2``` states, needs to be compiled with ```-std=c99``` and linked with ```-lm``` when using GCC.
+
+### Commodore Basic
+
+Output formatting is a bit off in this version, due to the absence of lowercase characters and square brackets. Due to the limited number of characters in a line, a couple of extra linebreaks have been added. Furthermore, there doesn't seem to be a way to get rid of the question mark prompt when asking for input, so they are used in place of colons.
 
 ## 5. License and copyright
 
