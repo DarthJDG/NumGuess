@@ -1,39 +1,72 @@
 set talk off
 set scoreboard off
 set status off
-clear
-@0,0 to 0,79
-@1,27 say "DarthJDG's NumGuess for dBase IV"
-@2,30 say  "(C) DarthJDG, 2000."
-@3,0 to 3,79
-@21,35 say "9999 = EXIT"
-@23,22 say "Guess my number between 1 and 1000!"
-@22,0 to 22,79
-num=int(rand()*1000)+1
-guesses=0
-guess=0
+
+? "Welcome to NumGuess dBase IV version!"
+?
+accept "Enter your name: " to name
+if name = ""
+	name = "Player"
+endif
+
+?
+accept "Welcome " + name + ", enter upper limit: " to limit
+limit = val(limit)
+if limit < 10
+	limit = 10
+endif
+maxtries = int(log(limit) / log(2)) + 1
+
 do while .t.
-  guesses=guesses+1
-  @10,35 say "Guess #"
-  @10,42 say guesses picture "9999"
-  @12,35 say "Guess:"
-  @12,42 get guess picture "9999"
-  read
-  if guess=9999
-    return
-  endif
-  if guess<num
-    @23,0 clear
-    @23,35 say "TOO LOW!"
-  endif
-  if guess>num
-    @23,0 clear
-    @23,35 say "TOO HIGH!"
-  endif
-  if guess=num
-    @23,0 clear
-    @23,17 say "Well done! Amazing! Great job!"
-    read
-    return
-  endif
+	num = int(rand(-1) * limit) + 1
+	tries = 0
+	?
+	? "Guess my number between 1 and " + ltrim(str(limit)) + "!"
+	?
+	do while .t.
+		accept "Guess: " to guess
+		if type(guess) = "N"
+			guess = val(guess)
+			if guess < 1 .or. guess > limit
+				? "Out of range."
+			else
+				tries = tries + 1
+				do case
+					case guess < num
+						? "Too low!"
+					case guess > num
+						? "Too high!"
+					otherwise
+						exit
+				endcase
+			endif
+		else
+			? "That's just plain wrong."
+		endif
+	enddo
+	triesword = iif(tries = 1, "try", "tries")
+	?
+	? "Well done " + name + ", you guessed my number from " + ltrim(str(tries)) + " " + triesword + "!"
+	
+	do case
+		case tries = 1
+			? "You're one lucky bastard!"
+		case tries < maxtries
+			? "You are the master of this game!"
+		case tries = maxtries
+			? "You are a machine!"
+		case tries <= maxtries * 1.1
+			? "Very good result!"
+		case tries > limit
+			? "I find your lack of skill disturbing!"
+		otherwise
+			? "Try harder, you can do better!"
+	endcase
+	
+	accept "Play again [Y/N]? " to again
+	if upper(again) <> "Y"
+		exit
+	endif
 enddo
+?
+? "Okay, bye."

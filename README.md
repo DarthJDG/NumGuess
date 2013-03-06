@@ -56,7 +56,6 @@ Non-compliant programs and features:
 - **NumGuess.j**: output formatting, default player name, default limit to 10 instead of looping, out of range message, custom messages
 - **numguess.js**: output formatting, out of range message, custom messages
 - **numguess.lua**: output formatting, out of range message
-- **numguess.prg**: output formatting, variable names, ask for player name, custom limit, out of range message, custom messages, replay
 - **numguess.py**: output formatting, out of range message
 
 ## 4. Notes
