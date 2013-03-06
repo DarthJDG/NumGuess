@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NumGuess HTML/jQuery version</title>
+	
+	<style type="text/css">
+		* {
+			font-family: Consolas, "Courier New", Courier, monospace;
+			font-size: 14px;
+		}
+		
+		div {
+			position: relative;
+			height: 20px;
+		}
+		
+		input {
+			width: 80px;
+			padding: 0px;
+			margin: 0px;
+			font-size: 12px;
+		}
+	</style>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="numguess.js"></script>
+	
+	<script type="text/javascript">
+		$(function() {
+			var $last;
+		
+			function show(text) {
+				var lines = text.toString().split('\n');
+				for(var i = 0; i < lines.length; i++) {
+					$last = $('<div>')
+						.text(lines[i])
+						.appendTo('body');
+				}
+				$(window).scrollTop($last.offset().top);
+			};
+			
+			function input(callback, width) {
+				var $input = $('<input type="text" />')
+					.appendTo($last)
+					.on('keypress', function(e) {
+						if((e.keyCode || e.which) === 13) {
+							var $result = $('<span>').text($input.val());
+							$input.replaceWith($result);
+							if(callback) callback($result.text());
+						}
+					})
+					.focus();
+				
+				if(width) $input.width(width);
+			};
+			
+			function getGuess() {
+				show('Guess: ');
+				input(evaluateGuess);
+			}
+			
+			function evaluateGuess(guess) {
+				if(!NumGuess.guess(guess)) {
+					getGuess();
+				} else {
+					show('Play again [Y/N]? ');
+					input(function(again) {
+						if(again && again.toString().toUpperCase() == 'Y') {
+							NumGuess.restart();
+							getGuess();
+						} else {
+							show('\nOkay, bye.');
+						}
+					});
+				}
+			}
+			
+			// Initialise
+			
+			NumGuess.show = show;
+			show('Welcome to NumGuess HTML/jQuery wrapper version!\n\nEnter your name: ');
+			input(function(name) {
+				name = name || 'Player';
+				show('\nWelcome ' + name + ', enter upper limit: ');
+				input(function(limit) {
+					limit = parseInt(limit, 10) || 10;
+					NumGuess.start(name, limit);
+					getGuess();
+				});
+			}, 200);
+		});
+	</script>
+</head>
+<body></body>
+</html>
