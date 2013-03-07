@@ -10,11 +10,14 @@
 		displayMethod: function (s) { 
 			console.log(s); 
 		},
+		welcome: function () {
+			this.show('Welcome to NumGuess Javascript version!');
+		},
 		/* starts the game with a certain name and limit */
 		start: function (name, limit) {
+			limit = parseInt(limit, 10);
 			this.name = name || this.name;
 			this.limit = limit >= this.minLimit ? limit : this.minLimit;
-			this.show('Welcome to NumGuess Javascript version!');
 			this.restart();
 		},
 		/* attempt a guess, returns true/false based on success */
