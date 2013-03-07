@@ -33,7 +33,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **numguess.cs**: C# command line
 - **NumGuess.j**: JVM bytecode (aka. "Java Assembly") for Jasmin
 - **NumGuess.java**: Java (can be run from command line)
-- **numguess.js**: Javascript
+- **numguess.js**: Javascript *(see notes)*
 - **numguess.lua**: Lua terminal
 - **numguess.pas**: Turbo Pascal 6.0, FreePascal
 - **numguess.php**: PHP (CLI)
@@ -54,7 +54,6 @@ Non-compliant programs and features:
 - **numguess.bf**: almost everything *(see notes)*
 - **numguess.cs**: output formatting, out of range message
 - **NumGuess.j**: output formatting, default player name, default limit to 10 instead of looping, out of range message, custom messages
-- **numguess.js**: output formatting, out of range message, custom messages
 - **numguess.lua**: output formatting, out of range message
 - **numguess.py**: output formatting, out of range message
 
@@ -75,6 +74,10 @@ Tested on CentOS. As the man page for ```log2``` states, needs to be compiled wi
 ### Commodore Basic
 
 Output formatting is a bit off in this version, due to the absence of lowercase characters and square brackets. Due to the limited number of characters in a line, a couple of extra linebreaks have been added. Furthermore, there doesn't seem to be a way to get rid of the question mark prompt when asking for input, so they are used in place of colons.
+
+### Javascript
+
+This one defines a NumGuessEngine framework that can be used by other implementations, so in itself it does not fulfill all the guidelines. It can be played from the browser console though by manually calling its methods.
 
 ## 5. License and copyright
 
