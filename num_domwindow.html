@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<title>Welcome to NumGuess Javascript (DOM Window) version!</title>
+<script type="text/javascript" src="numguess.js"></script>
+<script>
+(function (glob, undefined) {
+
+	var engine = glob.NumGuessEngine;
+	engine.displayMethod = function (s) {
+		alert(s);
+	};
+	var g;
+
+	do {
+		if (typeof name == 'undefined') {
+			engine.welcome();
+			var name = prompt('Enter your name:', engine.name) || engine.name;
+			engine.start(
+				name,
+				prompt('Welcome ' + name + ', enter upper limit:', engine.minLimit)
+			);
+		}
+		else {
+			engine.restart();
+		}
+
+		do {
+			g = prompt('Guess:');
+		} while (g !== null && !engine.guess(g));
+
+	} while (confirm('Play again?'));
+
+	engine.show('Okay, bye.');
+
+})(window);
+</script>
