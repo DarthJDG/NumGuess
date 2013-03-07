@@ -20,6 +20,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 ## 2. Programming languages and compilers
 
 - **num_c64.bas**: Commodore Basic (C64)
+- **num_domwindow.html**: DOM Window wrapper for Javascript version
 - **num_dos.c**: Borland C (compiles with 3.1 under DOS)
 - **num_dos.cpp**: Borland C++ (compiles with 3.1 under DOS)
 - **num_jquery.html**: HTML/jQuery wrapper for Javascript version
