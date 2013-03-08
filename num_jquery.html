@@ -30,6 +30,7 @@
 			var $last;
 		
 			function show(text) {
+				text = text || '';
 				var lines = text.toString().split('\n');
 				for(var i = 0; i < lines.length; i++) {
 					$last = $('<div>')
@@ -60,13 +61,16 @@
 			}
 			
 			function evaluateGuess(guess) {
-				if(!NumGuess.guess(guess)) {
+				if(parseInt(guess, 10) === NumGuessEngine.num) show();
+				if(!NumGuessEngine.guess(guess)) {
 					getGuess();
 				} else {
 					show('Play again [Y/N]? ');
 					input(function(again) {
 						if(again && again.toString().toUpperCase() == 'Y') {
-							NumGuess.restart();
+							show();
+							NumGuessEngine.restart();
+							show();
 							getGuess();
 						} else {
 							show('\nOkay, bye.');
@@ -77,14 +81,17 @@
 			
 			// Initialise
 			
-			NumGuess.show = show;
-			show('Welcome to NumGuess HTML/jQuery wrapper version!\n\nEnter your name: ');
+			NumGuessEngine.displayMethod = show;
+			NumGuessEngine.welcome();
+			show('\nEnter your name: ');
 			input(function(name) {
 				name = name || 'Player';
 				show('\nWelcome ' + name + ', enter upper limit: ');
 				input(function(limit) {
 					limit = parseInt(limit, 10) || 10;
-					NumGuess.start(name, limit);
+					show();
+					NumGuessEngine.start(name, limit);
+					show();
 					getGuess();
 				});
 			}, 200);
