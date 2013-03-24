@@ -1,4 +1,4 @@
-import sys, random
+import sys, random, math
 
 print "Welcome to NumGuess Python terminal version!\n"
 print "Enter your name:"
@@ -6,7 +6,7 @@ print "Enter your name:"
 name = sys.stdin.readline().strip()
 
 if name == "":
-  name = "Player"
+	name = "Player"
 
 print "\nWelcome " + name + ", enter limit:"
 
@@ -31,31 +31,45 @@ while True:
 
 		guess = sys.stdin.readline().strip()
 
-		tries = tries + 1
 		try:
 			guess = int(guess)
-
-			if guess < number:
-				print "\nToo low!"
-			elif guess > number:
-				print "\nToo high!"
+			if guess > limit or guess < 1:
+				print "\nOut of range."
 			else:
-				break
+				if guess < number:
+					tries = tries + 1
+					print "\nToo low!"
+				elif guess > number:
+					tries = tries + 1
+					print "\nToo high!"
+				else:
+					tries = tries + 1
+					break
 		except:
-			print "\nThat was not a number, but still a try!"
+			print "\nThat's just plain wrong."
 
-	print "\nWell done " + name + ", you guessed my number from " + str(tries) + " tries! " + str(max_tries) + " guesses were needed."
-	
-	if tries == max_tries:
-		print "You are a machine!"
+	tries_declination = "try"
+	if tries > 1:
+		tries_declination = "tries"
+	print "\nWell done " + name + ", you guessed my number from " + str(tries) + " " + tries_declination + "!"
+
+	custom_message = ""
+
+	if tries == 1:
+		custom_message = "You're one lucky bastard!"
+	elif tries == max_tries:
+		custom_message = "You are a machine!"
 	elif tries > max_tries and tries <= max_tries * 1.1:
-		print "Very good result!"
-	elif tries > max_tries * 1.1:
-		print "Try harder, you can do better!"
+		custom_message = "Very good result!"
+	elif tries > max_tries * 1.1 and tries <= limit:
+		custom_message = "Try harder, you can do better!"
+	elif tries > limit:
+		custom_message = "I find your lack of skill disturbing!"
 	else:
-		print "You are the master of this game!"
-	
-	print "Play again [Y/N]?"
+		custom_message = "You are the master of this game!"
+
+	print custom_message
+	print "\nPlay again [Y/N]?"
 
 	again = sys.stdin.readline().strip()
 
