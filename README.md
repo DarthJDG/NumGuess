@@ -1,7 +1,7 @@
 # NumGuess collection
 *Number guessing games in multiple programming languages*
 
-Contents:
+**Contents:**
 
 1. What is NumGuess?
 2. Programming languages and compilers
@@ -11,7 +11,7 @@ Contents:
 
 ## 1. What is NumGuess?
 
-This is a collection of small sample applications for multiple programming languages. While a simple hello world application works, a number guessing game demonstrates user input, basic output, generating a random number and simple logic as well.
+This is a collection of small sample applications for multiple programming languages. While a simple hello world application works, a number guessing game demonstrates user input, basic output, generating a random number, simple logic and some maths as well.
 
 The original programs have been written a long time ago in just a few minutes, and they should not be considered well written or good programming practices. Since then the project has received numerous contributions, both new programs and improvements. A development guideline has also been written to give you a consistent number guessing experience, regardless of which programming language you choose.
 
@@ -34,7 +34,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **numguess.cs**: C# command line
 - **NumGuess.j**: JVM bytecode (aka. "Java Assembly") for Jasmin
 - **NumGuess.java**: Java (can be run from command line)
-- **numguess.js**: Javascript *(see notes)*
+- **numguess.js**: JavaScript *(see notes)*
 - **numguess.lua**: Lua terminal
 - **numguess.pas**: Turbo Pascal 6.0, FreePascal
 - **numguess.php**: PHP (CLI)
@@ -53,14 +53,9 @@ Non-compliant programs and features:
 
 - **numguess.asm**: output formatting, variable names, default player name, custom limit, custom messages
 - **numguess.bf**: almost everything *(see notes)*
-- **numguess.cs**: output formatting, out of range message
 - **NumGuess.j**: output formatting, default player name, default limit to 10 instead of looping, out of range message, custom messages
-- **numguess.lua**: output formatting, out of range message
-- **numguess.py**: output formatting, out of range message
 
 ## 4. Notes
-
-*While existing programs are being re-written according to the guidelines, this section may not be up to date.*
 
 ### Brainfuck
 
@@ -76,7 +71,7 @@ Tested on CentOS. As the man page for ```log2``` states, needs to be compiled wi
 
 Output formatting is a bit off in this version, due to the absence of lowercase characters and square brackets. Due to the limited number of characters in a line, a couple of extra linebreaks have been added. Furthermore, there doesn't seem to be a way to get rid of the question mark prompt when asking for input, so they are used in place of colons.
 
-### Javascript
+### JavaScript
 
 This one defines a NumGuessEngine framework that can be used by other implementations, so in itself it does not fulfill all the guidelines. It can be played from the browser console though by manually calling its methods.
 
