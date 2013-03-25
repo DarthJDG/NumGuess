@@ -1,14 +1,14 @@
 import sys, random, math
 
 print "Welcome to NumGuess Python terminal version!\n"
-print "Enter your name:"
+print "Enter your name: ",
 
 name = sys.stdin.readline().strip()
 
 if name == "":
 	name = "Player"
 
-print "\nWelcome " + name + ", enter limit:"
+print "\nWelcome " + name + ", enter limit: ",
 
 limit = sys.stdin.readline().strip()
 
@@ -24,29 +24,29 @@ max_tries = math.floor(math.log(limit, 2)) + 1
 while True:
 	tries = 0
 	number = random.randint(1, limit)
-	print "\nGuess my number between 1 and " + str(limit) + "!"
+	print "\nGuess my number between 1 and " + str(limit) + "!\n"
 
 	while True:
-		print "\nGuess:"
+		print "Guess: ",
 
 		guess = sys.stdin.readline().strip()
 
 		try:
 			guess = int(guess)
 			if guess > limit or guess < 1:
-				print "\nOut of range."
+				print "\bOut of range."
 			else:
 				if guess < number:
 					tries = tries + 1
-					print "\nToo low!"
+					print "\bToo low!"
 				elif guess > number:
 					tries = tries + 1
-					print "\nToo high!"
+					print "\bToo high!"
 				else:
 					tries = tries + 1
 					break
 		except:
-			print "\nThat's just plain wrong."
+			print "\bThat's just plain wrong."
 
 	tries_declination = "try"
 	if tries > 1:
@@ -69,7 +69,7 @@ while True:
 		custom_message = "You are the master of this game!"
 
 	print custom_message
-	print "\nPlay again [Y/N]?"
+	print "Play again [Y/N]? ",
 
 	again = sys.stdin.readline().strip()
 
