@@ -4,7 +4,7 @@ math.randomseed(theSeed)
 math.random(1, 10) -- Burn first random number, workaround for same number bug.
 
 print("Welcome to NumGuess Lua terminal version!\n")
-print("Enter your name: ")
+io.write("Enter your name: ")
 
 name = io.read()
 
@@ -12,7 +12,7 @@ if name == "" then
 	name = "Player"
 end
 
-print("\nWelcome " .. name .. ", enter limit: ")
+io.write("\nWelcome " .. name .. ", enter limit: ")
 
 limit = io.read()
 
@@ -30,26 +30,26 @@ max_tries = math.floor(math.log(limit, 2)) + 1
 while true do
 	tries = 0
 	number = math.random(1, limit)
-	print("\nGuess my number between 1 and " .. limit .. "!")
+	print("\nGuess my number between 1 and " .. limit .. "!\n")
 
 	while true do
-		print("\nGuess: ")
+		io.write("Guess: ")
 
 		guess = tonumber(io.read())
 
 		if not tonumber(guess) then
-			print("\nThat was not a number, but still a try!")
+			print("That's just plain wrong.")
 		else
 			guess = tonumber(guess)
 			if guess > limit or guess < 1 then
-				print("\nOut of range.")
+				print("Out of range.")
 			else
 				if guess < number then
 					tries = tries + 1
-					print("\nToo low!")
+					print("Too low!")
 				elseif guess > number then
 					tries = tries + 1
-					print("\nToo high!")
+					print("Too high!")
 				else
 					tries = tries + 1
 					break
@@ -81,7 +81,7 @@ while true do
 	end
 
 	print(custom_message)
-	print("Play again [Y/N]? ")
+	io.write("Play again [Y/N]? ")
 	again = io.read()
 
 	if string.upper(again) ~= 'Y' then
