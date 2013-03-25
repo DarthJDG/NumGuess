@@ -4,16 +4,16 @@ namespace numguess
 {
 	class MainClass
 	{
-		public static void Main (string[] args)
+		public static void Main(string[] args)
 		{
 			int limit;
 			int tries;
 			int guess;
 			string name;
 
-			Console.WriteLine ("Welcome to NumGuess for C#!\n");
+			Console.WriteLine("Welcome to NumGuess C# version!\n");
 
-			Console.WriteLine ("Enter your name:");
+			Console.Write("Enter your name: ");
 
 			name = Console.ReadLine();
 
@@ -21,14 +21,14 @@ namespace numguess
 				name = "Player";
 			}
 
-			Console.WriteLine ("\nWelcome " + name + ", enter upper limit:");
+			Console.Write("\nWelcome " + name + ", enter upper limit: ");
 
 			string limit_str = Console.ReadLine();
 
 			try {
 				limit = Convert.ToInt32(limit_str);
 
-				if(limit < 10) {
+				if (limit < 10) {
 					limit = 10;
 				}
 			}
@@ -44,27 +44,27 @@ namespace numguess
 				Random random = new Random();
 				int number = random.Next(1, limit + 1);
 
-				Console.WriteLine("\nGuess my number between 1 and " + limit + "!");
+				Console.WriteLine("\nGuess my number between 1 and " + limit + "!\n");
 
 				while(true) {
-					Console.WriteLine("\nGuess:");
+					Console.Write("Guess: ");
 
 					string guess_str = Console.ReadLine();
 
 					try {
 						guess = Convert.ToInt32(guess_str);
 
-						if(guess > limit || guess < 1) {
-							Console.WriteLine("\nOut of range.");
+						if (guess > limit || guess < 1) {
+							Console.WriteLine("Out of range.");
 						}
 						else {
-							if(guess < number) {
+							if (guess < number) {
 								tries++;
-								Console.WriteLine("\nToo low!");
+								Console.WriteLine("Too low!");
 							}
 							else if (guess > number) {
 								tries++;
-								Console.WriteLine("\nToo high!");
+								Console.WriteLine("Too high!");
 							}
 							else {
 								tries++;
@@ -73,7 +73,7 @@ namespace numguess
 						}
 					}
 					catch {
-						Console.WriteLine("\nThat's just plain wrong.");
+						Console.WriteLine("That's just plain wrong.");
 					}
 				}
 
@@ -81,19 +81,19 @@ namespace numguess
 
 				String custom_message = "";
 
-				if(tries == 1) {
+				if (tries == 1) {
 					custom_message = "You're one lucky bastard!";
 				}
-				else if(tries == max_tries) {
+				else if (tries == max_tries) {
 					custom_message = "You are a machine!";
 				}
-				else if(tries > max_tries && tries <= max_tries * 1.1) {
+				else if (tries > max_tries && tries <= max_tries * 1.1) {
 					custom_message = "Very good result!";
 				}
-				else if(tries > max_tries * 1.1 && tries <= limit) {
+				else if (tries > max_tries * 1.1 && tries <= limit) {
 					custom_message = "Try harder, you can do better!";
 				}
-				else if(tries > limit) {
+				else if (tries > limit) {
 					custom_message = "I find your lack of skill disturbing!";
 				}
 				else {
@@ -101,7 +101,7 @@ namespace numguess
 				}
 
 				Console.WriteLine(custom_message);
-				Console.WriteLine("Play again [Y/N]?");
+				Console.Write("Play again [Y/N]? ");
 
 				string again = Console.ReadLine();
 
@@ -110,7 +110,7 @@ namespace numguess
 				}
 			}
 
-			Console.WriteLine("Okay, bye.");
+			Console.WriteLine("\nOkay, bye.");
 		}
 	}
 }
