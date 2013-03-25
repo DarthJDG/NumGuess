@@ -41,6 +41,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **numguess.pl**: Perl
 - **numguess.prg**: dBase IV
 - **numguess.py**: Python terminal
+- **numguess.rb**: Ruby (1.9.3+)
 - **numguess.uvb**: UniVerse Basic (might work on other pick-likes)
 
 ## 3. Guidelines
