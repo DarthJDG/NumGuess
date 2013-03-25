@@ -25,7 +25,7 @@ else
 	limit = 10
 end
 
-max_tries = math.floor(math.log(limit, 2)) + 1
+max_tries = math.floor(math.log(limit) / math.log(2)) + 1
 
 while true do
 	tries = 0
