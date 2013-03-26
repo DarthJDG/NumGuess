@@ -1,5 +1,7 @@
 class NumGuess
 	attr_reader :name, :limit, :tries, :max_tries, :correct
+	
+	DEFAULT_NAME = "Player"
 
 	@name = ""
 	@limit = 0
@@ -8,8 +10,8 @@ class NumGuess
 	@max_tries = 0
 	@correct = false
 	
-	def name=(name = "Player")
-		@name = name == "" ? "Player" : name
+	def name=(name = DEFAULT_NAME)
+		@name = name.empty? ? DEFAULT_NAME : name
 	end
 	
 	def limit=(limit)
@@ -27,7 +29,7 @@ class NumGuess
 		return "That's just plain wrong." if guess.to_i.to_s != guess
 
 		guess = guess.to_i
-		return "Out of range." unless (1..@limit).member?(guess)
+		return "Out of range." unless (1..@limit) === guess
 		
 		@tries += 1
 		case guess <=> @num
@@ -42,19 +44,12 @@ class NumGuess
 	end
 	
 	def custom_message
-		if @tries == 1
-			return "You're one lucky bastard!"
-		elsif @tries < @max_tries
-			return "You are the master of this game!"
-		elsif @tries == @max_tries
-			return "You are a machine!"
-		elsif @tries < @max_tries * 1.1
-			return "Very good result!"
-		elsif @tries > @limit
-			return "I find your lack of skill disturbing!"
-		else
-			return "Try harder, you can do better!"
-		end
+		return "You're one lucky bastard!"              if @tries == 1
+		return "You are the master of this game!"       if @tries < @max_tries
+		return "You are a machine!"                     if @tries == @max_tries
+		return "Very good result!"                      if @tries < @max_tries * 1.1
+		return "I find your lack of skill disturbing!"  if @tries > @limit
+		return "Try harder, you can do better!"
 	end
 end
 
@@ -78,8 +73,9 @@ begin
 		print numguess.evaluate_guess(gets.chomp)
 	end until numguess.correct
 	
-	print "\nWell done #{numguess.name}, you guessed my number from #{numguess.tries} "
-	print (numguess.tries == 1 ? "try" : "tries") + "!\n"
+	print "\nWell done #{numguess.name}, you guessed my number from #{numguess.tries} %s!\n" %
+		(numguess.tries == 1 ? "try" : "tries")
+	
 	print numguess.custom_message + "\n"
 	print "Play again [Y/N]? "
 end until gets.chomp.downcase != "y"
