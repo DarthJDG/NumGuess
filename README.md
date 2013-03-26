@@ -21,10 +21,11 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 
 - **libnumguess.js**: JavaScript library *(see notes)*
 - **num_c64.bas**: Commodore Basic (C64)
-- **num_domwindow.html**: DOM Window wrapper for Javascript version
+- **num_domwindow.html**: DOM Window wrapper for JavaScript library
 - **num_dos.c**: Borland C (compiles with 3.1 under DOS)
 - **num_dos.cpp**: Borland C++ (compiles with 3.1 under DOS)
-- **num_jquery.html**: HTML/jQuery wrapper for Javascript version
+- **num_jquery.html**: HTML/jQuery wrapper for JavaScript library
+- **num_node.js**: Node.js console wrapper for JavaScript library
 - **num_oop.pas**: Turbo Pascal 6.0, FreePascal (OOP)
 - **numguess.asm**: DOS x86 Assembly (compiles with TASM 3.1)
 - **numguess.bas**: QBasic 1.0
