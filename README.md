@@ -19,6 +19,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 
 ## 2. Programming languages and compilers
 
+- **libnumguess.js**: JavaScript library *(see notes)*
 - **num_c64.bas**: Commodore Basic (C64)
 - **num_domwindow.html**: DOM Window wrapper for Javascript version
 - **num_dos.c**: Borland C (compiles with 3.1 under DOS)
@@ -34,7 +35,6 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **numguess.cs**: C# command line
 - **NumGuess.j**: JVM bytecode (aka. "Java Assembly") for Jasmin
 - **NumGuess.java**: Java (can be run from command line)
-- **numguess.js**: JavaScript *(see notes)*
 - **numguess.lua**: Lua terminal
 - **numguess.pas**: Turbo Pascal 6.0, FreePascal
 - **numguess.php**: PHP (CLI)
@@ -72,7 +72,7 @@ Tested on CentOS. As the man page for ```log2``` states, needs to be compiled wi
 
 Output formatting is a bit off in this version, due to the absence of lowercase characters and square brackets. Due to the limited number of characters in a line, a couple of extra linebreaks have been added. Furthermore, there doesn't seem to be a way to get rid of the question mark prompt when asking for input, so they are used in place of colons.
 
-### JavaScript
+### JavaScript library
 
 This one defines a NumGuessEngine framework that can be used by other implementations, so in itself it does not fulfill all the guidelines. It can be played from the browser console though by manually calling its methods.
 
