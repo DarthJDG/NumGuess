@@ -1,10 +1,9 @@
 class NumGuess
-	attr_reader :name, :limit, :tries, :max_tries, :correct
-	
 	DEFAULT_NAME = "Player"
+	MIN_LIMIT = 10
 
-	@name = ""
-	@limit = 0
+	@name = DEFAULT_NAME
+	@limit = MIN_LIMIT
 	@num = 0
 	@tries = 0
 	@max_tries = 0
@@ -15,14 +14,14 @@ class NumGuess
 	end
 	
 	def limit=(limit)
-		@limit = limit < 10 ? 10 : limit
+		@limit = limit < MIN_LIMIT ? MIN_LIMIT : limit
 		@max_tries = Math.log(@limit, 2).floor + 1
 	end
 	
 	def start_game
 		@correct = false
 		@tries = 0
-		@num = rand(1..limit)
+		@num = rand(1..@limit)
 	end
 	
 	def evaluate_guess(guess)
@@ -51,33 +50,33 @@ class NumGuess
 		return "I find your lack of skill disturbing!"  if @tries > @limit
 		return "Try harder, you can do better!"
 	end
+	
+	def run
+		print "Welcome to NumGuess Ruby version!\n\n"
+		print "Enter your name: "
+		self.name = gets.chomp
+
+		print "\nWelcome #{@name}, enter upper limit: "
+		self.limit = gets.chomp.to_i
+
+		begin
+			print "\nGuess my number between 1 and #{@limit}!\n"
+			start_game
+			
+			begin
+				print "\nGuess: "
+				print evaluate_guess(gets.chomp)
+			end until @correct
+			
+			print "\nWell done #{@name}, you guessed my number from #{@tries} %s!\n" %
+				(@tries == 1 ? "try" : "tries")
+			
+			print custom_message + "\n"
+			print "Play again [Y/N]? "
+		end until gets.chomp.downcase != "y"
+
+		print "\nOkay, bye."
+	end
 end
 
-# Main program
-
-numguess = NumGuess.new
-
-print "Welcome to NumGuess Ruby version!\n\n"
-print "Enter your name: "
-numguess.name = gets.chomp
-
-print "\nWelcome #{numguess.name}, enter upper limit: "
-numguess.limit = gets.chomp.to_i
-
-begin
-	print "\nGuess my number between 1 and #{numguess.limit}!\n"
-	numguess.start_game
-	
-	begin
-		print "\nGuess: "
-		print numguess.evaluate_guess(gets.chomp)
-	end until numguess.correct
-	
-	print "\nWell done #{numguess.name}, you guessed my number from #{numguess.tries} %s!\n" %
-		(numguess.tries == 1 ? "try" : "tries")
-	
-	print numguess.custom_message + "\n"
-	print "Play again [Y/N]? "
-end until gets.chomp.downcase != "y"
-
-print "\nOkay, bye."
+NumGuess.new.run
