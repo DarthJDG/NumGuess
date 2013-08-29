@@ -8,22 +8,21 @@ use Scalar::Util qw(looks_like_number);
 
 # a single game
 sub play($$) {
-    my($name, $limit) = @_;
+	my($name, $limit) = @_;
 
-    # generate the random number
-    my $number = int(rand($limit)) + 1;
+	# generate the random number
+	my $number = int(rand($limit)) + 1;
 
-    # game header
+	# game header
 	print("\nGuess my number between 1 and $limit!\n\n");
 
-    # number of tries so far
-    my $tries = 0;
+	# number of tries so far
+	my $tries = 0;
 
-    # main cycle (while the guess is wrong)
-    my $guess;
-    do {
-
-    	# input guess
+	# main cycle (while the guess is wrong)
+	my $guess;
+	do {
+		# input guess
 		print("Guess: ");
 		$guess = <STDIN>;
 		chomp($guess);
@@ -46,10 +45,9 @@ sub play($$) {
 				}
 			}
 		}
+	} while ($guess != $number);
 
-    } while ($guess != $number);
-
-    # game summary
+	# game summary
 	print("\n");
 	print("Well done $name, you guessed my number from $tries tries!\n");
 
@@ -70,7 +68,6 @@ sub play($$) {
 	} else {
 		print("I find your lack of skill disturbing!\n");
 	}
-
 }
 
 
@@ -89,7 +86,6 @@ print("\n");
 if ($name eq "") {
 	$name = "Player";
 }
-	
 
 # input upper limit (until suitable)
 my $limit = 0;
@@ -108,7 +104,6 @@ if ($limit < 10) {
 # play a game (while other than N is given as answer)
 my $play;
 do {
-
 	# play the game
 	play($name, $limit);
 
@@ -116,9 +111,7 @@ do {
 	print("Play again [Y/n]? ");
 	$play = <STDIN>;
 	chomp($play);
-
 } while ($play eq "" || lc(substr($play, 0, 1)) ne "n");
-
 
 # say goodbye
 print("\n");
