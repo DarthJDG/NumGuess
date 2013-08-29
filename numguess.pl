@@ -4,6 +4,8 @@ use POSIX;
 use strict;
 use warnings;
 
+use Scalar::Util qw(looks_like_number);
+
 # a single game
 sub play($$) {
     my($name, $limit) = @_;
@@ -25,15 +27,24 @@ sub play($$) {
 		print("Guess: ");
 		$guess = <STDIN>;
 		chomp($guess);
+		
+		if (not looks_like_number($guess)) {
+			print("That's just plain wrong.\n");
+			$guess = 0;
+		} else {
+			if ($guess < 1 || $guess > $limit) {
+				print("Out of range.\n");
+			} else {
+				# count guess
+				$tries++;
 
-		# count guess
-		$tries++;
-
-		# appropriate answer
-		if ($guess < $number) {
-			print("Too low!\n");
-		} elsif ($guess > $number) {
-			print("Too high!\n");
+				# appropriate answer
+				if ($guess < $number) {
+					print("Too low!\n");
+				} elsif ($guess > $number) {
+					print("Too high!\n");
+				}
+			}
 		}
 
     } while ($guess != $number);
@@ -85,6 +96,9 @@ my $limit = 0;
 print("Welcome $name, enter upper limit: ");
 $limit = <STDIN>;
 chomp($limit);
+if (not looks_like_number($limit)) {
+	$limit = 0;
+}
 
 # use default limit if input not suitable
 if ($limit < 10) {
