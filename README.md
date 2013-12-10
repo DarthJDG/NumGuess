@@ -28,6 +28,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **num_node.js**: Node.js console wrapper for JavaScript library
 - **num_oop.pas**: Turbo Pascal 6.0, FreePascal (OOP)
 - **numguess.asm**: DOS x86 Assembly (compiles with TASM 3.1)
+- **numguess.awk**: AWK script
 - **numguess.bas**: QBasic 1.0
 - **numguess.bat**: Windows shell batch file (Windows 2000 onwards)
 - **numguess.bf**: Brainfuck *(see notes)*
