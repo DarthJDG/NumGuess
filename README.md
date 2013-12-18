@@ -35,6 +35,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **numguess.c**: C (compiles with GCC, *see notes*)
 - **numguess.cpp**: C++ (compiles with GCC)
 - **numguess.cs**: C# command line
+- **numguess.dart**: Google Dart console
 - **NumGuess.j**: JVM bytecode (aka. "Java Assembly") for Jasmin
 - **NumGuess.java**: Java (can be run from command line)
 - **numguess.lua**: Lua terminal
