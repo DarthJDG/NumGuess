@@ -34,7 +34,7 @@ class NumGuess {
 					break;
 					
 				case 'limit':
-					limit = parseInt(str, 10, 10);
+					limit = max(10, int.parse(str, radix:10, onError:(str) => 10));
 					max_tries = (log(limit) / log(2)).floor() + 1;
 					startGame();
 					break;
@@ -61,8 +61,8 @@ class NumGuess {
 	}
 	
 	bool evaluateGuess(String str) {
-		int guess = parseInt(str);
-		if(guess == -1) stdout.writeln('That\'s just plain wrong.');
+		int guess = int.parse(str, radix:10, onError:(str) => null);
+		if(guess == null) stdout.writeln('That\'s just plain wrong.');
 		else if(guess < 1 || guess > limit) stdout.writeln('Out of range.');
 		else {
 			tries++;
@@ -91,14 +91,5 @@ class NumGuess {
 	void gameOver() {
 		stdout.writeln('\nOkay, bye.');
 		exit;
-	}
-}
-
-int parseInt(String str, [int def = -1, int min = 0]) {
-	try {
-		int num = int.parse(str);
-		return num < min ? min : num;
-	} catch(ex) {
-		return def;
 	}
 }
