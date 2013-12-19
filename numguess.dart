@@ -46,7 +46,8 @@ class NumGuess {
 				case 'play':
 					if(str.toUpperCase() == 'Y') startGame(); else {
 						sub.cancel();
-						gameOver();
+						stdout.writeln('\nOkay, bye.');
+						exit;
 					}
 					break;
 			}
@@ -86,10 +87,5 @@ class NumGuess {
 		
 		stdout.write('Play again [Y/N]? ');
 		state = 'play';
-	}
-	
-	void gameOver() {
-		stdout.writeln('\nOkay, bye.');
-		exit;
 	}
 }
