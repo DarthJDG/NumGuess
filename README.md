@@ -44,6 +44,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **numguess.php**: PHP (CLI)
 - **numguess.pl**: Perl
 - **numguess.prg**: dBase IV
+- **numguess.ps1**: Windows PowerShell script
 - **numguess.py**: Python terminal
 - **numguess.rb**: Ruby (1.9.3+)
 - **numguess.sh**: Bash script
