@@ -43,6 +43,6 @@ DO
 			PRINT "Try harder, you can do better!"
 	END SELECT
 	
-	INPUT "Play again [Y/N]? ", again$
+	INPUT "Play again [y/N]? ", again$
 LOOP UNTIL UCASE$(again$) <> "Y"
 PRINT : PRINT "Okay, bye."

@@ -85,7 +85,7 @@ class NumGuess {
 		else if(tries > limit) stdout.writeln('I find your lack of skill disturbing!');
 		else stdout.writeln('Try harder, you can do better!');
 		
-		stdout.write('Play again [Y/N]? ');
+		stdout.write('Play again [y/N]? ');
 		state = 'play';
 	}
 }

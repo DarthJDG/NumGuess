@@ -81,7 +81,7 @@ while true do
 	end
 
 	print(custom_message)
-	io.write("Play again [Y/N]? ")
+	io.write("Play again [y/N]? ")
 	again = io.read()
 
 	if string.upper(again) ~= 'Y' then

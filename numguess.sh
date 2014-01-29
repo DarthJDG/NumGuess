@@ -76,7 +76,7 @@ while [ "$play_again" = "y" ]; do
 		echo "Try harder, you can do better!"
 	fi
 
-	echo -n "Play again [Y/N]? "
+	echo -n "Play again [y/N]? "
 	read play_again
 	play_again=`echo $play_again | tr '[A-Z]' '[a-z]'`
 done

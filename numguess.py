@@ -69,7 +69,7 @@ while True:
 		custom_message = "You are the master of this game!"
 
 	print custom_message
-	print "Play again [Y/N]? ",
+	print "Play again [y/N]? ",
 
 	again = sys.stdin.readline().strip()
 

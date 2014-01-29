@@ -79,7 +79,7 @@ public class NumGuess {
 				System.out.printf("Try harder, you can do better!");
 			}
 
-			System.out.printf("\nPlay again [Y/N]? ");
+			System.out.printf("\nPlay again [y/N]? ");
 
 			if (!readLine().toUpperCase().equals("Y")) break;
 		}

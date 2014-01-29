@@ -63,7 +63,7 @@ do while .t.
 			? "Try harder, you can do better!"
 	endcase
 	
-	accept "Play again [Y/N]? " to again
+	accept "Play again [y/N]? " to again
 	if upper(again) <> "Y"
 		exit
 	endif

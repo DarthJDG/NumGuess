@@ -76,7 +76,7 @@ function well_done() {
 	else
 		print "Try harder, you can do better!"
 
-	printf "Play again [Y/N]? "
+	printf "Play again [y/N]? "
 	prompt = "play"
 }
 

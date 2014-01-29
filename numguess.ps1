@@ -39,7 +39,7 @@ do {
 	else { "Try harder, you can do better!" }
 	
 	# Have to call read-host without prompt to avoid appended colon
-	write-host "Play again [Y/N]? " -NoNewLine
+	write-host "Play again [y/N]? " -NoNewLine
 	$again = (read-host).ToUpper()
 } while ($again -eq "Y")
 

@@ -68,7 +68,7 @@ LOOP
          CRT "I find your lack of skill disturbing!"
    END CASE
 
-   CRT "Play again [Y/N]? ":
+   CRT "Play again [y/N]? ":
    
    INPUT AGAIN, 1
    

@@ -52,7 +52,7 @@ loop
 		> "I find your lack of skill disturbing!"
 	end
 	
-	>> "Play again [Y/N]? "
+	>> "Play again [y/N]? "
 end input().upper() != "Y"
 
 > "\nOkay, bye."

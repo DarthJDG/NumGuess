@@ -48,7 +48,7 @@ begin
 		else if tries > limit then WriteLn('I find your lack of skill disturbing!')
 		else WriteLn('Try harder, you can do better!');
 		
-		Write('Play again [Y/N]? ');
+		Write('Play again [y/N]? ');
 		ReadLn(again);
 	until not(Upcase(again) = 'Y');
 	

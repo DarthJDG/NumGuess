@@ -71,7 +71,7 @@ int main()
 			printf("I find your lack of skill disturbing!");
 		}
 		
-		printf("\nPlay again [Y/N]? ");
+		printf("\nPlay again [y/N]? ");
 		
 		fgets(buffer, sizeof(buffer), stdin);
 		if((buffer[0] != 'y') && (buffer[0] != 'Y')) break;

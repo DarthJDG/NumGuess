@@ -21,7 +21,7 @@ Guess: 4
 
 Well done PLAYER NAME, you guessed my number from 3 tries!
 CUSTOM MESSAGE
-Play again [Y/N]? N
+Play again [y/N]? N
 
 Okay, bye.
 ```
@@ -34,7 +34,7 @@ If invalid input is entered as a guess, the program should say *"That's just pla
 
 If the guess is correct, the message showing the number of tries should use the correct plural and singular forms, i.e. *"2 tries"* and *"1 try"*.
 
-Should the player choose to play again, a new random number must be generated within the same limits and gameplay starts with the *"Guess my number..."* message after an empty line.
+The play again prompt defaults to no and the game quits if the user fails to enter an upper or lowercase "Y". Should the player choose to play again, a new random number must be generated within the same limits and gameplay starts with the *"Guess my number..."* message after an empty line.
 
 ## Variable names
 

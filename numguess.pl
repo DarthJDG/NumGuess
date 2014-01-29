@@ -108,10 +108,10 @@ do {
 	play($name, $limit);
 
 	# ask whether to play again
-	print("Play again [Y/n]? ");
+	print("Play again [y/N]? ");
 	$play = <STDIN>;
 	chomp($play);
-} while ($play eq "" || lc(substr($play, 0, 1)) ne "n");
+} while (lc($play) eq "y");
 
 # say goodbye
 print("\n");

@@ -101,7 +101,7 @@ namespace numguess
 				}
 
 				Console.WriteLine(custom_message);
-				Console.Write("Play again [Y/N]? ");
+				Console.Write("Play again [y/N]? ");
 
 				string again = Console.ReadLine();
 

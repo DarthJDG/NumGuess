@@ -15,7 +15,7 @@ function evaluateGuess(guess) {
 	if(!numguess.guess(guess)) {
 		getGuess();
 	} else {
-		rl.question('Play again [Y/N]? ', function(again) {
+		rl.question('Play again [y/N]? ', function(again) {
 			if(again && again.toString().toUpperCase() == 'Y') {
 				console.log();
 				numguess.restart();

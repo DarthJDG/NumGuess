@@ -49,7 +49,7 @@ do {
 	echo "\nWell done $name, you guessed my number from $tries $tryNoun!\n";
 	echo evaluate($tries, $limit) . "\n";
 	
-	echo 'Play again [Y/N]? ';
+	echo 'Play again [y/N]? ';
 } while (in_array(readInput(), array('Y', 'y')));
 
 echo "\nOkay, bye.\n";

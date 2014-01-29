@@ -66,7 +66,7 @@ while {$PlayAgain} {
 		puts "Try harder, you can do better!"
 	}
 
-	puts -nonewline "Play again \[Y/N\]? "
+	puts -nonewline "Play again \[y/N\]? "
 	flush stdout
 	gets stdin PlayAgain
 	set PlayAgain [string equal -nocase $PlayAgain "y"]

@@ -100,7 +100,7 @@ echo I find your lack of skill disturbing!
 
 :msg_end
 
-set /p ng_again="Play again [Y/N]? "
+set /p ng_again="Play again [y/N]? "
 
 if /i %ng_again% == y goto new_game
 

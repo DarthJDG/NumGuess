@@ -130,7 +130,7 @@ begin
 		if number.GetTries = 1 then WriteLn('try!') else WriteLn('tries!');
 		WriteLn(number.CustomMessage);
 		
-		Write('Play again [Y/N]? ');
+		Write('Play again [y/N]? ');
 		ReadLn(again);
 	until not(Upcase(again) = 'Y');
 	

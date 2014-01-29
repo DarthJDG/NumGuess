@@ -68,7 +68,7 @@ main()
 			cout << "I find your lack of skill disturbing!";
 		}
 		
-		cout << endl << "Play again [Y/N]? ";
+		cout << endl << "Play again [y/N]? ";
 		getline(cin, buffer);
 		if((buffer[0] != 'y') && (buffer[0] != 'Y')) break;
 	}

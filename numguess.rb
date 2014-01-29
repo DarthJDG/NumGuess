@@ -72,7 +72,7 @@ class NumGuess
 				(@tries == 1 ? "try" : "tries")
 			
 			print custom_message + "\n"
-			print "Play again [Y/N]? "
+			print "Play again [y/N]? "
 		end until gets.chomp.downcase != "y"
 
 		print "\nOkay, bye."
