@@ -1,9 +1,9 @@
 (function (glob, undefined) {
 
 	glob.NumGuessEngine = {
-		num: null,
-		tries: null,
-		limit: null,
+		num: 0,
+		tries: 0,
+		limit: 0,
 		minLimit: 10,
 		name: 'Player',
 		/* override to set a different displayMethod */
@@ -42,18 +42,12 @@
 					+ (this.tries > 1 ? ' tries' : ' try')
 					+ '!');
 				this.show(this.generateCustomMessage(this.tries, this.limit));
-				this.finish();
 				return true;
 			}
 			else {
 				this.show(this.num < guess ? 'Too high!' : 'Too low!');	
 				return false;
 			}		
-		},
-		/* stop the game, reset to starting position */
-		finish: function () {
-			this.tries = null;
-			this.num = null;
 		},
 		/* zeroes tries, find out random number and shows limit */
 		restart: function () {
