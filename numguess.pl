@@ -48,8 +48,8 @@ sub play($$) {
 	} while ($guess != $number);
 
 	# game summary
-	print("\n");
-	print("Well done $name, you guessed my number from $tries tries!\n");
+	my $tries_word = ($tries == 1) ? "try" : "tries";
+	print("\nWell done $name, you guessed my number from $tries $tries_word!\n");
 
 	# maximum number of guesses
 	my $maximum = floor(log($limit) / log(2)) + 1;
@@ -80,8 +80,6 @@ print("Enter your name: ");
 $name = <STDIN>;
 chomp($name);
 
-print("\n");
-
 # use default player name if none given
 if ($name eq "") {
 	$name = "Player";
@@ -89,7 +87,7 @@ if ($name eq "") {
 
 # input upper limit (until suitable)
 my $limit = 0;
-print("Welcome $name, enter upper limit: ");
+print("\nWelcome $name, enter upper limit: ");
 $limit = <STDIN>;
 chomp($limit);
 if (not looks_like_number($limit)) {
@@ -114,5 +112,4 @@ do {
 } while (lc($play) eq "y");
 
 # say goodbye
-print("\n");
-print("Okay, bye.\n");
+print("\nOkay, bye.\n");
