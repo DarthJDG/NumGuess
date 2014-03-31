@@ -68,3 +68,5 @@ function evaluate($tries, $limit) {
 	else { $s = "I find your lack of skill disturbing!"; }
 	return $s;
 }
+
+?>
