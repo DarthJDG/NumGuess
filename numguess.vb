@@ -2,7 +2,7 @@
 
 	Sub Main()
 
-		Dim name, limit, tries, max_tries, number, guess, again, message
+		Dim name, limit, tries, max_tries, number, guess, message
 
 		Randomize()
 
@@ -64,8 +64,7 @@
 			Console.WriteLine(message)
 			Console.Write("Play again [y/N]? ")
 
-			again = Console.ReadLine()
-		Loop Until LCase(again) <> "y"
+		Loop Until LCase(Console.ReadLine()) <> "y"
 
 		Console.WriteLine(vbNewLine & "Okay, bye.")
 	End Sub
