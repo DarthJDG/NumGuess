@@ -50,6 +50,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **numguess.sh**: Bash script
 - **numguess.tcl**: Tcl script
 - **numguess.uvb**: UniVerse Basic (might work on other pick-likes)
+- **numguess.vb**: VB.NET command line
 
 ## 3. Guidelines
 
