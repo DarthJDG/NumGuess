@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<title>Welcome to NumGuess Javascript (DOM Window) version!</title>
+<title>NumGuess Javascript DOM Window version</title>
 <script type="text/javascript" src="libnumguess.js"></script>
 <script>
-(function(global) {
+(function() {
 
-	var engine = global.NumGuessEngine;
-	engine.show = function(s) {
-		alert(s);
-	};
-	var g;
+	var engine = NumGuessEngine;
+	var name, guess;
+
+	engine.show = alert.bind(window);
 
 	do {
-		if(typeof name == 'undefined') {
+		if(!name) {
 			engine.welcome();
-			var name = prompt('Enter your name:', engine.name) || engine.name;
+			name = prompt('Enter your name:', engine.name) || engine.name;
 			engine.start(
 				name,
 				prompt('Welcome ' + name + ', enter upper limit:', engine.minLimit)
@@ -22,13 +21,11 @@
 			engine.restart();
 		}
 
-		do {
-			g = prompt('Guess:');
-		} while(g !== null && !engine.guess(g));
+		while((guess = prompt('Guess:')) !== null && !engine.guess(guess));
 
 	} while(confirm('Play again?'));
 
 	engine.show('Okay, bye.');
 
-})(window);
+})();
 </script>
