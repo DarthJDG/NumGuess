@@ -7,11 +7,6 @@
 		minLimit: 10,
 		name: 'Player',
 
-		/* override to set a different displayMethod */
-		displayMethod: function(s) {
-			console.log(s);
-		},
-
 		welcome: function() {
 			this.show('Welcome to NumGuess Javascript version!');
 		},
@@ -60,9 +55,9 @@
 			this.show('Guess my number between 1 and ' + this.limit + '!');
 		},
 
-		/* shows a string using displayMethod */
+		/* shows a string, override to use your own display method */
 		show: function(s) {
-			this.displayMethod(s);
+			console.log(s);
 		},
 
 		/* returns a custom message based on tries and limit */
