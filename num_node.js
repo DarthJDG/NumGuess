@@ -17,9 +17,7 @@ function evaluateGuess(guess) {
 	} else {
 		rl.question('Play again [y/N]? ', function(again) {
 			if(again && again.toString().toUpperCase() == 'Y') {
-				console.log();
 				numguess.restart();
-				console.log();
 				getGuess();
 			} else {
 				console.log('\nOkay, bye.');
@@ -29,14 +27,13 @@ function evaluateGuess(guess) {
 	}
 }
 
+numguess.console = true;
 numguess.welcome();
 rl.question('\nEnter your name: ', function(name) {
 	name = name || 'Player';
 	rl.question('\nWelcome ' + name + ', enter upper limit: ', function(limit) {
 		limit = parseInt(limit, 10) || 10;
-		console.log();
 		numguess.start(name, limit);
-		console.log();
 		getGuess();
 	});
 });

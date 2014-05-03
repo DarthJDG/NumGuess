@@ -68,9 +68,7 @@
 					show('Play again [y/N]? ');
 					input(function(again) {
 						if(again && again.toString().toUpperCase() == 'Y') {
-							show();
 							NumGuessEngine.restart();
-							show();
 							getGuess();
 						} else {
 							show('\nOkay, bye.');
@@ -82,6 +80,7 @@
 			// Initialise
 
 			NumGuessEngine.show = show;
+			NumGuessEngine.console = true;
 			NumGuessEngine.welcome();
 			show('\nEnter your name: ');
 			input(function(name) {
@@ -89,9 +88,7 @@
 				show('\nWelcome ' + name + ', enter upper limit: ');
 				input(function(limit) {
 					limit = parseInt(limit, 10) || 10;
-					show();
 					NumGuessEngine.start(name, limit);
-					show();
 					getGuess();
 				});
 			}, 200);

@@ -7,6 +7,9 @@
 		minLimit: 10,
 		name: 'Player',
 
+		// Add some extra line breaks in console mode
+		console: false,
+
 		welcome: function() {
 			this.show('Welcome to NumGuess Javascript version!');
 		},
@@ -52,7 +55,10 @@
 		restart: function() {
 			this.tries = 0;
 			this.num = Math.floor(Math.random() * this.limit + 1);
+
+			if(this.console) this.show('');
 			this.show('Guess my number between 1 and ' + this.limit + '!');
+			if(this.console) this.show('');
 		},
 
 		/* shows a string, override to use your own display method */
