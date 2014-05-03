@@ -1,6 +1,6 @@
-(function (glob, undefined) {
+(function (global) {
 
-	glob.NumGuessEngine = {
+	global.NumGuessEngine = {
 		num: 0,
 		tries: 0,
 		limit: 0,

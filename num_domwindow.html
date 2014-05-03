@@ -2,9 +2,9 @@
 <title>Welcome to NumGuess Javascript (DOM Window) version!</title>
 <script type="text/javascript" src="libnumguess.js"></script>
 <script>
-(function (glob, undefined) {
+(function (global) {
 
-	var engine = glob.NumGuessEngine;
+	var engine = global.NumGuessEngine;
 	engine.displayMethod = function (s) {
 		alert(s);
 	};
