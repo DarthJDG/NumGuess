@@ -2,32 +2,31 @@
 <title>Welcome to NumGuess Javascript (DOM Window) version!</title>
 <script type="text/javascript" src="libnumguess.js"></script>
 <script>
-(function (global) {
+(function(global) {
 
 	var engine = global.NumGuessEngine;
-	engine.displayMethod = function (s) {
+	engine.displayMethod = function(s) {
 		alert(s);
 	};
 	var g;
 
 	do {
-		if (typeof name == 'undefined') {
+		if(typeof name == 'undefined') {
 			engine.welcome();
 			var name = prompt('Enter your name:', engine.name) || engine.name;
 			engine.start(
 				name,
 				prompt('Welcome ' + name + ', enter upper limit:', engine.minLimit)
 			);
-		}
-		else {
+		} else {
 			engine.restart();
 		}
 
 		do {
 			g = prompt('Guess:');
-		} while (g !== null && !engine.guess(g));
+		} while(g !== null && !engine.guess(g));
 
-	} while (confirm('Play again?'));
+	} while(confirm('Play again?'));
 
 	engine.show('Okay, bye.');
 

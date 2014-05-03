@@ -2,18 +2,18 @@
 <html>
 <head>
 	<title>NumGuess HTML/jQuery version</title>
-	
+
 	<style type="text/css">
 		* {
 			font-family: Consolas, "Courier New", Courier, monospace;
 			font-size: 14px;
 		}
-		
+
 		div {
 			position: relative;
 			height: 20px;
 		}
-		
+
 		input {
 			width: 80px;
 			padding: 0px;
@@ -21,14 +21,14 @@
 			font-size: 12px;
 		}
 	</style>
-	
+
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="libnumguess.js"></script>
-	
+
 	<script type="text/javascript">
 		$(function() {
 			var $last;
-		
+
 			function show(text) {
 				text = text || '';
 				var lines = text.toString().split('\n');
@@ -39,7 +39,7 @@
 				}
 				$(window).scrollTop($last.offset().top);
 			};
-			
+
 			function input(callback, width) {
 				var $input = $('<input type="text" />')
 					.appendTo($last)
@@ -51,15 +51,15 @@
 						}
 					})
 					.focus();
-				
+
 				if(width) $input.width(width);
 			};
-			
+
 			function getGuess() {
 				show('Guess: ');
 				input(evaluateGuess);
 			}
-			
+
 			function evaluateGuess(guess) {
 				if(parseInt(guess, 10) === NumGuessEngine.num) show();
 				if(!NumGuessEngine.guess(guess)) {
@@ -78,9 +78,9 @@
 					});
 				}
 			}
-			
+
 			// Initialise
-			
+
 			NumGuessEngine.displayMethod = show;
 			NumGuessEngine.welcome();
 			show('\nEnter your name: ');
