@@ -27,6 +27,8 @@
 
 	<script type="text/javascript">
 		$(function() {
+			var engine = NumGuessEngine;
+
 			var $last;
 
 			function show(text) {
@@ -61,14 +63,14 @@
 			}
 
 			function evaluateGuess(guess) {
-				if(parseInt(guess, 10) === NumGuessEngine.num) show();
-				if(!NumGuessEngine.guess(guess)) {
+				if(parseInt(guess, 10) === engine.num) show();
+				if(!engine.guess(guess)) {
 					getGuess();
 				} else {
 					show('Play again [y/N]? ');
 					input(function(again) {
 						if(again && again.toString().toUpperCase() == 'Y') {
-							NumGuessEngine.restart();
+							engine.restart();
 							getGuess();
 						} else {
 							show('\nOkay, bye.');
@@ -79,16 +81,16 @@
 
 			// Initialise
 
-			NumGuessEngine.show = show;
-			NumGuessEngine.console = true;
-			NumGuessEngine.welcome();
+			engine.show = show;
+			engine.console = true;
+			engine.welcome();
 			show('\nEnter your name: ');
 			input(function(name) {
 				name = name || 'Player';
 				show('\nWelcome ' + name + ', enter upper limit: ');
 				input(function(limit) {
 					limit = parseInt(limit, 10) || 10;
-					NumGuessEngine.start(name, limit);
+					engine.start(name, limit);
 					getGuess();
 				});
 			}, 200);

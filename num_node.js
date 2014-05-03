@@ -1,4 +1,4 @@
-var numguess = require('./libnumguess.js').NumGuessEngine;
+var engine = require('./libnumguess.js').NumGuessEngine;
 var readline = require('readline');
 
 var rl = readline.createInterface({
@@ -11,13 +11,13 @@ function getGuess() {
 }
 
 function evaluateGuess(guess) {
-	if(parseInt(guess, 10) === numguess.num) console.log();
-	if(!numguess.guess(guess)) {
+	if(parseInt(guess, 10) === engine.num) console.log();
+	if(!engine.guess(guess)) {
 		getGuess();
 	} else {
 		rl.question('Play again [y/N]? ', function(again) {
 			if(again && again.toString().toUpperCase() == 'Y') {
-				numguess.restart();
+				engine.restart();
 				getGuess();
 			} else {
 				console.log('\nOkay, bye.');
@@ -27,13 +27,13 @@ function evaluateGuess(guess) {
 	}
 }
 
-numguess.console = true;
-numguess.welcome();
+engine.console = true;
+engine.welcome();
 rl.question('\nEnter your name: ', function(name) {
 	name = name || 'Player';
 	rl.question('\nWelcome ' + name + ', enter upper limit: ', function(limit) {
 		limit = parseInt(limit, 10) || 10;
-		numguess.start(name, limit);
+		engine.start(name, limit);
 		getGuess();
 	});
 });
