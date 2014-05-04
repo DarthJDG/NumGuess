@@ -3,7 +3,7 @@
 <head>
 	<title>NumGuess HTML/jQuery version</title>
 
-	<style type="text/css">
+	<style>
 		* {
 			font-family: Consolas, "Courier New", Courier, monospace;
 			font-size: 14px;
@@ -22,10 +22,10 @@
 		}
 	</style>
 
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script type="text/javascript" src="libnumguess.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="libnumguess.js"></script>
 
-	<script type="text/javascript">
+	<script>
 		$(function() {
 			var engine = NumGuessEngine;
 
@@ -35,7 +35,7 @@
 				text = text || '';
 				var lines = text.toString().split('\n');
 				for(var i = 0; i < lines.length; i++) {
-					$last = $('<div>')
+					$last = $('<div></div>')
 						.text(lines[i])
 						.appendTo('body');
 				}
@@ -43,7 +43,7 @@
 			};
 
 			function input(callback, width) {
-				var $input = $('<input type="text" />')
+				var $input = $('<input>')
 					.appendTo($last)
 					.on('keypress', function(e) {
 						if((e.keyCode || e.which) === 13) {
