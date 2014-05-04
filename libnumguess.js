@@ -24,12 +24,12 @@
 
 		/* attempt a guess, returns true/false based on success */
 		guess: function(guess) {
-			if(!/^[1-9]\d*$/.test(guess)) {
+			if(isNaN(guess = parseInt(guess, 10))) {
 				this.show('That\'s just plain wrong.');
 				return false;
 			}
 
-			if(guess > this.limit) {
+			if(guess < 1 || guess > this.limit) {
 				this.show('Out of range.');
 				return false;
 			}
