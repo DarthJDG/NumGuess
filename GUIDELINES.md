@@ -28,7 +28,7 @@ Okay, bye.
 
 ## Implementation
 
-On the first line of output, the program should clearly state *which language version* the user is playing. If player name is left blank, it should default to *Player*. Upper limit *must be at least 10*, if a smaller number or invalid input is entered, just use 10 as a default value. The number to guess must be between 1 and the upper limit, inclusive.
+On the first line of output, the program should clearly state *which language version* the user is playing. The program must support spaces in player names. If player name is left blank, it should default to *Player*. Upper limit *must be at least 10*, if a smaller number or invalid input is entered, just use 10 as a default value. The number to guess must be between 1 and the upper limit, inclusive.
 
 If invalid input is entered as a guess, the program should say *"That's just plain wrong."* If the guess is out of range, it should say *"Out of range."* In either case, it should not be considered a try.
 
