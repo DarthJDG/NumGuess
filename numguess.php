@@ -48,7 +48,7 @@ do {
 	$tryNoun = $tries > 1 ? 'tries' : 'try';
 	echo "\nWell done $name, you guessed my number from $tries $tryNoun!\n";
 	echo evaluate($tries, $limit) . "\n";
-	
+
 	echo 'Play again [y/N]? ';
 } while (in_array(readInput(), array('Y', 'y')));
 

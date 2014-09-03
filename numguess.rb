@@ -8,28 +8,28 @@ class NumGuess
 	@tries = 0
 	@max_tries = 0
 	@correct = false
-	
+
 	def name=(name = DEFAULT_NAME)
 		@name = name.empty? ? DEFAULT_NAME : name
 	end
-	
+
 	def limit=(limit)
 		@limit = limit < MIN_LIMIT ? MIN_LIMIT : limit
 		@max_tries = Math.log(@limit, 2).floor + 1
 	end
-	
+
 	def start_game
 		@correct = false
 		@tries = 0
 		@num = rand(1..@limit)
 	end
-	
+
 	def evaluate_guess(guess)
 		return "That's just plain wrong." if guess.to_i.to_s != guess
 
 		guess = guess.to_i
 		return "Out of range." unless (1..@limit) === guess
-		
+
 		@tries += 1
 		case guess <=> @num
 			when -1
@@ -41,7 +41,7 @@ class NumGuess
 				return ""
 		end
 	end
-	
+
 	def custom_message
 		return "You're one lucky bastard!"              if @tries == 1
 		return "You are the master of this game!"       if @tries < @max_tries
@@ -50,7 +50,7 @@ class NumGuess
 		return "I find your lack of skill disturbing!"  if @tries > @limit
 		return "Try harder, you can do better!"
 	end
-	
+
 	def run
 		print "Welcome to NumGuess Ruby version!\n\n"
 		print "Enter your name: "
@@ -62,15 +62,15 @@ class NumGuess
 		begin
 			print "\nGuess my number between 1 and #{@limit}!\n"
 			start_game
-			
+
 			begin
 				print "\nGuess: "
 				print evaluate_guess(gets.chomp)
 			end until @correct
-			
+
 			print "\nWell done #{@name}, you guessed my number from #{@tries} %s!\n" %
 				(@tries == 1 ? "try" : "tries")
-			
+
 			print custom_message + "\n"
 			print "Play again [y/N]? "
 		end until gets.chomp.downcase != "y"

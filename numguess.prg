@@ -47,7 +47,7 @@ do while .t.
 	triesword = iif(tries = 1, "try", "tries")
 	?
 	? "Well done " + name + ", you guessed my number from " + ltrim(str(tries)) + " " + triesword + "!"
-	
+
 	do case
 		case tries = 1
 			? "You're one lucky bastard!"
@@ -62,7 +62,7 @@ do while .t.
 		otherwise
 			? "Try harder, you can do better!"
 	endcase
-	
+
 	accept "Play again [y/N]? " to again
 	if upper(again) <> "Y"
 		exit

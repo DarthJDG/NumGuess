@@ -26,7 +26,7 @@ sub play($$) {
 		print("Guess: ");
 		$guess = <STDIN>;
 		chomp($guess);
-		
+
 		if (not looks_like_number($guess)) {
 			print("That's just plain wrong.\n");
 			$guess = 0;

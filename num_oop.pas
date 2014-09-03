@@ -9,7 +9,7 @@ type NumGuess = object
 	procedure InputLimit;
 	procedure GenerateNumber;
 	procedure InputGuess;
-	
+
 	function GetName : String;
 	function GetTries : Integer;
 	function GetLimit : Integer;
@@ -95,28 +95,28 @@ begin
 end;
 
 { Main program }
-	
+
 begin
 	number.Init;
 	WriteLn('Welcome to NumGuess Pascal version!');
 	WriteLn;
 	Write('Enter your name: ');
 	number.InputName;
-	
+
 	WriteLn;
 	Write('Welcome ', number.GetName, ', enter upper limit: ');
 	number.InputLimit;
-	
+
 	repeat
 		number.GenerateNumber;
 		WriteLn;
 		WriteLn('Guess my number between 1 and ', number.GetLimit, '!');
 		WriteLn;
-		
+
 		repeat
 			Write('Guess: ');
 			number.InputGuess;
-			
+
 			if number.IsOutOfRange then begin
 				WriteLn('Out of range.');
 			end else begin
@@ -129,11 +129,11 @@ begin
 		Write('Well done ', number.GetName, ', you guessed my number from ', number.GetTries, ' ');
 		if number.GetTries = 1 then WriteLn('try!') else WriteLn('tries!');
 		WriteLn(number.CustomMessage);
-		
+
 		Write('Play again [y/N]? ');
 		ReadLn(again);
 	until not(Upcase(again) = 'Y');
-	
+
 	WriteLn;
 	WriteLn('Okay, bye.');
 end.

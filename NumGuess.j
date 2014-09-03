@@ -18,7 +18,7 @@
 	dup
 	getstatic java/lang/System/in Ljava/io/InputStream;
 	invokespecial java/io/InputStreamReader/<init>(Ljava/io/InputStream;)V
-	
+
 	invokespecial java/io/BufferedReader/<init>(Ljava/io/Reader;)V
 	putstatic NumGuess/reader Ljava/io/BufferedReader;
 
@@ -100,7 +100,7 @@ GuessLoop:
 
 ; increase guess count
 	iinc 14 1
-	
+
 ; get the difference
 	iload 13
 	isub
@@ -137,7 +137,7 @@ Win:
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
 	; guess count
-	iload 14 
+	iload 14
 	invokestatic NumGuess/printInt(I)V
 
 	ldc " guesses.\n"
@@ -166,7 +166,7 @@ CheckIfNot:
 	ldc "n"
 	invokevirtual java/lang/String/equals(Ljava/lang/Object;)Z
 	ifeq PlayLoop
-	
+
 	return
 
 .end method

@@ -27,7 +27,7 @@ DO
 	LOOP UNTIL guess% = num%
 	IF tries% = 1 THEN triesword$ = "try" ELSE triesword$ = "tries"
 	PRINT : PRINT "Well done "; name$; ", you guessed my number from"; STR$(tries%); " "; triesword$; "!"
-	
+
 	SELECT CASE tries%
 		CASE IS = 1
 			PRINT "You're one lucky bastard!"
@@ -42,7 +42,7 @@ DO
 		CASE ELSE
 			PRINT "Try harder, you can do better!"
 	END SELECT
-	
+
 	INPUT "Play again [y/N]? ", again$
 LOOP UNTIL UCASE$(again$) <> "Y"
 PRINT : PRINT "Okay, bye."

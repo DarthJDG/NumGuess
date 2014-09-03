@@ -24,11 +24,11 @@ LOOP
    CRT
    CRT "Guess my number between 1 and ":LIMIT:"!"
    CRT
-   
+
    LOOP
       CRT "Guess: ":
       INPUT GUESS
-      
+
       TRIES += 1
       BEGIN CASE
          CASE NOT(NUM(GUESS))
@@ -42,13 +42,13 @@ LOOP
          CASE GUESS > NUM
             CRT "Too high!"
       END CASE
-      
+
       UNTIL GUESS = NUM
    REPEAT
 
    TRIES.WORD = "tries"
    IF TRIES = 1 THEN TRIES.WORD = "try"
-   
+
    CRT
    CRT "Well done ":NAME:", you guessed my number from ":TRIES:" ":TRIES.WORD:"!"
 
@@ -69,9 +69,9 @@ LOOP
    END CASE
 
    CRT "Play again [y/N]? ":
-   
+
    INPUT AGAIN, 1
-   
+
    UNTIL UPCASE(AGAIN) # "Y"
 REPEAT
 

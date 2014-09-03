@@ -12,26 +12,26 @@ main()
 	int i, num = 0, guess = 0, tries = 0, limit = 0, max_tries = 0;
 	string name, buffer;
 	randomize();
-	
+
 	cout << "Welcome to NumGuess C++ version!" << endl << endl;
 	cout << "Enter your name: ";
 	getline(cin, name);
-	
+
 	if(name[0] == '\0') name = "Player";
-	
+
 	cout << endl << "Welcome " << name << ", enter upper limit: ";
 	getline(cin, buffer);
 	stringstream limitstream(buffer);
 	if(!(limitstream >> limit)) limit = 10;
 	if(limit < 10) limit = 10;
-	
+
 	max_tries = (int)floor(log2(limit)) + 1;
-	
+
 	while(1) {
 		num = random(limit) + 1;
 		guess = 0;
 		tries = 0;
-		
+
 		cout << endl << "Guess my number between 1 and " << limit << "!" << endl;
 		while(num != guess) {
 			cout << endl << "Guess: ";
@@ -53,7 +53,7 @@ main()
 			}
 		}
 		cout << endl << "Well done " << name << ", you guessed my number from " << tries << " " << (tries == 1 ? "try" : "tries") << "!" << endl;
-		
+
 		if(tries == 1) {
 			cout << "You're one lucky bastard!";
 		} else if(tries < max_tries) {
@@ -67,12 +67,12 @@ main()
 		} else {
 			cout << "I find your lack of skill disturbing!";
 		}
-		
+
 		cout << endl << "Play again [y/N]? ";
 		getline(cin, buffer);
 		if((buffer[0] != 'y') && (buffer[0] != 'Y')) break;
 	}
-	
+
 	cout << endl << "Okay, bye." << endl;
 
 	return 0;
