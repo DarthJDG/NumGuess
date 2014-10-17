@@ -44,37 +44,62 @@
 
 ; display greeting
 
-	ldc "Welcome to NumGuess written in Jasmin!\n\n"
+	ldc "Welcome to NumGuess Jasmin version!\n\n"
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
+
 
 ; get the player's name
 ; stored in local variable 11
 
-	ldc "Please enter your name: "
+	ldc "Enter your name: "
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
 	invokestatic NumGuess/readString()Ljava/lang/String;
 	astore 11
 
-; get the maximum value (repeat while less than 10)
-; stored in local variable 12
-GetMaxLoop:
 
-	ldc "Limit (min 10): "
+; check if empty length
+
+	aload 11
+	invokevirtual java/lang/String/length()I
+
+	ifne NameOK
+	ldc "Player"
+	astore 11
+
+NameOK:
+
+
+; settings summary
+	
+	ldc "Welcome "
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
+
+	aload 11
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
+
+	ldc ", enter upper limit: "
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
 	invokestatic NumGuess/readInt()I
 	dup
+	ldc 10
+	if_icmpge LimitOK
+
+; use 10 if input is smaller
+	
+	pop
+	ldc 10
+
+LimitOK:
+
+	; limit
 	istore 12
-
-	bipush 10
-	if_icmplt GetMaxLoop
-
 
 ; a single game starts here
 PlayLoop:
 
-; generate random number (in the range of 1-max)
+; generate random number (in the range of 1-limit)
 ; stored in local variable 13
 
 	invokestatic java/lang/Math/random()D
@@ -86,17 +111,27 @@ PlayLoop:
 	iadd
 	istore 13
 
+; start message
+
+	ldc "Guess my number between 1 and "
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
+
+	iload 12
+	invokestatic NumGuess/printInt(I)V
+
+	ldc "!\n\n"
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
+
 ; guesses counted in local variable 14
+
 	iconst_0
 	istore 14
 
 ; a single guess (loop while no match)
 GuessLoop:
 
-	ldc "Guess: "
-	invokestatic NumGuess/printString(Ljava/lang/String;)V
-
-	invokestatic NumGuess/readInt()I
+        iload 12
+	invokestatic NumGuess/readProperInt(I)I
 
 ; increase guess count
 	iinc 14 1
@@ -109,7 +144,7 @@ GuessLoop:
 
 	ifge NumberGE
 	pop
-	ldc "Too Low!\n"
+	ldc "Too low!\n"
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
 	goto GuessLoop
 
@@ -117,7 +152,7 @@ GuessLoop:
 NumberGE:
 
 	ifle Win
-	ldc "Too High!\n"
+	ldc "Too high!\n"
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
 	goto GuessLoop
 
@@ -126,26 +161,97 @@ Win:
 
 ; display game summary
 
-	ldc "Congratulations, "
+	ldc "Well done "
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
 	; player name
 	aload 11
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
-	ldc "! It took "
+	ldc ", you guessed my number from "
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
 	; guess count
 	iload 14
 	invokestatic NumGuess/printInt(I)V
 
-	ldc " guesses.\n"
+	ldc " tries!.\n"
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
+
+; custom message
+
+; calculate "max" and store it to local variable 15
+	iload 12
+	i2d
+	invokestatic java/lang/Math/log(D)D
+	iconst_2
+	i2d
+	invokestatic java/lang/Math/log(D)D
+	ddiv
+	d2i
+	iconst_1
+	iadd
+	istore 15
+
+	; keep guesses on stack for faster access (needs cleanup later)
+	iload 14
+
+	dup
+	iconst_1
+	if_icmpeq GuessCountOne
+	dup
+	iload 15
+	if_icmplt GuessCountLessThanMax
+	dup
+	iload 15
+	if_icmpeq GuessCountMax
+	dup
+	iload 15
+	i2d
+	ldc 1.1
+	f2d
+	dmul
+	d2i
+	if_icmple GuessCountMaxPlus
+	dup
+	iload 12
+	if_icmple GuessCountLTELimit
+	goto GuessCountMoreThanLimit
+
+
+GuessCountOne:
+	ldc "You're one lucky bastard!\n"
+	goto DisplayCustomMessage
+
+GuessCountLessThanMax:
+	ldc "You are the master of this game!\n"
+	goto DisplayCustomMessage
+
+GuessCountMax:
+	ldc "You are a machine!\n"
+	goto DisplayCustomMessage
+
+GuessCountMaxPlus:
+	ldc "Very good result!\n"
+	goto DisplayCustomMessage
+
+GuessCountLTELimit:
+	ldc "Try harder, you can do better!\n"
+	goto DisplayCustomMessage
+
+GuessCountMoreThanLimit:
+	ldc "I find your lack of skill disturbing!\n"
+	goto DisplayCustomMessage
+
+DisplayCustomMessage:
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
+
+	; pop guesses from stack (cleanup)
+	pop
 
 
 ; play again?
-	ldc "Would you like to play again? (Y/n) "
+	ldc "Play again [y/N]? "
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
 	invokestatic NumGuess/readString()Ljava/lang/String;
 
@@ -154,7 +260,7 @@ Win:
 	invokevirtual java/lang/String/length()I
 	ifne CheckIfNot
 	pop
-	goto PlayLoop
+	goto QuitGame
 
 ; check if first character of input is lower or upper case N
 ; please note: ifeq is executed on FALSE (as it converts to zero)
@@ -167,7 +273,60 @@ CheckIfNot:
 	invokevirtual java/lang/String/equals(Ljava/lang/Object;)Z
 	ifeq PlayLoop
 
+<<<<<<< Updated upstream
+=======
+QuitGame:
+        ldc "\nOkay, bye.\n"
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
+        	
+>>>>>>> Stashed changes
 	return
+
+.end method
+
+
+; ===============================================
+; method to read an integer
+.method public static readProperInt(I)I
+.throws java/io/IOException
+.limit stack 10
+.limit locals 5
+.catch java/lang/NumberFormatException from ReadIntTry to ReadIntCatch using ReadIntCatch
+
+Read:
+	ldc "Guess: "
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
+
+	getstatic NumGuess/reader Ljava/io/BufferedReader;
+	invokevirtual java/io/BufferedReader/readLine()Ljava/lang/String;
+
+ReadIntTry:
+	invokestatic java/lang/Integer/parseInt(Ljava/lang/String;)I
+	goto ReadIntDone
+
+ReadIntCatch:
+	pop
+	ldc "That's just plain wrong.\n"
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
+        goto Read
+
+ReadIntDone:
+        dup
+        iconst_1
+        if_icmplt OutOfRange
+        dup
+        iload_0
+        if_icmpgt OutOfRange
+        goto NumberOK
+
+OutOfRange:
+	ldc "Out of range.\n"
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
+        pop
+        goto Read
+
+NumberOK:
+	ireturn
 
 .end method
 
