@@ -65,7 +65,6 @@ Non-compliant programs and features:
 
 - **numguess.asm**: output formatting, variable names, default player name, custom limit, custom messages
 - **numguess.bf**: almost everything *(see notes)*
-- **NumGuess.j**: output formatting, default player name, default limit to 10 instead of looping, out of range message, custom messages
 
 ## 4. Notes
 

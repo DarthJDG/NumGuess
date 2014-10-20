@@ -72,7 +72,7 @@ NameOK:
 
 ; settings summary
 	
-	ldc "Welcome "
+	ldc "\nWelcome "
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
 	aload 11
@@ -113,7 +113,7 @@ PlayLoop:
 
 ; start message
 
-	ldc "Guess my number between 1 and "
+	ldc "\nGuess my number between 1 and "
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
 	iload 12
