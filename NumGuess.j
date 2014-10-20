@@ -131,7 +131,7 @@ PlayLoop:
 GuessLoop:
 
         iload 12
-	invokestatic NumGuess/readProperInt(I)I
+	invokestatic NumGuess/readGuess(I)I
 
 ; increase guess count
 	iinc 14 1
@@ -161,7 +161,7 @@ Win:
 
 ; display game summary
 
-	ldc "Well done "
+	ldc "\nWell done "
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
 	; player name
@@ -175,10 +175,23 @@ Win:
 	iload 14
 	invokestatic NumGuess/printInt(I)V
 
-	ldc " tries!.\n"
-	invokestatic NumGuess/printString(Ljava/lang/String;)V
+	iload 14
+	iconst_1
+	if_icmpeq OneTry
 
-; custom message
+	; multiple tries
+	ldc " tries!\n"
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
+	goto CustomMessage
+
+OneTry:
+	; a single try
+	ldc " try!\n"
+	invokestatic NumGuess/printString(Ljava/lang/String;)V
+	goto CustomMessage
+
+; display custom message
+CustomMessage:
 
 ; calculate "max" and store it to local variable 15
 	iload 12
@@ -273,13 +286,10 @@ CheckIfNot:
 	invokevirtual java/lang/String/equals(Ljava/lang/Object;)Z
 	ifeq PlayLoop
 
-<<<<<<< Updated upstream
-=======
 QuitGame:
-        ldc "\nOkay, bye.\n"
+    ldc "\nOkay, bye.\n"
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
-        	
->>>>>>> Stashed changes
+	
 	return
 
 .end method
@@ -287,7 +297,7 @@ QuitGame:
 
 ; ===============================================
 ; method to read an integer
-.method public static readProperInt(I)I
+.method public static readGuess(I)I
 .throws java/io/IOException
 .limit stack 10
 .limit locals 5
@@ -308,22 +318,22 @@ ReadIntCatch:
 	pop
 	ldc "That's just plain wrong.\n"
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
-        goto Read
+    goto Read
 
 ReadIntDone:
-        dup
-        iconst_1
-        if_icmplt OutOfRange
-        dup
-        iload_0
-        if_icmpgt OutOfRange
-        goto NumberOK
+    dup
+    iconst_1
+    if_icmplt OutOfRange
+    dup
+    iload_0
+    if_icmpgt OutOfRange
+    goto NumberOK
 
 OutOfRange:
 	ldc "Out of range.\n"
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
-        pop
-        goto Read
+    pop
+    goto Read
 
 NumberOK:
 	ireturn
