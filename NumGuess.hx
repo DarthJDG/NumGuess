@@ -33,12 +33,12 @@ class NumGuess {
 	 * @param	input	The input to read from.
 	 * @param	output	The output to write to.
 	 */
-    public function new(input: Input, output: Output): Void {
+	public function new(input: Input, output: Output): Void {
 		this.input = input;
 		this.output = output;
-    }
+	}
 	
-    public function playGame(): Void {
+	public function playGame(): Void {
 		output.writeString("Welcome to NumGuess Haxe version!\n\n");
 		output.writeString("Enter your name: ");
 		
@@ -82,7 +82,8 @@ class NumGuess {
 				}
 			}
 			
-			output.writeString("\nWell done " + name + ", you guessed my number from " + tries + " tries!\n");
+			output.writeString("\nWell done " + name + ", you guessed my number from "
+					+ tries + (tries > 1 ? " tries" : " try") + "!\n");
 			
 			var maxTries = 1 + Math.floor(Math.log(limit) / Math.log(2));
 			if (tries == 1) {
