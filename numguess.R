@@ -8,6 +8,10 @@
 ##
 ##########################################################################################
 
+## helper function to transform string into integer
+int <- function(x)
+    suppressWarnings(ifelse(as.numeric(x) == as.integer(x), as.integer(x), NA))
+
 ## say hello
 cat('\nWelcome to NumGuess R version!\n\n')
 
@@ -21,9 +25,9 @@ if (name == '')
 ## get upper limit
 limit <- readline(paste0('\nWelcome ', name, ', enter upper limit: '))
 ## validate limit
-limit <- as.integer(limit)
+limit <- int(limit)
 if (is.na(limit) || limit < 10)
-    limit <- 10
+    limit <- 10L
 
 ## maximum number of tries
 max_tries <- floor(log2(limit)) + 1
@@ -44,7 +48,7 @@ while (TRUE) {
         guess <- readline('Guess: ')
 
         ## validate guess
-        guess <- as.integer(guess)
+        guess <- int(guess)
         if (is.na(guess)) {
             cat('That\'s just plain wrong.\n')
             next()
