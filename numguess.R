@@ -22,7 +22,7 @@ if (name == '')
 limit <- readline(paste0('\nWelcome ', name, ', enter upper limit: '))
 ## validate limit
 limit <- as.integer(limit)
-if (xor(is.na(limit), limit < 10))
+if (is.na(limit) || limit < 10)
     limit <- 10
 
 ## maximum number of tries
