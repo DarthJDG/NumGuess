@@ -1,3 +1,13 @@
+##########################################################################################
+##
+## Use the "source" command in the R console to run this game! E.g.:
+##
+##   library(RCurl)
+##   source(textConnection(
+##     getURL('https://raw.githubusercontent.com/daroczig/NumGuess/master/numguess.R')))
+##
+##########################################################################################
+
 ## say hello
 cat('\nWelcome to NumGuess R version!\n\n')
 
