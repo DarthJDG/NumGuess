@@ -4,7 +4,7 @@
 ##
 ##   library(RCurl)
 ##   source(textConnection(
-##     getURL('https://raw.githubusercontent.com/daroczig/NumGuess/master/numguess.R')))
+##     getURL('https://raw.githubusercontent.com/DarthJDG/NumGuess/master/numguess.R')))
 ##
 ##########################################################################################
 
@@ -20,7 +20,7 @@ catsn <- function(fmt, ...)
     cat(sprintf(fmt, ...), '\n')
 
 ## say hello
-catsn('\nWelcome to NumGuess R version!\n')
+catsn('Welcome to NumGuess R version!\n')
 
 ## get username
 name <- readline('Enter your name: ')
@@ -43,7 +43,7 @@ max_tries <- floor(log2(limit)) + 1
 ## infinite loop
 while (TRUE) {
 
-    catsn('\nGuess my number between 1 and %d!\n\n', limit)
+    catsn('\nGuess my number between 1 and %d!\n', limit)
 
     ## generate a number between 1 and limit
     number <- sample(1:limit, 1)
@@ -109,11 +109,11 @@ while (TRUE) {
     catsn(cm)
 
     ## next round
-    nr <- readline('Play again [y/N]?')
-    if (nr != tolower('Y'))
+    nr <- readline('Play again [y/N]? ')
+    if (tolower(nr) != 'y')
         break()
 
 }
 
 ## say goodbye
-catsn('\n\nOkay, bye.')
+catsn('\nOkay, bye.')
