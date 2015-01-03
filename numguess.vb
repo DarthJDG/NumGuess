@@ -1,4 +1,4 @@
-﻿Module numguess
+Module numguess
 
 	Sub Main()
 
