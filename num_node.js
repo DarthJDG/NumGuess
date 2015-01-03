@@ -11,7 +11,6 @@ function getGuess() {
 }
 
 function evaluateGuess(guess) {
-	if(parseInt(guess, 10) === engine.num) console.log();
 	if(!engine.guess(guess)) {
 		getGuess();
 	} else {

@@ -37,7 +37,7 @@
 			this.tries += 1;
 
 			if(this.num == guess) {
-				this.show('Well done '
+				this.show((this.console ? '\n' : '') + 'Well done '
 					+ this.name
 					+ ', you guessed my number from '
 					+ this.tries
