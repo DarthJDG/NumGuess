@@ -17,6 +17,8 @@ The original programs have been written a long time ago in just a few minutes, a
 
 Originally published as part of a [short article at CodeBin](http://codebin.co.uk/blog/number-guessing-hello-world-games/).
 
+[Visit the NumGuess project page](http://codebin.co.uk/projects/numguess/)
+
 ## 2. Programming languages and compilers
 
 - **libnumguess.js**: JavaScript library *(see notes)*
@@ -56,6 +58,8 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **numguess.tcl**: Tcl script
 - **numguess.uvb**: UniVerse Basic (might work on other pick-likes)
 - **numguess.vb**: VB.NET command line
+- **numguess.vbs**: VBScript (Windows Script Host, *see notes*)
+- **numguess.wsf**: JScript (Windows Script Host, *see notes*)
 
 ## 3. Guidelines
 
@@ -87,6 +91,16 @@ Output formatting is a bit off in this version, due to the absence of lowercase 
 ### JavaScript library
 
 This one defines a NumGuessEngine framework that can be used by other implementations, so in itself it does not fulfill all the guidelines. It can be played from the browser console though by manually calling its methods.
+
+### VBScript
+
+To run the fully compliant console version under Windows, run ```cscript numguess.vbs``` from the command line. Alternatively, you can use pop up windows instead of the console (similar to the DOM window JavaScript wrapper) by either double-clicking on the program file or running ```wscript numguess.vbs```.
+
+### JScript
+
+JScript has no input box implemented for ```wscript```, it had to be invoked from VBScript code. This is why the code is embedded in XML and the file extension is ```.wsf```. The JScript part can be run as a simple ```.js``` file with ```cscript```.
+
+The code uses the compatible JavaScript library. See VBScript version above for running instructions.
 
 ## 5. License and copyright
 

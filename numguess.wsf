@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<job id="IncludeExample">
+
+	<script language="VBScript">
+	<![CDATA[
+		Function VBInputBox(prompt)
+			VBInputBox = InputBox(prompt)
+		End Function
+	]]>
+	</script>
+
+	<script language="JScript">
+	<![CDATA[
+		eval((new ActiveXObject("Scripting.FileSystemObject")).OpenTextFile("libnumguess.js", 1).ReadAll());
+
+		var isConsole = WScript.fullname.substr(WScript.fullname.length - 12) === '\\cscript.exe';
+
+		// Gets and returns a line of text with a prompt
+		var prompt;
+		if(isConsole) {
+			prompt = function(prompt_text) {
+				// Use the console for cscript
+				WScript.stdout.write(prompt_text + ' ');
+				return WScript.stdin.readline();
+			};
+		} else {
+			prompt = function(prompt_text) {
+				return VBInputBox(prompt_text);
+			};
+		}
+
+		var engine = NumGuessEngine;
+		engine.console = isConsole;
+		engine.show = function(s) {
+			WScript.echo(s);
+		};
+
+		engine.welcome();
+
+		var name = prompt('\nEnter your name:');
+		name = name || 'Player';
+
+		var limit = prompt('\nWelcome ' + name + ', enter upper limit:');
+		limit = parseInt(limit, 10) || 10;
+
+		engine.start(name, limit);
+
+		while(true) {
+			do {} while(!engine.guess(prompt('Guess:')))
+
+			var again = prompt('Play again [y/N]?')
+			if(again && again.toString().toUpperCase() == 'Y') {
+				engine.restart();
+			} else {
+				break;
+			}
+		}
+
+		WScript.echo('\nOkay, bye.');
+	]]>
+	</script>
+
+</job>
