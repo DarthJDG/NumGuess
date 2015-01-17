@@ -22,6 +22,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 ## 2. Programming languages and compilers
 
 - **libnumguess.js**: JavaScript library *(see notes)*
+- **num_286.asm**: DOS 286 Assembly (compiles with TASM 3.0 and MASM 6.11)
 - **num_c64.bas**: Commodore Basic (C64)
 - **num_domwindow.html**: DOM Window wrapper for JavaScript library
 - **num_dos.c**: Borland C (compiles with 3.1 under DOS)
@@ -29,7 +30,6 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **num_jquery.html**: HTML/jQuery wrapper for JavaScript library
 - **num_node.js**: Node.js console wrapper for JavaScript library
 - **num_oop.pas**: Turbo Pascal 6.0, FreePascal (OOP)
-- **numguess.asm**: DOS x86 Assembly (compiles with TASM 3.1)
 - **numguess.awk**: AWK script
 - **numguess.bas**: QBasic 1.0
 - **numguess.bat**: Windows shell batch file (Windows 2000 onwards)
@@ -69,7 +69,6 @@ If a program does not conform to the guidelines and doesn't qualify for an excep
 
 Non-compliant programs and features:
 
-- **numguess.asm**: output formatting, variable names, default player name, custom limit, custom messages
 - **numguess.bf**: almost everything *(see notes)*
 
 ## 4. Notes
