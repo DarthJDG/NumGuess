@@ -62,7 +62,7 @@ assume ds:@data
 main proc
 		mov ax, @data
 		mov ds, ax
-		
+
 		; initialise random seed
 		call randomize
 
@@ -123,7 +123,7 @@ main proc
 		mov bx, 0
 		cmp dx, 0
 		je process_limit
-		
+
 		; if dword, start result from 16 and process high word
 		mov bx, 16
 		mov ax, dx
