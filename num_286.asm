@@ -400,6 +400,7 @@ getNumber proc
 		mul bx
 		mov dx, ax
 		pop ax
+		jc parse_error
 		push dx
 		mul bx
 		pop bx
@@ -418,6 +419,7 @@ getNumber proc
 		sub bl, '0'
 		add ax, bx
 		adc dx, 0
+		jc parse_error
 
 		inc di
 		loop parse_loop
