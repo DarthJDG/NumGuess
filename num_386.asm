@@ -133,7 +133,7 @@ main proc
 		mov MaxTriesPlus10p, ax
 
 	start_game:
-	
+
 		; initialise game variables
 		mov Tries, 0
 		mov eax, Limit
@@ -457,11 +457,11 @@ randomize proc
 		; get system time in cx:dx
 		mov ah, 0
 		int 1ah
-		
+
 		; could be too small number, xor it up and set second highest bit
 		xor cx, dx
 		or cx, 4000h
-		
+
 		; move seed to eax
 		mov eax, 0
 		mov ax, dx
@@ -535,7 +535,7 @@ randomLimit proc
 
 		; save limit
 		push eax
-		
+
 	rlim_generate:
 		; generate 31-bit random number
 		call random
@@ -544,7 +544,7 @@ randomLimit proc
 		; if still over the limit, regenerate
 		; there is at most 50% chance of re-iteration, unlikely to cause an infinite loop
 		; this prevents bias for lower numbers
-		
+
 		mov ecx, 1
 	rlim_mask_loop:
 		cmp ecx, [bp-4]
@@ -552,7 +552,7 @@ randomLimit proc
 		shl ecx, 1
 		inc ecx
 		jmp rlim_mask_loop
-		
+
 	rlim_mask_done:
 		; apply mask
 		and eax, ecx
@@ -562,7 +562,7 @@ randomLimit proc
 
 		; check if result is less than the limit
 		; if not, re-generate
-		
+
 		cmp eax, [bp-4]
 		ja rlim_generate
 
