@@ -1,11 +1,11 @@
-.286
 .model small
+.386 ; Specify this after model to force 16 bit segments for simple DOS mode
 .stack
 
 .data
 
 ; String messages
-Welcome db "Welcome to NumGuess 286 Assembly version!",0dh,0ah,0dh,0ah,"Enter your name: $"
+Welcome db "Welcome to NumGuess 386 Assembly version!",0dh,0ah,0dh,0ah,"Enter your name: $"
 LimitPrompt1 db 0dh,0ah,0dh,0ah,"Welcome $"
 LimitPrompt2 db ", enter upper limit: $"
 StartMessage1 db 0dh,0ah,0dh,0ah,"Guess my number between 1 and $"
@@ -102,35 +102,23 @@ main proc
 		call getNumber
 		cmp cx, 0
 		jne limit_fail
-		cmp dx, 0
-		jne limit_ok
-		cmp ax, 10
+		cmp eax, 10
 		jae limit_ok
 
 	limit_fail:
 		; set default limit
-		mov dx, 0
-		mov ax, 10
+		mov eax, 10
 
 	limit_ok:
 		; store limit
-		mov [word ptr Limit], dx
-		mov [word ptr Limit+2], ax
+		mov Limit, eax
 
 		; calculate maximum tries needed
-
-		; check if limit is dword
 		mov bx, 0
-		cmp dx, 0
-		je process_limit
-
-		; if dword, start result from 16 and process high word
-		mov bx, 16
-		mov ax, dx
 
 	process_limit:
 		inc bx
-		shr ax, 1
+		shr eax, 1
 		jnz process_limit
 
 		; save max tries
@@ -145,20 +133,17 @@ main proc
 		mov MaxTriesPlus10p, ax
 
 	start_game:
-
+	
 		; initialise game variables
 		mov Tries, 0
-		mov dx, [word ptr Limit]
-		mov ax, [word ptr Limit+2]
+		mov eax, Limit
 		call randomLimit
-		mov [word ptr Number], dx
-		mov [word ptr Number+2], ax
+		mov Number, eax
 
 		; print start message
 		push offset StartMessage1
 		call print
-		mov dx, [word ptr Limit]
-		mov ax, [word ptr Limit+2]
+		mov eax, Limit
 		call printNumber
 		push offset StartMessage2
 		call print
@@ -173,15 +158,10 @@ main proc
 		jne invalid_input
 
 		; check if out of range
-		mov bx, ax
-		or bx, dx
-		jz out_of_range
+		cmp eax, 0
+		je out_of_range
 
-		cmp dx, [word ptr Limit]
-		ja out_of_range
-		jb check_success
-
-		cmp ax, [word ptr Limit+2]
+		cmp eax, Limit
 		jbe check_success
 
 	out_of_range:
@@ -198,10 +178,7 @@ main proc
 		; counts as a try
 		inc Tries
 
-		cmp dx, [word ptr Number]
-		ja too_high
-		jb too_low
-		cmp ax, [word ptr Number+2]
+		cmp eax, Number
 		ja too_high
 		jb too_low
 		jmp success
@@ -225,7 +202,7 @@ main proc
 		push offset WellDone2
 		call print
 
-		mov dx, 0
+		mov eax, 0
 		mov ax, Tries
 		call printNumber
 		cmp ax, 1
@@ -240,7 +217,7 @@ main proc
 		call print
 
 	custom_message:
-		; ax has number of tries
+		; eax has number of tries
 		cmp ax, 1
 		je custom_1
 		cmp ax, MaxTries
@@ -250,9 +227,7 @@ main proc
 		jbe custom_within_10p
 
 		; compare tries to limit (tries is only 16 bits)
-		cmp [word ptr Limit], 0
-		jne custom_over_10p
-		cmp ax, [word ptr Limit+2]
+		cmp eax, Limit
 		ja custom_over_limit
 		jmp custom_over_10p
 
@@ -368,10 +343,11 @@ input proc
 input endp
 
 ; Gets user input and returns:
-; 31 bit positive integer in dx:ax
+; 31 bit positive integer in eax
 ; cx is set to 1 on parse error
 getNumber proc
-		push bx
+		push ebx
+		push edx
 		push di
 
 		; set pointer to max length and read string
@@ -379,33 +355,25 @@ getNumber proc
 		mov ah, 0ah
 		int 21h
 
-		; clear dx:ax
-		mov dx, 0
-		mov ax, 0
+		; clear eax
+		mov eax, 0
 
 		; check if input is empty
-		mov ch, 0
+		mov ecx, 0
 		mov cl, IOBufferLength
-		cmp cx, 0
+		cmp ecx, 0
 		je parse_error
 
 		; loop digits
 		mov di, offset IOBuffer
 
 	parse_loop:
-		; multiply dx:ax by 10
-		mov bx, 10
-		push ax
-		mov ax, dx
-		mul bx
-		mov dx, ax
-		pop ax
+		; multiply eax by 10
+		mov ebx, 10
+		mul ebx
 		jc parse_error
-		push dx
-		mul bx
-		pop bx
-		add dx, bx
 
+		mov ebx, 0
 		mov bl, [di]
 
 		; check for invalid character
@@ -414,11 +382,9 @@ getNumber proc
 		cmp bl, '9'
 		ja parse_error
 
-		; add to dx:ax
-		mov bh, 0
+		; add to eax
 		sub bl, '0'
-		add ax, bx
-		adc dx, 0
+		add eax, ebx
 		jc parse_error
 
 		inc di
@@ -426,21 +392,23 @@ getNumber proc
 
 		; due to the limitation of our random function, limit numbers to 31 bits
 		; it is the same positive limit of a signed 32 bit number
-		and dx, 7fffh
+		and eax, 7fffffffh
 
 		; cx is zero, return success
 		pop di
-		pop bx
+		pop edx
+		pop ebx
 		ret
 
 	parse_error:
 		mov cx, 1
 		pop di
-		pop bx
+		pop edx
+		pop ebx
 		ret
 getNumber endp
 
-; Prints 32 bit number in dx:ax
+; Prints 32 bit number in eax
 printNumber proc
 		pusha
 
@@ -449,14 +417,10 @@ printNumber proc
 
 	convert_loop:
 
-		; find mod 10 of dx:ax
-
-		mov bx, 10
-		cmp dx, 10
-		jae div_32bit
-
-		; div won't overflow, do 16 bit division
-		div bx
+		; find mod 10 of eax
+		mov edx, 0
+		mov ebx, 10
+		div ebx
 
 		; add digit to buffer
 		add dl, '0'
@@ -464,44 +428,12 @@ printNumber proc
 		inc di
 
 		; carry on converting if needed
-		mov dx, 0
-		cmp ax, 0
-		je print_digits
-		jmp convert_loop
-
-	div_32bit:
-
-		; simple div would overflow, do 32 bit division
-
-		; save low-order word and divide high-order word
-		mov cx, ax
-		mov ax, dx
-		mov dx, 0
-		div bx
-
-		; save result of high-order division
-		push ax
-
-		; leave remainder in dx, restore and divide low-order word
-		mov ax, cx
-		div bx
-
-		; add digit to buffer
-		add dl, '0'
-		mov [di], dl
-		inc di
-
-		; restore high-order result into dx
-		pop dx
-
-		; carry on converting if needed
-		cmp dx, 0
-		jne convert_loop
-		cmp ax, 0
+		cmp eax, 0
 		jne convert_loop
 
 	print_digits:
 		; see how many chars we got
+		mov ecx, 0
 		mov cx, di
 		sub cx, offset IOBuffer
 
@@ -525,194 +457,121 @@ randomize proc
 		; get system time in cx:dx
 		mov ah, 0
 		int 1ah
-
+		
 		; could be too small number, xor it up and set second highest bit
 		xor cx, dx
 		or cx, 4000h
+		
+		; move seed to eax
+		mov eax, 0
+		mov ax, dx
+		shl eax, 16
+		mov ax, cx
 
 		; unlikely, but re-generate if seed is zero
-		mov ax, dx
-		or ax, cx
-		jz generate_seed
+		cmp eax, 0
+		je generate_seed
 
 		; also re-generate if seed matches our random multiplier
-		mov ax, dx
-		sub ax, 48271
-		or ax, cx
-		jz generate_seed
+		cmp eax, 48271
+		je generate_seed
 
 		; kill highest bit to prevent div overflow
-		and cx, 7fffh
+		and eax, 7fffffffh
 
 		mov di, offset RandomSeed
-		mov [di], cx
-		mov [di+2], dx
+		mov [di], eax
 
 		; check if number is a multiple of 48271
-		mov dx, cx
-		mov ax, dx
-		mov bx, 48271
-		div bx
-		cmp dx, 0
+		mov edx, 0
+		mov ebx, 48271
+		div ebx
+		cmp edx, 0
 		je generate_seed
 
 		popa
 		ret
 randomize endp
 
-; Generate a 31 bit random number into dx:ax
+; Generate a 31 bit random number into eax
 ; Uses simple MINSTD implementation with multiplier 48271
 random proc
-		push bx
-		push cx
+		push ebx
+		push edx
 		push di
 
 		; load seed
-
 		mov di, offset RandomSeed
-		mov dx, [di]
-		mov ax, [di+2]
+		mov eax, [di]
 
 		; multiply seed
+		mov ebx, 48271
+		mul ebx
 
-		mov bx, 48271
-		mov cx, dx    ; save high order word of seed
-		mul bx        ; multiply low order word of seed
-		push ax       ; save low order word of result
-		push dx       ; save high order word of result
-		mov ax, cx    ; load high order word of seed
-		mul bx        ; multiply high order word of seed
-		pop bx
-		add ax, bx    ; add high order word of previous result to dx:ax
-		adc dx, 0
-		pop cx
+		; at this point, multiplied seed is 48 bit edx:eax
+		; mod it by 2^31-1
+		mov ebx, 7fffffffh
+		div ebx
 
-		; at this point, multiplied seed is 48 bit dx:ax:cx
-		; to mod it by 2^31-1, we'll do some shifting and adding
-
-		; shift highest bit of ax into dx
-		shl dx, 1
-		shl ax, 1
-		adc dx, 0
-		shr ax, 1
-
-		; add dx to ax:cx
-		add cx, dx
-		adc ax, 0
-
-		; put result into dx:ax
-		mov dx, ax
-		mov ax, cx
-
-		; final check is if result = 2^31-1, set to zero
-
-		cmp ax, 0ffffh
-		jne random_done
-		cmp dx, 7fffh
-		jne random_done
-
-		mov dx, 0
-		mov ax, 0
-
-	random_done:
-
-		; kill highest bit to be sure
-		and dx, 7fffh
+		; put result into eax
+		mov eax, edx
 
 		; store seed
-		mov [di], dx
-		mov [di+2], ax
+		mov [di], eax
 
 		pop di
-		pop cx
-		pop bx
+		pop edx
+		pop ebx
 		ret
 random endp
 
-; Generate a 31 bit random number into dx:ax
-; Before calling this proc, pre-fill dx:ax with the limit
+; Generate a 31 bit random number into eax
+; Before calling this proc, pre-fill eax with the limit
 ; The range is 1..limit, inclusive
 randomLimit proc
-		push bx
-		push cx
+		push ecx
 		push bp
 		mov bp, sp
 
 		; save limit
-		push dx
-		push ax
-
+		push eax
+		
 	rlim_generate:
-
 		; generate 31-bit random number
 		call random
 
-		; mod dx:ax with nearest power of two
+		; mod eax with nearest power of two
 		; if still over the limit, regenerate
 		; there is at most 50% chance of re-iteration, unlikely to cause an infinite loop
-		; easier than 32bit mod 32bit, and prevents bias for lower numbers
-
-		; start with high-order bits
-		mov bx, [bp-2]
-		cmp bx, 0
-		jne rlim_32bit
-
-	rlim_16bit:
-		; limit is only 16 bits
-		mov dx, 0
-		mov bx, [bp-4]
-		mov cx, 1
-	rlim_16bit_mask_loop:
-		cmp cx, bx
-		jae rlim_16bit_mask_done
-		shl cx, 1
-		inc cx
-		jmp rlim_16bit_mask_loop
-
-	rlim_16bit_mask_done:
-		and ax, cx
-		jmp rlim_mask_finished
-
-	rlim_32bit:
-		; limit is 32 bits, process high-order only
-		; bx already has high-order bits of limit
-		mov cx, 1
-	rlim_32bit_mask_loop:
-		cmp cx, bx
-		jae rlim_32bit_mask_done
-		shl cx, 1
-		inc cx
-		jmp rlim_32bit_mask_loop
-
-	rlim_32bit_mask_done:
-		and dx, cx
-		jmp rlim_mask_finished
-
-	rlim_mask_finished:
+		; this prevents bias for lower numbers
+		
+		mov ecx, 1
+	rlim_mask_loop:
+		cmp ecx, [bp-4]
+		jae rlim_mask_done
+		shl ecx, 1
+		inc ecx
+		jmp rlim_mask_loop
+		
+	rlim_mask_done:
+		; apply mask
+		and eax, ecx
 
 		; add 1
-		add ax, 1
-		adc dx, 0
+		add eax, 1
 
 		; check if result is less than the limit
 		; if not, re-generate
-
-		cmp dx, [bp-2]
-		ja rlim_generate
-		jb rlim_return
-		cmp ax, [bp-4]
+		
+		cmp eax, [bp-4]
 		ja rlim_generate
 
-	rlim_return:
-
-		; discard two words from the stack
-		pop bx
-		pop bx
+		; discard dword from the stack
+		pop ecx
 
 		; return
 		pop bp
-		pop cx
-		pop bx
+		pop ecx
 		ret
 randomLimit endp
 

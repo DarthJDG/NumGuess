@@ -23,6 +23,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 
 - **libnumguess.js**: JavaScript library *(see notes)*
 - **num_286.asm**: DOS 286 Assembly (compiles with TASM 3.0 and MASM 6.11)
+- **num_386.asm**: DOS 386 Assembly (compiles with TASM32)
 - **num_c64.bas**: Commodore Basic (C64)
 - **num_domwindow.html**: DOM Window wrapper for JavaScript library
 - **num_dos.c**: Borland C (compiles with 3.1 under DOS)
