@@ -36,15 +36,6 @@ If the guess is correct, the message showing the number of tries should use the 
 
 The play again prompt defaults to no and the game quits if the user fails to enter an upper or lowercase "Y". Should the player choose to play again, a new random number must be generated within the same limits and gameplay starts with the *"Guess my number..."* message after an empty line.
 
-## Variable names
-
-There could be exceptions depending on language capabilities and reserved keywords, but programs should usually the following variable names:
-
-- **limit** for the custom limit
-- **num** or **number** for the number to guess
-- **guess** for the current guess
-- **tries** for the number of tries
-
 ## Custom messages
 
 At the end of the game the program should display a message depending on the player's performance. The maximum number of tries that are mathematically justified is the base 2 logarithm of limit rounded down plus one. The messages depending on the number of guesses are the following:
@@ -55,6 +46,16 @@ At the end of the game the program should display a message depending on the pla
 - over maximum by less than or exactly 10%: *"Very good result!"*
 - over maximum by more than 10%: *"Try harder, you can do better!"*
 - more than the limit: *"I find your lack of skill disturbing!"*
+
+## Variable names
+
+There could be exceptions depending on language capabilities and reserved keywords, but programs should generally use the following variable names:
+
+- **limit** for the custom limit
+- **num** or **number** for the number to guess
+- **guess** for the current guess
+- **tries** for the number of tries
+- **maxTries** for the maximum number of tries justified
 
 ## Language limitations
 
