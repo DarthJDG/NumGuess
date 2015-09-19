@@ -37,6 +37,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **numguess.bf**: Brainfuck *(see notes)*
 - **numguess.c**: C (compiles with GCC, *see notes*)
 - **numguess.cpp**: C++ (compiles with GCC)
+- **numguess.cr**: [Crystal](http://crystal-lang.org/) *(see notes)*
 - **numguess.cs**: C# command line
 - **numguess.d**: [D Programming Language](http://dlang.org)
 - **numguess.dart**: Google Dart console
@@ -87,6 +88,10 @@ Tested on CentOS. As the man page for ```log2``` states, needs to be compiled wi
 ### Commodore Basic
 
 Output formatting is a bit off in this version, due to the absence of lowercase characters and square brackets. Due to the limited number of characters in a line, a couple of extra linebreaks have been added. Furthermore, there doesn't seem to be a way to get rid of the question mark prompt when asking for input, so they are used in place of colons.
+
+### Crystal
+
+The project is still in alpha stage, compiled and tested with version 0.7.7. If the compiler becomes more forgiving about nullable types, the code could be optimised a bit (e.g. inputNumber could just return Nil on invalid input instead of a tuple).
 
 ### JavaScript library
 
