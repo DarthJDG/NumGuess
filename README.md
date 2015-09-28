@@ -58,6 +58,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **numguess.R**: [R](http://r-project.org) script
 - **numguess.rb**: Ruby (1.9.3+)
 - **numguess.sh**: Bash script
+- **numguess.swift**: Swift 2.0
 - **numguess.tcl**: Tcl script
 - **numguess.uvb**: UniVerse Basic (might work on other pick-likes)
 - **numguess.vb**: VB.NET command line
