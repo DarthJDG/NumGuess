@@ -75,7 +75,7 @@ class NumGuess
 			print "Play again [y/N]? "
 		end until gets.chomp.downcase != "y"
 
-		print "\nOkay, bye."
+		print "\nOkay, bye.\n"
 	end
 end
 

@@ -84,6 +84,6 @@ public class NumGuess {
 			if (!readLine().toUpperCase().equals("Y")) break;
 		}
 
-		System.out.printf("\nOkay, bye.");
+		System.out.printf("\nOkay, bye.\n");
 	}
 }
