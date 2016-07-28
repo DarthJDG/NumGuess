@@ -1,0 +1,68 @@
+#!/usr/bin/env slsh
+require("rand");
+
+define input_number(prompt, default) {
+	variable line, i = default;
+
+	printf(prompt);
+	fgets(&line, stdin);
+	sscanf(line, "%i", &i);
+	return i;
+}
+
+define input_string(prompt) {
+	variable line;
+
+	printf(prompt);
+	fgets(&line, stdin);
+	return strtrim(line);
+}
+
+define slsh_main() {
+	variable name, limit, maxTries, num, guess, tries, triesWord, again;
+
+	printf("Welcome to NumGuess S-Lang version!\n\n");
+	name = input_string("Enter your name: ");
+	if(name == "") name = "Player";
+
+	printf("\nWelcome %s, ", name);
+	limit = input_number("enter upper limit: ", 10);
+	if(limit < 10) limit = 10;
+	maxTries = typecast(floor(log(limit) / log(2)) + 1, Integer_Type);
+
+	do {
+		printf("\nGuess my number between 1 and %i!\n\n", limit);
+		(tries, num) = (0, rand_int(1, limit));
+
+		do {
+			guess = input_number("Guess: ", NULL);
+
+			if(guess == NULL) {
+				printf("That's just plain wrong.\n");
+			} else ifnot(1 <= guess <= limit) {
+				printf("Out of range.\n");
+			} else {
+				tries++;
+				switch(guess)
+					{ guess < num : printf("Too low!\n"); }
+					{ guess > num : printf("Too high!\n"); }
+			}
+		} while(guess != num);
+
+		triesWord = tries == 1 ? "try" : "tries";
+		printf("\nWell done %s, you guessed my number from %i %s!\n", name, tries, triesWord);
+
+		switch(tries)
+			{ tries == 1             : printf("You're one lucky bastard!"); }
+			{ tries < maxTries       : printf("You are the master of this game!"); }
+			{ tries == maxTries      : printf("You are a machine!"); }
+			{ tries < maxTries * 1.1 : printf("Very good result!"); }
+			{ tries < limit          : printf("Try harder, you can do better!"); }
+			{ printf("I find your lack of skill disturbing!"); }
+
+		again = strup(input_string("\nPlay again [y/N]? "));
+	} while(again[0] == 'Y');
+
+	printf("\nOkay, bye.\n");
+}
+
