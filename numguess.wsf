@@ -30,6 +30,7 @@
 		}
 
 		var engine = NumGuessEngine;
+		engine.language = 'JScript';
 		engine.console = isConsole;
 		engine.show = function(s) {
 			WScript.echo(s);

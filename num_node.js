@@ -26,6 +26,7 @@ function evaluateGuess(guess) {
 	}
 }
 
+engine.language = 'Node.js';
 engine.console = true;
 engine.welcome();
 rl.question('\nEnter your name: ', function(name) {

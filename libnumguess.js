@@ -7,12 +7,13 @@
 		minLimit: 10,
 		maxTries: 4,
 		name: 'Player',
+		language: 'JavaScript',
 
 		// Add some extra line breaks in console mode
 		console: false,
 
 		welcome: function() {
-			this.show('Welcome to NumGuess JavaScript version!');
+			this.show('Welcome to NumGuess ' + this.language + ' version!');
 		},
 
 		/* starts the game with a certain name and limit */
