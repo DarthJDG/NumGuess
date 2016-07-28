@@ -5,20 +5,22 @@
 		tries: 0,
 		limit: 0,
 		minLimit: 10,
+		maxTries: 4,
 		name: 'Player',
 
 		// Add some extra line breaks in console mode
 		console: false,
 
 		welcome: function() {
-			this.show('Welcome to NumGuess Javascript version!');
+			this.show('Welcome to NumGuess JavaScript version!');
 		},
 
 		/* starts the game with a certain name and limit */
 		start: function(name, limit) {
 			limit = parseInt(limit, 10);
 			this.name = name || this.name;
-			this.limit = limit >= this.minLimit ? limit : this.minLimit;
+			this.limit = limit > this.minLimit ? limit : this.minLimit;
+			this.maxTries = Math.floor(Math.log(this.limit) / Math.LN2) + 1;
 			this.restart();
 		},
 
@@ -37,13 +39,14 @@
 			this.tries += 1;
 
 			if(this.num == guess) {
-				this.show((this.console ? '\n' : '') + 'Well done '
+				if(this.console) this.show('');
+				this.show('Well done '
 					+ this.name
 					+ ', you guessed my number from '
 					+ this.tries
-					+ (this.tries > 1 ? ' tries' : ' try')
+					+ (this.tries == 1 ? ' try' : ' tries')
 					+ '!');
-				this.show(this.generateCustomMessage(this.tries, this.limit));
+				this.show(this.generateCustomMessage());
 				return true;
 			} else {
 				this.show(this.num < guess ? 'Too high!' : 'Too low!');
@@ -67,27 +70,27 @@
 		},
 
 		/* returns a custom message based on tries and limit */
-		generateCustomMessage: function(tries, limit) {
-			var maxJustifiedTries = Math.floor(Math.log(limit) / Math.LN2) + 1;
+		generateCustomMessage: function() {
 			var messages = [
-				"You're one lucky bastard!",
-				"You are the master of this game!",
-				"You are a machine!",
-				"Very good result!",
-				"Try harder, you can do better!",
-				"I find your lack of skill disturbing!"
+				'You\'re one lucky bastard!',
+				'You are the master of this game!',
+				'You are a machine!',
+				'Very good result!',
+				'Try harder, you can do better!',
+				'I find your lack of skill disturbing!'
 			];
 			var checks = [
-				function () { return tries === 1; },
-				function () { return tries < maxJustifiedTries; },
-				function () { return tries === maxJustifiedTries; },
-				function () { return tries <= maxJustifiedTries * 1.1; },
-				function () { return tries <= limit; }
+				function () { return this.tries === 1; },
+				function () { return this.tries < this.maxTries; },
+				function () { return this.tries === this.maxTries; },
+				function () { return this.tries <= this.MaxTries * 1.1; },
+				function () { return this.tries <= this.limit; }
 			];
-			for(var i = 0, l = checks.length; i < l; i++) {
-				if(checks[i]()) return messages[i];
+			for(var i = 0; i < checks.length; i++) {
+				// Call check functions in the same "this" context
+				if(checks[i].call(this)) return messages[i];
 			}
-			return messages[l];
+			return messages[checks.length];
 		}
 	};
 
