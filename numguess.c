@@ -7,7 +7,7 @@
 int main()
 {
 	int i, num = 0, guess = 0, tries = 0, limit = 0, max_tries = 0;
-	char name[100], buffer[100];
+	char name[100], buffer[100], *end;
 	srand(time(NULL));
 
 	printf("Welcome to NumGuess C version!\n\n");
@@ -42,9 +42,17 @@ int main()
 			printf("\nGuess: ");
 
 			fgets(buffer, sizeof(buffer), stdin);
-			guess = atoi(buffer);
+			guess = strtol(buffer, &end, 10);
 
-			if((guess < 1) || (guess > limit)) {
+			if(end == buffer || (*end != '\0' && *end != '\n')) {
+				// Conversion failed with either invalid character at start
+				// or non-terminating character at the end.
+				printf("That's just plain wrong.");
+
+				// Clear guess to avoid triggering win condition when there
+				// are trailing junk characters (ignored by strtol).
+				guess = 0;
+			} else if((guess < 1) || (guess > limit)) {
 				printf("Out of range.");
 			} else {
 				tries++;
