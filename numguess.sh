@@ -70,10 +70,10 @@ while [ "$play_again" = "y" ]; do
 		echo "You are a machine!"
 	elif [ $tries -le $max_tries_10 ]; then
 		echo "Very good result!"
-	elif [ $tries -gt $limit ]; then
-		echo "I find your lack of skill disturbing!"
-	else
+	elif [ $tries -le $limit ]; then
 		echo "Try harder, you can do better!"
+	else
+		echo "I find your lack of skill disturbing!"
 	fi
 
 	echo -n "Play again [y/N]? "

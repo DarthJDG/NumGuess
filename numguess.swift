@@ -29,7 +29,7 @@ func getCustomMessage(num: Int, _ limit: Int, _ tries: Int) -> String {
 	case 2..<maxTries:          return "You are the master of this game!"
 	case maxTries:              return "You are a machine!"
 	case maxTries...maxTries10: return "Very good result!"
-	case maxTries10..<limit:    return "Try harder, you can do better!"
+	case maxTries10...limit:    return "Try harder, you can do better!"
 	default:                    return "I find your lack of skill disturbing!"
 	}
 }
@@ -46,7 +46,7 @@ repeat {
 	var num = random() % limit + 1
 	var tries = 0
 	var guess : Int?
-	
+
 	repeat {
 		guess = inputNumber("Guess:")
 

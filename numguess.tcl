@@ -60,10 +60,10 @@ while {$PlayAgain} {
 		puts "You are a machine!"
 	} elseif {$Tries <= [expr $MaxTries * 1.1]} {
 		puts "Very good result!"
-	} elseif {$Tries > $Limit} {
-		puts "I find your lack of skill disturbing!"
-	} else {
+	} elseif {$Tries <= $Limit} {
 		puts "Try harder, you can do better!"
+	} else {
+		puts "I find your lack of skill disturbing!"
 	}
 
 	puts -nonewline "Play again \[y/N\]? "

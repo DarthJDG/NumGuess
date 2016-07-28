@@ -46,9 +46,9 @@ class NumGuess
 		return "You're one lucky bastard!"              if @tries == 1
 		return "You are the master of this game!"       if @tries < @max_tries
 		return "You are a machine!"                     if @tries == @max_tries
-		return "Very good result!"                      if @tries < @max_tries * 1.1
-		return "I find your lack of skill disturbing!"  if @tries > @limit
-		return "Try harder, you can do better!"
+		return "Very good result!"                      if @tries <= @max_tries * 1.1
+		return "Try harder, you can do better!"         if @tries <= @limit
+		return "I find your lack of skill disturbing!"
 	end
 
 	def run

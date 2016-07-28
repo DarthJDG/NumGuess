@@ -35,8 +35,8 @@ do {
 	elseif ($tries -lt $max_tries) { "You are the master of this game!" }
 	elseif ($tries -eq $max_tries) { "You are a machine!" }
 	elseif ($tries -le $max_tries * 1.1) { "Very good result!" }
-	elseif ($tries -gt $limit) { "I find your lack of skill disturbing!" }
-	else { "Try harder, you can do better!" }
+	elseif ($tries -le $limit) { "Try harder, you can do better!" }
+	else { "I find your lack of skill disturbing!" }
 
 	# Have to call read-host without prompt to avoid appended colon
 	write-host "Play again [y/N]? " -NoNewLine

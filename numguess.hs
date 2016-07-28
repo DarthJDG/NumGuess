@@ -22,12 +22,12 @@ evaluate (guess, valid) num limit
 
 customMessage :: Int -> Int -> String
 customMessage tries limit
-    | tries == 1         = "You're one lucky bastard!"
-    | tries < maxTries   = "You are the master of this game!"
-    | tries == maxTries  = "You are a machine!"
-    | tries < maxTries10 = "Very good result!"
-    | tries > limit      = "I find your lack of skill disturbing!"
-    | otherwise          = "Try harder, you can do better!"
+    | tries == 1          = "You're one lucky bastard!"
+    | tries < maxTries    = "You are the master of this game!"
+    | tries == maxTries   = "You are a machine!"
+    | tries <= maxTries10 = "Very good result!"
+    | tries <= limit      = "Try harder, you can do better!"
+    | otherwise           = "I find your lack of skill disturbing!"
     where maxTries = floor (logBase 2 (fromIntegral limit)) + 1
           maxTries10 = floor (fromIntegral maxTries * 1.1)
 

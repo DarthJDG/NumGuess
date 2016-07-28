@@ -45,8 +45,8 @@ begin
 		else if tries < max_tries then WriteLn('You are the master of this game!')
 		else if tries = max_tries then WriteLn('You are a machine!')
 		else if tries <= max_tries * 1.1 then WriteLn('Very good result!')
-		else if tries > limit then WriteLn('I find your lack of skill disturbing!')
-		else WriteLn('Try harder, you can do better!');
+		else if tries <= limit then WriteLn('Try harder, you can do better!')
+		else WriteLn('I find your lack of skill disturbing!');
 
 		Write('Play again [y/N]? ');
 		ReadLn(again);

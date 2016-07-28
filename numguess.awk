@@ -71,10 +71,10 @@ function well_done() {
 		print "You are a machine!"
 	else if(tries <= max_tries * 1.1)
 		print "Very good result!"
-	else if(tries > limit)
-		print "I find your lack of skill disturbing!"
-	else
+	else if(tries <= limit)
 		print "Try harder, you can do better!"
+	else
+		print "I find your lack of skill disturbing!"
 
 	printf "Play again [y/N]? "
 	prompt = "play"

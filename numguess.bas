@@ -37,10 +37,10 @@ DO
 			PRINT "You are a machine!"
 		CASE IS <= maxtries% * 1.1
 			PRINT "Very good result!"
-		CASE IS > limit%
-			PRINT "I find your lack of skill disturbing!"
-		CASE ELSE
+		CASE IS <= limit%
 			PRINT "Try harder, you can do better!"
+		CASE ELSE
+			PRINT "I find your lack of skill disturbing!"
 	END SELECT
 
 	INPUT "Play again [y/N]? ", again$

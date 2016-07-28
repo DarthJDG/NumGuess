@@ -63,7 +63,7 @@ sub play($$) {
 		print("You are a machine!\n");
 	} elsif ($tries <= ($maximum * 1.1)) {
 		print("Very good result!\n");
-	} elsif ($tries < $limit) {
+	} elsif ($tries <= $limit) {
 		print("Try harder, you can do better!\n");
 	} else {
 		print("I find your lack of skill disturbing!\n");

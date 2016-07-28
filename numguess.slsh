@@ -57,7 +57,7 @@ define slsh_main() {
 			{ tries < maxTries        : printf("You are the master of this game!"); }
 			{ tries == maxTries       : printf("You are a machine!"); }
 			{ tries <= maxTries * 1.1 : printf("Very good result!"); }
-			{ tries < limit           : printf("Try harder, you can do better!"); }
+			{ tries <= limit          : printf("Try harder, you can do better!"); }
 			{ printf("I find your lack of skill disturbing!"); }
 
 		again = strup(input_string("\nPlay again [y/N]? "));

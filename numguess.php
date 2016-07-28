@@ -59,11 +59,11 @@ function readInput() {
 }
 
 function evaluate($tries, $limit) {
-	$maxJustified = floor(log($limit, 2)) + 1;
+	$maxTries = floor(log($limit, 2)) + 1;
 	if ($tries == 1) { $s = "You're one lucky bastard!"; }
-	else if ($tries < $maxJustified) { $s = "You are the master of this game!"; }
-	else if ($tries == $maxJustified) { $s = "You are a machine!"; }
-	else if ($tries <= $maxJustified * 1.1) { $s = "Very good result!"; }
+	else if ($tries < $maxTries) { $s = "You are the master of this game!"; }
+	else if ($tries == $maxTries) { $s = "You are a machine!"; }
+	else if ($tries <= $maxTries * 1.1) { $s = "Very good result!"; }
 	else if ($tries <= $limit) { $s = "Try harder, you can do better!"; }
 	else { $s = "I find your lack of skill disturbing!"; }
 	return $s;

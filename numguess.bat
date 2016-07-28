@@ -74,9 +74,9 @@ if %ng_tries% == 1 goto msg_lucky
 if %ng_tries% lss %ng_max_tries% goto msg_master
 if %ng_tries% == %ng_max_tries% goto msg_machine
 if %ng_tries% leq %ng_max_tries_10% goto msg_good
-if %ng_tries% geq %ng_limit% goto msg_disturbing
+if %ng_tries% leq %ng_limit% goto msg_harder
 
-echo Try harder, you can do better!
+echo I find your lack of skill disturbing!
 goto msg_end
 
 :msg_lucky
@@ -95,8 +95,8 @@ goto msg_end
 echo Very good result!
 goto msg_end
 
-:msg_disturbing
-echo I find your lack of skill disturbing!
+:msg_harder
+echo Try harder, you can do better!
 
 :msg_end
 

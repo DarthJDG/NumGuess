@@ -57,10 +57,10 @@ do while .t.
 			? "You are a machine!"
 		case tries <= maxtries * 1.1
 			? "Very good result!"
-		case tries > limit
-			? "I find your lack of skill disturbing!"
-		otherwise
+		case tries <= limit
 			? "Try harder, you can do better!"
+		otherwise
+			? "I find your lack of skill disturbing!"
 	endcase
 
 	accept "Play again [y/N]? " to again

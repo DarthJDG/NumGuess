@@ -68,16 +68,16 @@ while true do
 	custom_message = ""
 	if tries == 1 then
 		custom_message = "You're one lucky bastard!"
+	elseif tries < max_tries then
+		custom_message = "You are the master of this game!"
 	elseif tries == max_tries then
 		custom_message = "You are a machine!"
-	elseif tries > max_tries and tries <= max_tries * 1.1 then
+	elseif tries <= max_tries * 1.1 then
 		custom_message = "Very good result!"
-	elseif tries > max_tries * 1.1 and tries <= limit then
+	elseif tries <= limit then
 		custom_message = "Try harder, you can do better!"
-	elseif tries > limit then
-		custom_message = "I find your lack of skill disturbing!"
 	else
-		custom_message = "You are the master of this game!"
+		custom_message = "I find your lack of skill disturbing!"
 	end
 
 	print(custom_message)

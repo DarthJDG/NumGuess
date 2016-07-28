@@ -82,8 +82,8 @@ class NumGuess {
 		else if(tries < max_tries) stdout.writeln('You are the master of this game!');
 		else if(tries == max_tries) stdout.writeln('You are a machine!');
 		else if(tries <= max_tries * 1.1) stdout.writeln('Very good result!');
-		else if(tries > limit) stdout.writeln('I find your lack of skill disturbing!');
-		else stdout.writeln('Try harder, you can do better!');
+		else if(tries <= limit) stdout.writeln('Try harder, you can do better!');
+		else stdout.writeln('I find your lack of skill disturbing!');
 
 		stdout.write('Play again [y/N]? ');
 		state = 'play';

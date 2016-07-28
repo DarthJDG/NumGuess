@@ -71,7 +71,7 @@ NameOK:
 
 
 ; settings summary
-	
+
 	ldc "\nWelcome "
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
 
@@ -87,7 +87,7 @@ NameOK:
 	if_icmpge LimitOK
 
 ; use 10 if input is smaller
-	
+
 	pop
 	ldc 10
 
@@ -289,7 +289,7 @@ CheckIfNot:
 QuitGame:
     ldc "\nOkay, bye.\n"
 	invokestatic NumGuess/printString(Ljava/lang/String;)V
-	
+
 	return
 
 .end method

@@ -50,8 +50,8 @@ void main() {
 		else if(tries < maxTries) writeln("You are the master of this game!");
 		else if(tries == maxTries) writeln("You are a machine!");
 		else if(tries <= maxTries * 1.1) writeln("Very good result!");
-		else if(tries > limit) writeln("I find your lack of skill disturbing!");
-		else writeln("Try harder, you can do better!");
+		else if(tries <= limit) writeln("Try harder, you can do better!");
+		else writeln("I find your lack of skill disturbing!");
 
 		write("Play again [y/N]? ");
 

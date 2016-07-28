@@ -61,10 +61,10 @@ func main() {
 				fmt.Printf("You are a machine!")
 			case tries <= int(float64(maxTries) * 1.1):
 				fmt.Printf("Very good result!")
-			case tries > limit:
-				fmt.Printf("I find your lack of skill disturbing!")
-			default:
+			case tries <= limit:
 				fmt.Printf("Try harder, you can do better!")
+			default:
+				fmt.Printf("I find your lack of skill disturbing!")
 		}
 
 		fmt.Printf("\nPlay again [y/N]? ")

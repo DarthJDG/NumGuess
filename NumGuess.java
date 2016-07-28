@@ -73,10 +73,10 @@ public class NumGuess {
 				System.out.printf("You are a machine!");
 			} else if (tries <= max_tries * 1.1f) {
 				System.out.printf("Very good result!");
-			} else if (tries > limit) {
-				System.out.printf("I find your lack of skill disturbing!");
-			} else {
+			} else if (tries <= limit) {
 				System.out.printf("Try harder, you can do better!");
+			} else {
+				System.out.printf("I find your lack of skill disturbing!");
 			}
 
 			System.out.printf("\nPlay again [y/N]? ");

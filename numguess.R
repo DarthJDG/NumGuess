@@ -95,10 +95,10 @@ while (TRUE) {
                 tries == max_tries,
                 'You are a machine!',
                 ifelse(
-                    tries < max_tries * 1.1,
+                    tries <= max_tries * 1.1,
                     'Very good result!',
                     ifelse(
-                        tries < limit,
+                        tries <= limit,
                         'Try harder, you can do better!',
                         'I find your lack of skill disturbing!'
                     )

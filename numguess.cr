@@ -49,12 +49,12 @@ loop do
 
 	puts "\nWell done #{name}, you guessed my number from #{tries} tr" + (tries == 1 ? "y!" : "ies!")
 
-	msg = "Try harder, you can do better!"
+	msg = "I find your lack of skill disturbing!"
+	msg = "Try harder, you can do better!"        if tries <= limit
 	msg = "Very good result!"                     if tries <= maxTries * 1.1
+	msg = "You are a machine!"                    if tries == maxTries
 	msg = "You are the master of this game!"      if tries < maxTries
 	msg = "You're one lucky bastard!"             if tries == 1
-	msg = "You are a machine!"                    if tries == maxTries
-	msg = "I find your lack of skill disturbing!" if tries > limit
 
 	puts msg
 

@@ -59,16 +59,16 @@ while True:
 
 	if tries == 1:
 		custom_message = "You're one lucky bastard!"
+	elif tries < max_tries:
+		custom_message = "You are the master of this game!"
 	elif tries == max_tries:
 		custom_message = "You are a machine!"
-	elif tries > max_tries and tries <= max_tries * 1.1:
+	elif tries <= max_tries * 1.1:
 		custom_message = "Very good result!"
-	elif tries > max_tries * 1.1 and tries <= limit:
+	elif tries <= limit:
 		custom_message = "Try harder, you can do better!"
-	elif tries > limit:
-		custom_message = "I find your lack of skill disturbing!"
 	else:
-		custom_message = "You are the master of this game!"
+		custom_message = "I find your lack of skill disturbing!"
 
 	print(custom_message)
 	print("Play again [y/N]? ", end="", flush=True)

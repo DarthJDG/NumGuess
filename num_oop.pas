@@ -90,8 +90,8 @@ begin
 	else if tries < max_tries then CustomMessage := 'You are the master of this game!'
 	else if tries = max_tries then CustomMessage := 'You are a machine!'
 	else if tries <= max_tries * 1.1 then CustomMessage := 'Very good result!'
-	else if tries > limit then CustomMessage := 'I find your lack of skill disturbing!'
-	else CustomMessage := 'Try harder, you can do better!';
+	else if tries <= limit then CustomMessage := 'Try harder, you can do better!'
+	else CustomMessage := 'I find your lack of skill disturbing!';
 end;
 
 { Main program }
