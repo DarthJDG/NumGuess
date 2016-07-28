@@ -68,7 +68,7 @@
 
 		/* returns a custom message based on tries and limit */
 		generateCustomMessage: function(tries, limit) {
-			var maxJustifiedTries = Math.floor(Math.log(limit) / Math.log(2)) + 1;
+			var maxJustifiedTries = Math.floor(Math.log(limit) / Math.LN2) + 1;
 			var messages = [
 				"You're one lucky bastard!",
 				"You are the master of this game!",
