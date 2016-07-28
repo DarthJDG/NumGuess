@@ -1,6 +1,6 @@
+#include <cstdlib>
 #include <string>
 #include <math.h>
-#include <time.h>
 #include <iostream>
 #include <sstream>
 
