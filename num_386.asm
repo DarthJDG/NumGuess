@@ -449,7 +449,7 @@ printNumber proc
 printNumber endp
 
 ; Generate random seed and initialise RNG
-; Makes sure seed it coprime to 48271
+; Makes sure seed is coprime to 48271
 randomize proc
 		pusha
 
