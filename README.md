@@ -30,7 +30,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **num_dos.cpp**: Borland C++ (compiles with 3.1 under DOS)
 - **num_jquery.html**: HTML/jQuery wrapper for JavaScript library
 - **num_node.js**: Node.js console wrapper for JavaScript library
-- **num_oop.pas**: Turbo Pascal 6.0, FreePascal (OOP)
+- **num_oop.pas**: Pascal OOP (Turbo Pascal 6.0, FreePascal)
 - **numguess.awk**: AWK script
 - **numguess.bas**: QBasic 1.0
 - **numguess.bat**: Windows shell batch file (Windows 2000 onwards)
@@ -49,7 +49,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **NumGuess.j**: JVM bytecode (aka. "Java Assembly") for Jasmin
 - **NumGuess.java**: Java (can be run from command line)
 - **numguess.lua**: Lua terminal
-- **numguess.pas**: Turbo Pascal 6.0, FreePascal
+- **numguess.pas**: Pascal (Turbo Pascal 6.0, FreePascal)
 - **numguess.php**: PHP (CLI)
 - **numguess.pl**: Perl
 - **numguess.prg**: dBase IV
@@ -70,11 +70,15 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 
 With the increasing number of contributions, it has become necessary to define clear-cut coding standards to make sure all programs work in a consistent manner and give the best possible user experience while keeping the game simple. Please see the GUIDELINES file for more details.
 
-If a program does not conform to the guidelines and doesn't qualify for an exception as a language limitation, it must be mentioned in the list below and explained in the notes section further down.
+If a program does not conform to the guidelines, it must be mentioned in the list below and explained in the notes section further down.
 
 Non-compliant programs and features:
 
+- **num_c64.bas**: output, invalid input *(see notes)*
+- **num_oop.pas**: invalid input *(see notes)*
+- **numguess.bas**: invalid input *(see notes)*
 - **numguess.bf**: almost everything *(see notes)*
+- **numguess.pas**: invalid input *(see notes)*
 
 ## 4. Notes
 
@@ -86,11 +90,13 @@ An interesting issue is that due to the simplicity of its design, there is no wa
 
 ### C
 
-Tested on CentOS. As the man page for ```log2``` states, needs to be compiled with ```-std=c99``` and linked with ```-lm``` when using GCC.
+Tested on CentOS. As the man page for ```log2``` states, it needs to be compiled with ```-std=c99``` and linked with ```-lm``` when using GCC.
 
 ### Commodore Basic
 
 Output formatting is a bit off in this version, due to the absence of lowercase characters and square brackets. Due to the limited number of characters in a line, a couple of extra linebreaks have been added. Furthermore, there doesn't seem to be a way to get rid of the question mark prompt when asking for input, so they are used in place of colons.
+
+This version doesn't handle non-numeric input at the moment.
 
 ### Crystal
 
@@ -100,16 +106,24 @@ The project is still in alpha stage, compiled and tested with version 0.7.7. If 
 
 This one defines a NumGuessEngine framework that can be used by other implementations, so in itself it does not fulfill all the guidelines. It can be played from the browser console though by manually calling its methods.
 
-### VBScript
-
-To run the fully compliant console version under Windows, run ```cscript numguess.vbs``` from the command line. Alternatively, you can use pop up windows instead of the console (similar to the DOM window JavaScript wrapper) by either double-clicking on the program file or running ```wscript numguess.vbs```.
-
 ### JScript
 
 JScript has no input box implemented for ```wscript```, it had to be invoked from VBScript code. This is why the code is embedded in XML and the file extension is ```.wsf```. The JScript part can be run as a simple ```.js``` file with ```cscript```.
 
-The code uses the compatible JavaScript library. See VBScript version above for running instructions.
+The code uses the compatible JavaScript library. See VBScript section for running instructions.
+
+### Pascal
+
+This version doesn't handle non-numeric input at the moment.
+
+### QBasic
+
+This version doesn't handle non-numeric input at the moment.
+
+### VBScript
+
+To run the fully compliant console version under Windows, run ```cscript numguess.vbs``` from the command line. Alternatively, you can use pop up windows instead of the console (similar to the DOM window JavaScript wrapper) by either double-clicking on the program file or running ```wscript numguess.vbs```.
 
 ## 5. License and copyright
 
-These programs are available under GPL3, please see the LICENSE, COPYRIGHT and AUTHORS files for details. Not that anyone would want to use them commercially...
+These programs are available under GPL3, please see the LICENSE, COPYRIGHT and AUTHORS files for details.

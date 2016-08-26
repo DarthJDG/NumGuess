@@ -51,14 +51,17 @@ At the end of the game the program should display a message depending on the pla
 
 There could be exceptions depending on language capabilities and reserved keywords, but programs should generally use the following variable names:
 
+- **name** or **player_name** for the player's name
 - **limit** for the custom limit
+- **max_tries** for the maximum number of tries justified
 - **num** or **number** for the number to guess
 - **guess** for the current guess
 - **tries** for the number of tries
-- **maxTries** for the maximum number of tries justified
+- **tries_word** in case you need to store "try"/"tries" before printing
+
+Capitalisation can be snake_case, camelCase or whatever suits the language, and doesn't violate the usual naming conventions.
 
 ## Language limitations
 
-It is quite possible that some languages have limitations which prevents them from conforming to the guidelines. Simple cases are fully acceptable, for example if a language has a native way to ask for numeric input but has no proper exception handling, it is ok for the program to use the built-in error mechanism, there is no need to ask for string input and parse it manually.
+Some languages might have limitations which prevent them from conforming to the guidelines. If the limitation has any effect on the output or general gameplay, the program can still be submitted, but a note must be added to the README file explaining the issue.
 
-In case of other limitations which has an effect on output or general gameplay, a note should be added to the README file explaining the situation.
