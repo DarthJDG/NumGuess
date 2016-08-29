@@ -53,6 +53,8 @@ class NumGuess {
 			limit = 10;
 		}
 
+		var maxTries = 1 + Math.floor(Math.log(limit) / Math.log(2));
+
 		while (true) {
 			var tries: Int = 0;
 			var number: Int = 1 + Std.random(limit);
@@ -85,7 +87,6 @@ class NumGuess {
 			output.writeString("\nWell done " + name + ", you guessed my number from "
 					+ tries + (tries > 1 ? " tries" : " try") + "!\n");
 
-			var maxTries = 1 + Math.floor(Math.log(limit) / Math.log(2));
 			if (tries == 1) {
 				output.writeString("You're one lucky bastard!\n");
 			} else if (tries < maxTries) {

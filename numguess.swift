@@ -19,27 +19,14 @@ func inputNumber(prompt: String, def: Int? = nil, min: Int? = nil) -> Int? {
 	return value
 }
 
-// Returns a message to evaluate player performance
-func getCustomMessage(num: Int, _ limit: Int, _ tries: Int) -> String {
-	let maxTries = Int(log2(Double(limit))) + 1
-	let maxTries10 = Int(Double(maxTries) * 1.1)
-
-	switch tries {
-	case 1:                     return "You're one lucky bastard!"
-	case 2..<maxTries:          return "You are the master of this game!"
-	case maxTries:              return "You are a machine!"
-	case maxTries...maxTries10: return "Very good result!"
-	case maxTries10...limit:    return "Try harder, you can do better!"
-	default:                    return "I find your lack of skill disturbing!"
-	}
-}
-
 // Seed the random generator
 srandom(UInt32(time(nil)))
 
 print("Welcome to NumGuess Swift version!\n")
 var name = inputString("Enter your name:", def: "Player")
 var limit = inputNumber("\nWelcome \(name), enter upper limit:", def: 10, min: 10)!
+let maxTries = Int(log2(Double(limit))) + 1
+let maxTries10 = Int(Double(maxTries) * 1.1)
 
 repeat {
 	print("\nGuess my number between 1 and \(limit)!\n")
@@ -64,9 +51,16 @@ repeat {
 
 	let triesWord = tries == 1 ? "try" : "tries"
 	print("\nWell done \(name), you guessed my number from \(tries) \(triesWord)!")
-	print(getCustomMessage(num, limit, tries))
+
+	switch tries {
+	case 1:                     print("You're one lucky bastard!")
+	case 2..<maxTries:          print("You are the master of this game!")
+	case maxTries:              print("You are a machine!")
+	case maxTries...maxTries10: print("Very good result!")
+	case maxTries10...limit:    print("Try harder, you can do better!")
+	default:                    print("I find your lack of skill disturbing!")
+	}
 
 } while "Y" == inputString("Play again [y/N]?").uppercaseString
 
 print("\nOkay, bye.")
-

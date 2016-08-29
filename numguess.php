@@ -15,6 +15,8 @@ if (!is_numeric($limit) || $limit < 10) {
 	$limit = 10;
 }
 
+$maxTries = floor(log($limit, 2)) + 1;
+
 do {
 	$number = rand(1, $limit);
 	echo "\nGuess my number between 1 and $limit!\n\n";
@@ -45,28 +47,23 @@ do {
 		}
 	} while (!$success);
 
-	$tryNoun = $tries > 1 ? 'tries' : 'try';
-	echo "\nWell done $name, you guessed my number from $tries $tryNoun!\n";
-	echo evaluate($tries, $limit) . "\n";
+	$triesWord = $tries > 1 ? 'tries' : 'try';
+	echo "\nWell done $name, you guessed my number from $tries $triesWord!\n";
 
-	echo 'Play again [y/N]? ';
+	if ($tries == 1) { echo "You're one lucky bastard!"; }
+	else if ($tries < $maxTries) { echo "You are the master of this game!"; }
+	else if ($tries == $maxTries) { echo "You are a machine!"; }
+	else if ($tries <= $maxTries * 1.1) { echo "Very good result!"; }
+	else if ($tries <= $limit) { echo "Try harder, you can do better!"; }
+	else { echo "I find your lack of skill disturbing!"; }
+
+	echo "\nPlay again [y/N]? ";
 } while (in_array(readInput(), array('Y', 'y')));
 
 echo "\nOkay, bye.\n";
 
 function readInput() {
 	return trim(fgets(STDIN));
-}
-
-function evaluate($tries, $limit) {
-	$maxTries = floor(log($limit, 2)) + 1;
-	if ($tries == 1) { $s = "You're one lucky bastard!"; }
-	else if ($tries < $maxTries) { $s = "You are the master of this game!"; }
-	else if ($tries == $maxTries) { $s = "You are a machine!"; }
-	else if ($tries <= $maxTries * 1.1) { $s = "Very good result!"; }
-	else if ($tries <= $limit) { $s = "Try harder, you can do better!"; }
-	else { $s = "I find your lack of skill disturbing!"; }
-	return $s;
 }
 
 ?>

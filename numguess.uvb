@@ -16,6 +16,7 @@ CRT "Welcome ":NAME:", enter upper limit: ":
 INPUT LIMIT
 
 IF NOT(NUM(LIMIT)) OR LIMIT < 10 THEN LIMIT = 10
+MAX.TRIES = INT(LN(LIMIT) / LN(2)) + 1
 
 LOOP
    NUM = RND(LIMIT) + 1
@@ -52,7 +53,6 @@ LOOP
    CRT
    CRT "Well done ":NAME:", you guessed my number from ":TRIES:" ":TRIES.WORD:"!"
 
-   MAX.TRIES = INT(LN(LIMIT) / LN(2)) + 1
    BEGIN CASE
       CASE TRIES = 1
          CRT "You're one lucky bastard!"

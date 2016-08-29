@@ -58,12 +58,12 @@ while true do
 		end
 	end
 
-	tries_declination = "try"
+	tries_word = "try"
 	if tries > 1 then
-		tries_declination = "tries"
+		tries_word = "tries"
 	end
 
-	print("\nWell done " .. name .. ", you guessed my number from " .. tries .. " " .. tries_declination .. "!")
+	print("\nWell done " .. name .. ", you guessed my number from " .. tries .. " " .. tries_word .. "!")
 
 	custom_message = ""
 	if tries == 1 then

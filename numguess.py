@@ -50,10 +50,10 @@ while True:
 		except:
 			print("\bThat's just plain wrong.")
 
-	tries_declination = "try"
+	tries_word = "try"
 	if tries > 1:
-		tries_declination = "tries"
-	print("\nWell done " + name + ", you guessed my number from " + str(tries) + " " + tries_declination + "!")
+		tries_word = "tries"
+	print("\nWell done " + name + ", you guessed my number from " + str(tries) + " " + tries_word + "!")
 
 	custom_message = ""
 
