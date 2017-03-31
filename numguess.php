@@ -65,5 +65,3 @@ echo "\nOkay, bye.\n";
 function readInput() {
 	return trim(fgets(STDIN));
 }
-
-?>
