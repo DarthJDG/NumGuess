@@ -48,6 +48,7 @@ Originally published as part of a [short article at CodeBin](http://codebin.co.u
 - **NumGuess.hx**: [Haxe](http://haxe.org/)
 - **NumGuess.j**: JVM bytecode (aka. "Java Assembly") for Jasmin
 - **NumGuess.java**: Java (can be run from command line)
+- **numguess.jq**: [jq](https://stedolan.github.io/jq/) script (requires v1.6 or above)
 - **numguess.lua**: Lua terminal
 - **numguess.pas**: Pascal (Turbo Pascal 6.0, FreePascal)
 - **numguess.php**: PHP (CLI)
@@ -111,6 +112,10 @@ This one defines a NumGuessEngine framework that can be used by other implementa
 JScript has no input box implemented for ```wscript```, it had to be invoked from VBScript code. This is why the code is embedded in XML and the file extension is ```.wsf```. The JScript part can be run as a simple ```.js``` file with ```cscript```.
 
 The code uses the compatible JavaScript library. See VBScript section for running instructions.
+
+### jq
+
+Run the script with `./numguess.jq --arg seed $RANDOM` to properly seed the random generator. Default seed is 12345.
 
 ### Pascal
 
