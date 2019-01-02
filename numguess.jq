@@ -3,8 +3,6 @@
 exec jq -njRrf "$0" "$@" --arg seed 12345
 # jq code follows
 
-#!/usr/bin/jq -njRrf
-
 # 15-bit integers generated using the same formula as rand() from the Microsoft C Runtime.
 # The random numbers are in [0 -- 32767] inclusive.
 # Input: an array of length at least 2 interpreted as [count, state, ...]
@@ -39,17 +37,17 @@ def tries_word:
 
 def custom_message($limit; $tries):
     ($limit | log2 | ceil) as $max_tries |
-	if $tries == 1 then
-		"You're one lucky bastard!"
-	elif $tries < $max_tries then
-		"You are the master of this game!"
-	elif $tries == $max_tries then
-		"You are a machine!"
-	elif $tries <= $max_tries * 1.1 then
-		"Very good result!"
-	elif $tries <= $limit then
-		"Try harder, you can do better!"
-	else
+    if $tries == 1 then
+        "You're one lucky bastard!"
+    elif $tries < $max_tries then
+        "You are the master of this game!"
+    elif $tries == $max_tries then
+        "You are a machine!"
+    elif $tries <= $max_tries * 1.1 then
+        "Very good result!"
+    elif $tries <= $limit then
+        "Try harder, you can do better!"
+    else
         "I find your lack of skill disturbing!"
     end;
 
