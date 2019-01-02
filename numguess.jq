@@ -24,6 +24,12 @@ def is_number:
     catch
         false;
 
+def default_number($default):
+    try
+        tonumber
+    catch
+        $default;
+
 def tries_word:
     if . == 1 then
         "try"
@@ -77,7 +83,7 @@ def set_name($line):
 
 def set_limit($line):
     .s = 4 |
-    .limit = ($line | tonumber | valid_limit) |
+    .limit = ($line | default_number(10) | valid_limit) |
     .tries = 0 |
     .r = (.r | next_rand_Microsoft) |
     .number = (.r[2] % .limit) |
